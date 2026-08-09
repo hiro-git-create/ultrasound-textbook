@@ -108,7 +108,14 @@ $$\text{Z-score} = \frac{\text{実際の計測値 (mm)} - \text{BSA依存の予�
 3. **Step 3: 数式に代入して算出し、分類する**:
    - 例: 2歳男児 (BSA $0.52\text{ m}^2$)、LAD $3.2\text{ mm}$ (平均 $1.8\text{ mm}$, SD $0.35\text{ mm}$) ➔ $\text{Z-score} = (3.2 - 1.8) / 0.35 = \mathbf{+4.0}$ ➔ **「小冠動脈瘤」** と判定。
 
-### ■ 臨床での実際の算出手順
+### ■ 臨床での実際の算出手順と代表的論文
 - **エコー装置**: 最新の超音波装置（GE, Philips, Canon等）では、身長・体重入力により画面上で自動表示。
 - **Web計算ツール**: **PediTools**（世界標準）、**日本小児循環器学会 (JSPCCS) 冠動脈Zスコア計算ツール**。
+
+> [!NOTE]
+> **【チャンバーサイズに対する Z-score 適合の主要エビデンス論文】**
+> 1. **Lopez L, et al. J Am Soc Echocardiogr 2010;23:465-457 / 2024 Update**: ASE小児心腔定量化ガイドライン。全心腔の Z-score 化を標準推奨。
+> 2. **Cantinotti M, et al. J Am Soc Echocardiogr 2014;27:1284-1292 / EHJCI 2017**: 小児の左室・右室・左房・右房の内径・容積・面積における大規模 Z-score 回帰曲線を構築。
+> 3. **Pettersen MD, et al. J Am Soc Echocardiogr 2008;21:922-937**: 21箇所の主要心腔構造・弁輪径の Z-score 公式（Detroitモデル）を提示。
+> 4. **Pediatric Heart Network (PHN) / Circ Cardiovasc Imaging 2017**: 3,000例超の多施設コホートによる全心腔 Z-score データベース。
 

@@ -116,7 +116,16 @@ $$\text{BSA (m²)} = 0.024265 \times \text{体重 (kg)}^{0.5378} \times \text{�
 評価する構造物に応じて、日本国内または国際標準のデータモデルを選択します。
 
 - **川崎病の冠動脈**: 日本人小児標準の **RAISE Studyモデル（布施式）** または **Kobayashi式**（日本小児循環器学会推薦）。
-- **心腔径・弁輪径（LVDd, Ao弁輪等）**: **Bostonモデル** または **Detroit (PHN)モデル**、**Cantinottiモデル**。
+- **心腔径・弁輪径（LVDd, Ao弁輪, LA/RA面積等）**: **Bostonモデル**, **Detroit (PHN)モデル (Pettersen 2008)**, **Cantinottiモデル (2014)**。
+
+> [!NOTE]
+> **【学術エビデンス】なぜチャンバーサイズに Z-score を適用するのか？**
+> Z-score は冠動脈（川崎病）だけでなく、**「左室・右室・左房・右房・弁輪径・大血管径」を含むすべてのチャンバーサイズ（心腔構造）に適用することが国際標準**となっています。
+> 以下の米国心エコー図学会（ASE）ガイドラインおよび代表的論文によってその有効性と標準値が証明されています。
+> 1. **Lopez L et al. J Am Soc Echocardiogr 2010 / 2024**: 米国心エコー図学会 (ASE) の小児心腔定量化ガイドライン。全心腔構造の Z-score 標準化を提唱。
+> 2. **Cantinotti M et al. J Am Soc Echocardiogr 2014 / EHJCI 2017**: 小児の4大心腔 (LV, LA, RV, RA) の内径・面積・容積における大型 Z-score 標準曲線を構築。
+> 3. **Pettersen MD et al. J Am Soc Echocardiogr 2008 (Detroitモデル)**: 21箇所の心腔構造・弁輪径の Z-score 回帰方程式を提示。
+> 4. **Pediatric Heart Network (PHN) / Circulation 2017**: 3,000例以上の多施設大規模コホートにより全心腔 Z-score モデルを確立。
 
 ---
 
