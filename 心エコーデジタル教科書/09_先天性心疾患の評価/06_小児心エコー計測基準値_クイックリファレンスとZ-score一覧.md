@@ -94,19 +94,21 @@ reference_guideline: ASE 2024 Comprehensive Pediatric TTE Guidelines / 日本小
 
 ---
 
-## 4. Z-score 計算ツールの臨床活用
+## 4. Z-score（ゼットスコア）の実践的算出ガイドとツール
 
-### 1. 体表面積 (BSA) の計算式
-小児の Z-score 計算では、**Haycock式** または **DuBois式** が一般的に使用されます。
+### ■ Z-score 算出の公式とステップ
 
-$$\text{BSA (m²)} = 0.024265 \times \text{体重 (kg)}^{0.5378} \times \text{身長 (cm)}^{0.3964} \quad (\text{Haycock式})$$
+$$\text{Z-score} = \frac{\text{実際の計測値 (mm)} - \text{BSA依存の予測平均値 Mean (mm)}}{\text{標準偏差 SD (mm)}}$$
 
-### 2. 代表的な Z-score オンラインツール
-- **PediTools (Pediatric Echo Z-scores)**
-- **Boston Z-score Calculator**
-- **Detroit / Pediatric Heart Network (PHN) Datasets**
-- **RAISE Study Z-score（川崎病日本国内標準）**
+1. **Step 1: 体表面積 (BSA) を計算する**:
+   $$\text{BSA (m²)} = 0.024265 \times \text{体重 (kg)}^{0.5378} \times \text{身長 (cm)}^{0.3964} \quad (\text{Haycock式})$$
+2. **Step 2: 参照モデルから予測平均値とSDを得る**:
+   - 川崎病冠動脈 ➔ **RAISE Study（布施式）** または **Kobayashi式**（日本小児循環器学会）
+   - 心腔径 / 弁輪径 ➔ **Bostonモデル** / **Detroit (PHN)モデル**
+3. **Step 3: 数式に代入して算出し、分類する**:
+   - 例: 2歳男児 (BSA $0.52\text{ m}^2$)、LAD $3.2\text{ mm}$ (平均 $1.8\text{ mm}$, SD $0.35\text{ mm}$) ➔ $\text{Z-score} = (3.2 - 1.8) / 0.35 = \mathbf{+4.0}$ ➔ **「小冠動脈瘤」** と判定。
 
-> [!TIP]
-> **臨床上の重要ポイント**
-> Z-score 計算式（モデル）によって若干の数値差が出るため、**自施設で採用している計算式モデル（例：RAISE式 または Boston式）をカルテに明記し、経過観察中はずっと同じ式で推移を比較する**ことが必須です。
+### ■ 臨床での実際の算出手順
+- **エコー装置**: 最新の超音波装置（GE, Philips, Canon等）では、身長・体重入力により画面上で自動表示。
+- **Web計算ツール**: **PediTools**（世界標準）、**日本小児循環器学会 (JSPCCS) 冠動脈Zスコア計算ツール**。
+
