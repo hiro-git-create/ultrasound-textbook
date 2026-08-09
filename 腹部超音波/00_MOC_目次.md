@@ -75,6 +75,10 @@
 ### 7. その他・全身性疾患 (Others & Systemic)
 - [[03_疾患別超音波所見/27_その他_IgG4関連疾患|★ IgG4関連疾患 (IgG4-RD): 自己免疫性膵炎 AIP / 硬化性胆管炎 SC / 腎病変 RKD / 後腹膜線維症 RPF]]
 
+### 8. 小児領域 (Pediatric Abdominal Ultrasound)
+- [[03_疾患別超音波所見/08_小児/29_小児_小児腹部超音波疾患_腸重積_幽門狭窄_BA|★ 小児腹部超音波疾患: 肥厚性幽門狭窄症 HPS / 胆道閉鎖症 BA / 腸間膜リンパ節炎]]
+- [[03_疾患別超音波所見/08_小児/30_小児_小児腹部腫瘍_CAKUT_神経芽腫_Wilms|★ 小児腹部悪性腫瘍 ＆ CAKUT: 神経芽腫 Neuroblastoma vs ウイルムス腫瘍 Wilms / SFU分類]]
+
 ---
 
 ## 04. 実践スクリーニング・計測 (Measurements & Screening)
