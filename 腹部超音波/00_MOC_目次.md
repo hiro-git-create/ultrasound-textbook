@@ -79,6 +79,10 @@
 - [[03_疾患別超音波所見/08_小児/29_小児_小児腹部超音波疾患_腸重積_幽門狭窄_BA|★ 小児腹部超音波疾患: 肥厚性幽門狭窄症 HPS / 胆道閉鎖症 BA / 腸間膜リンパ節炎]]
 - [[03_疾患別超音波所見/08_小児/30_小児_小児腹部腫瘍_CAKUT_神経芽腫_Wilms|★ 小児腹部悪性腫瘍 ＆ CAKUT: 神経芽腫 Neuroblastoma vs ウイルムス腫瘍 Wilms / SFU分類]]
 
+### 9. 先端技術・最新ガイドライン (Cutting-Edge Tech & Guidelines)
+- [[03_疾患別超音波所見/09_先端技術/31_先端技術_US_LIRADS_Fusion_AI超音波|★ US LI-RADS v2024/2026 ＆ Fusion Imaging / AI腹部超音波]]
+- [[03_疾患別超音波所見/09_先端技術/32_先端技術_微小血流MVFI_腸管IUS_IBUS|★ 微小血流イメージング (MVFI/SMI) ＆ 腸管超音波 (IUS/IBUS)]]
+
 ---
 
 ## 04. 実践スクリーニング・計測 (Measurements & Screening)
