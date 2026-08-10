@@ -1,58 +1,40 @@
 ---
-title: PAD / ASO (閉塞性動脈硬化症) の評価（PSV比とドプラ波形分類）
-tags: [PAD, ASO, 閉塞性動脈硬化症, PSV比, 波形分類, Triphasic, Monophasic, 狭窄度, ABI]
-aliases: [PAD Diagnosis, PSV Ratio, Arterial Waveform]
+title: PAD / ASO (閉塞性動脈硬化症) の評価 (日本超音波検査学会 JSS ガイドライン準拠)
+tags: [PAD, ASO, JSS, 日本超音波検査学会, 閉塞性動脈硬化症, PSV比, 波形分類, Triphasic, Monophasic, Tardus-parvus]
+aliases: [JSS PAD Guidelines, PSV Ratio JSS, Arterial Waveform JSS]
 date_created: 2026-08-10
 last_modified: 2026-08-10
-reference_guideline: 日本超音波医学会 下肢動脈超音波ガイドライン / TASC II
+reference_guideline: 日本超音波検査学会 (JSS) 下肢動脈超音波観察法ガイドライン / 日本血管外科学会
 ---
 
-# PAD / ASO (閉塞性動脈硬化症) の評価（PSV比とドプラ波形分類）
+# PAD / ASO (閉塞性動脈硬化症) の評価 (日本超音波検査学会 JSS 準拠)
 
-本ページでは、末梢動脈疾患（PAD / ASO）における**ドプラ流速波形の3段階分類（Triphasic / Biphasic / Monophasic）**、**PSV比（最高血流速度比）による動脈狭窄度の定量算定**、および **足関節上腕血圧比 (ABI) との連動評価** を解説します。
-
----
-
-## 1. ドプラ流速波形の 3 分類 (Arterial Waveform Classification)
-
-正常な下肢動脈は末梢血管抵抗が高いため、3相性の波形（Triphasic）を示します。狭窄・閉塞が存在すると、狭窄遠位部では末梢血管が拡張し、**単相性波形（Monophasic: 低尖鋭・広範な拡張期血流）**へ変化します。
-
-```
-【1. 3相性波形 (Triphasic Waveform: 正常)】
-   ▲ (収縮期順行血流)
-  / \
- /   \─── (拡張早期逆行血流)
-/        \___ (拡張後期順行血流)
-
-【2. 2相性波形 (Biphasic Waveform: 軽度〜中等度異常/加齢)】
-   ▲
-  / \
- /   \___ (逆行波消失または減少)
-
-【3. 単相性波形 (Monophasic Waveform: 重度狭窄〜閉塞遠位) ★高度異常】
-   ▲  (立ち上がりが鈍小: Tardus-parvus)
-  / \________ (拡張期まで血流が持続)
-```
+本ページは、**日本超音波検査学会 (JSS: Japanese Society of Sonographers)** が定める「下肢動脈超音波観察法ガイドライン」に準拠した**ドプラ流速波形の解析**、**PSV比（最高血流速度比）による動脈狭窄度の定量算定**、および **Tardus-Parvus 波形評価** の解説です。
 
 ---
 
-## 2. PSV比（最高血流速度比）による 狭窄度判定基準
+## 1. JSS 基準における ドプラ流速波形 3 分類
 
-下肢動脈の重症狭窄度は、**狭窄部の最高血流速度 ($PSV_{\text{stenosis}}$)** と、**狭窄より近位の正常部の最高血流速度 ($PSV_{\text{proximal}}$)** の比である **PSV比 (PSV Ratio)** で決定します。
+正常な下肢幹動脈は、高血管抵抗を示し**三相性 (Triphasic)** です。病変の存在により二相性 (Biphasic) や **単相性 (Monophasic / Tardus-parvus)** へ変化します。
+
+| ドプラ波形分類 (JSS) | 波形の形態的特徴 | 臨床評価 |
+| :--- | :--- | :--- |
+| **三相性 (Triphasic)** | 収縮期鋭鋭な順行波 ＋ 拡張初期逆行波 ＋ 拡張後期順行波。 | **正常動脈** |
+| **二相性 (Biphasic)** | 収縮期順行波 ＋ 拡張初期逆行波（または逆行波減衰）。 | 加齢・軽度病変 |
+| **単相性 (Monophasic)** | **逆行波が消失**し、拡張期まで持続的な順行血流を呈する。 | **病変部〜病変遠位** |
+| **Tardus-Parvus 波形** | **収縮期立ち上がり時間 (ET) が延長 (>100ms)** し、丸みを帯びた低速波形。 | **高度狭窄・閉塞の遠位側** |
+
+---
+
+## 2. JSS 基準による PSV比 (最高血流速度比) と 狭窄度算定
+
+日本超音波検査学会 (JSS) では、狭窄部の最高収縮期血流速度 ($PSV_{\text{stenosis}}$) と、狭窄より近位の正常部速度 ($PSV_{\text{proximal}}$) の比である **PSV比 (PSV Ratio)** により狭窄度を判定します。
 
 $$\text{PSV 比 (PSV Ratio)} = \frac{PSV_{\text{stenosis}} (\text{狭窄部の最大速度})}{PSV_{\text{proximal}} (\text{近位正常部の速度})}$$
 
-| 狭窄度 (Stenosis Degree) | PSV 比 (PSV Ratio) | ドプラ波形・血流変化 | 臨床判定 |
+| JSS 狭窄度判定 | PSV 比 (PSV Ratio) | カラードプラ / パルスドプラ所見 | 臨床コメント |
 | :---: | :---: | :--- | :--- |
-| **正常 〜 < 50% 狭窄** | **$< 2.0$** | 狭窄部で速度上昇軽度。波形は Triphasic 〜 Biphasic 維持。 | 有意狭窄なし |
-| **50 〜 75% 狭窄** | **$2.0 \sim 3.0$** | **狭窄部で PSV が 2 倍以上に著増**。カラーで混濁 (Aliasing)。 | **有意狭窄 (Moderate)** |
-| **> 75% 高度狭窄** | **$> 3.0$** | **狭窄部で PSV が 3 倍超に激増**。狭窄遠位で Monophasic 化。 | **高度狭窄 (Severe)** |
-| **完全閉塞 (Occlusion)** | **血流信号なし (0 cm/s)** | 閉塞部で血流途絶。**閉塞遠位側は側副血行路により低流速 Monophasic**。 | **完全閉塞** |
-
----
-
-## 3. ABI (足関節上腕血圧比) と超音波の連動評価
-
-- **ABI $\le 0.90$**: PAD / ASO の存在を示唆（感度高）。
-- **ABI $\le 0.60$**: 多発性・高度狭窄（二段狭窄）が疑われる。超音波で CFA, SFA, PA の連続観察が必要。
-- **ABI $\le 0.40$ または 足背動脈血圧 $< 30\text{ mmHg}$**: **重症下肢潰瘍・包括的先進膝下虚血 (CLTI)** 状態。DPA / PTA の末梢流速波形（Monophasic）を確認。
+| **$< 50\%$ 狭窄** | **$< 2.0$** | 局所的な速度上昇軽度。波形は Triphasic 〜 Biphasic。 | 有意狭窄なし |
+| **$50 \sim 74\%$ 狭窄** | **$2.0 \sim 3.0$** | **狭窄部で PSV が 2 倍以上に著増**。Aliasing（混濁）発生。 | **有意狭窄 (Moderate)** |
+| **$\ge 75\%$ 高度狭窄** | **$> 3.0$** | **狭窄部で PSV が 3 倍超に激増**。狭窄遠位で Tardus-parvus 化。 | **高度狭窄 (Severe)** |
+| **完全閉塞 (Occlusion)** | **0 cm/s (血流信号なし)** | 血管内にカラー信号なし。**閉塞遠位側で側副血行路による Monophasic**。 | **完全閉塞** |

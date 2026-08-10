@@ -1,63 +1,51 @@
 ---
-title: 下肢静脈の解剖と CUS（圧迫超音波法）描出手順
-tags: [下肢静脈エコー, DVT, 解剖, CUS, 圧迫法, CFV, FV, PV, PTV, PER, 深部静脈]
-aliases: [Lower Extremity Venous US, CUS Technique, DVT Anatomy]
+title: 下肢静脈の解剖と CUS 圧迫法描出手順 (日本超音波検査学会 JSS ガイドライン準拠)
+tags: [下肢静脈エコー, JSS, 日本超音波検査学会, 解剖, CUS, 圧迫法, CFV, FV, PV, ヒラメ筋静脈]
+aliases: [JSS DVT Guidelines, CUS Technique JSS, Femoral Vein Anatomy]
 date_created: 2026-08-10
 last_modified: 2026-08-10
-reference_guideline: 日本超音波医学会 下肢静脈超音波ガイドライン / JSVU
+reference_guideline: 日本超音波検査学会 (JSS) 下肢静脈超音波観察法ガイドライン / JSVU
 ---
 
-# 下肢静脈の解剖と CUS（圧迫超音波法）描出手順
+# 下肢静脈の解剖と CUS 圧迫法描出手順 (日本超音波検査学会 JSS 準拠)
 
-下肢深部静脈超音波検査は、急性肺塞栓症（PE）の死因となる**下肢深部静脈血栓症（DVT: Deep Vein Thrombosis）**の有無を安全かつ迅速に評価するための検査です。
+本ページは、**日本超音波検査学会 (JSS: Japanese Society of Sonographers)** が策定した「下肢静脈超音波観察法ガイドライン」に厳密に準拠した下肢静脈解剖用語（**大腿静脈 FV 表記の統一**）および**標準 CUS (Compression Ultrasound) 圧迫法の手順**の解説です。
 
 ---
 
-## 1. 下肢静脈の解剖学的分類
+## 1. JSS 基準における下肢静脈解剖用語と分類
 
-下肢静脈は、**深部静脈 (Deep Veins)**、**表在静脈 (Superficial Veins)**、および両者を結ぶ **貫通枝 (Perforating Veins)** に分類されます。
+日本超音波検査学会 (JSS) のガイドラインでは、国際標準命名法に基づき、**旧「浅大腿静脈 (SFV)」という誤解を招く表記を廃止し、「大腿静脈 (Femoral Vein: FV)」に一律統一**しています。
 
 ```
-【深部静脈系 (DVT の観察対象)】
+【JSS 標準解剖用語分類】
 下大静脈 (IVC)
- └─ 左右 腸骨静脈 (Iliac V.)
-     └─ 総大腿静脈 (CFV: Common Femoral V.) ── (大伏在静脈 GSV が合流)
-         ├─ 大腿深静脈 (DFV)
-         └─ 大腿静脈 (FV: Femoral V.) ※旧名: 浅大腿静脈
-             └─ 膕静脈 (PV: Popliteal V.)
-                 ├─ 後脛骨静脈 (PTV) ── (ヒラメ筋静脈, 腓腹筋静脈が還流)
-                 ├─ 腓骨静脈 (PER)
-                 └─ 前脛骨静脈 (ATV)
+ └─ 腸骨静脈 (Iliac Vein)
+     └─ 総大腿静脈 (CFV: Common Femoral Vein)
+         ├─ 大腿深静脈 (DFV: Deep Femoral Vein)
+         └─ 大腿静脈 (FV: Femoral Vein) ★(旧: 浅大腿静脈 SFV は使用しない)
+             └─ 膕静脈 (PV: Popliteal Vein)
+                 ├─ 後脛骨静脈 (PTV: Posterior Tibial Vein: 2本)
+                 ├─ 腓骨静脈 (PER: Peroneal Vein: 2本)
+                 ├─ 前脛骨静脈 (ATV: Anterior Tibial Vein: 2本)
+                 └─ 腓腹筋静脈 (Gastrocnemius V.) / ヒラメ筋静脈 (Soleal V.)
 ```
 
 ---
 
-## 2. 圧迫超音波法 (CUS: Compression Ultrasound) の原則
+## 2. JSS 基準による CUS (圧迫超音波法) の短軸スキャン手順
 
-CUS（圧迫法）は、**「探触子で皮膚上から垂直に静脈を押し潰し、内腔が完全に虚脱するかどうか」**を見る DVT 診断の基本手技です。
-
-- **正常静脈**: 軽い圧迫で内腔が**完全虚脱（Collapsible）**する。
-- **血栓存在静脈**: 内腔に血栓が存在するため、強圧しても**虚脱しない（Non-collapsible）**。
+日本超音波検査学会 (JSS) が推奨する CUS (圧迫法) の原則は、**「血管長軸方向に対して短軸（横断）像を保持し、1 〜 2 cm 間隔でスキップなく全域を垂直圧迫すること」**です。
 
 ```
-【CUS 圧迫判定の基本】
-  (非圧迫時)         (圧迫時: 正常)       (圧迫時: 血栓あり DVT)
-   ┌───┐  動脈        ┌───┐  動脈         ┌───┐  動脈
-   │ A │              │ A │               │ A │
-   └───┘              └───┘               └───┘
-   ┌───┐  静脈  ──►    ───   完全虚脱! ──► ┌───┐  虚脱不能!
-   │ V │              ───                 │ V │ (血栓塊あり)
-   └───┘                                  └───┘
+【JSS CUS 圧迫法の判定規範】
+ ・正常静脈  : 軽度のプローブ圧迫で内腔が「完全虚脱 (Collapsible)」する。
+ ・DVT血栓静脈: 強圧しても内腔が「虚脱不能 (Non-collapsible)」であり、壁が接しない。
 ```
 
----
-
-## 3. 標準描出手順（走査ルート）
-
-### 1) 近位部（大腿〜膝膕部）スキャン
-1. **総大腿静脈 (CFV)**: 鼠径部短軸像で動脈（CFA）の静脈側を観察。大伏在静脈（GSV）合流部（Saphenofemoral Junction: SFJ）を圧迫。
-2. **大腿静脈 (FV) 〜 膕静脈 (PV)**: 大腿部を数cm間隔で短軸像にて順次下方へCUS圧迫スキャン。膝裏（膕窩）で膕静脈（PV）を圧迫。
-
-### 2) 遠位部（膝下静脈・下腿ヒラメ筋静脈）スキャン
-1. **ヒラメ筋静脈 (Soleal Vein)**: 下腿DVTの最好発部位。ヒラメ筋内の紡錘状静脈を短軸/長軸でCUS圧迫。
-2. **後脛骨静脈 (PTV) / 腓骨静脈 (PER)**: 内果後方から下腿中位にかけて同名動脈に伴走する2本対の静脈を圧迫。
+### JSS 標準 CUS 走査の 5 大チェックポイント
+1. **Saphenofemoral Junction (SFJ)**: 総大腿静脈 (CFV) と大伏在静脈 (GSV) の合流部を短軸圧迫。
+2. **CFV 分岐部**: 大腿静脈 (FV) と 大腿深静脈 (DFV) の分岐部を短軸圧迫。
+3. **大腿静脈 (FV) 幹**: 大腿近位部からハンター管入口部まで、**1 〜 2 cm 間隔で連続的短軸圧迫**。
+4. **膕静脈 (PV)**: 膝裏（膕窩）にて膕動脈（PA）に重なる PV を短軸圧迫。
+5. **ヒラメ筋静脈 (Soleal Veins)**: 下腿中央部のヒラメ筋内紡錘状静脈を圧迫（下腿DVTの最好発部位）。
