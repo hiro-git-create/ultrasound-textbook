@@ -1,4 +1,8 @@
 {
+  "userIgnoreFilters": [
+    "^心エコー$",
+    "心エコー/"
+  ],
   "pdfExportSettings": {
     "includeName": true,
     "pageSize": "A4",
