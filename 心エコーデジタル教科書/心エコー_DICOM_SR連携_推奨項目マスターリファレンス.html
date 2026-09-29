@@ -6,7 +6,7 @@
 <style>
   @page {
     size: A4 portrait;
-    margin: 12mm 15mm 12mm 15mm;
+    margin: 10mm 12mm 10mm 12mm;
   }
   @media print {
     body {
@@ -29,16 +29,16 @@
     color: #1e293b;
     background-color: #f8fafc;
     margin: 0;
-    padding: 20px;
-    font-size: 11pt;
-    line-height: 1.5;
+    padding: 15px;
+    font-size: 10.5pt;
+    line-height: 1.45;
   }
   
   .sheet {
     background: #ffffff;
     max-width: 210mm;
     margin: 0 auto;
-    padding: 20px 25px;
+    padding: 18px 22px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     box-sizing: border-box;
@@ -60,12 +60,12 @@
     background: #0284c7;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 9px 18px;
+    font-size: 13px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -77,21 +77,18 @@
 
   header {
     border-bottom: 3px solid #0284c7;
-    padding-bottom: 12px;
-    margin-bottom: 16px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
   }
   
   h1 {
-    font-size: 18pt;
+    font-size: 16.5pt;
     color: #0f172a;
-    margin: 0 0 6px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin: 0 0 4px 0;
   }
   
   .subtitle {
-    font-size: 10.5pt;
+    font-size: 9.5pt;
     color: #475569;
     font-weight: 500;
   }
@@ -99,41 +96,39 @@
   .overview-box {
     background: #f0f9ff;
     border-left: 4px solid #0284c7;
-    padding: 10px 14px;
-    margin-bottom: 18px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
     border-radius: 0 6px 6px 0;
-    font-size: 9.5pt;
+    font-size: 9pt;
     color: #0369a1;
+    line-height: 1.4;
   }
 
   h2 {
-    font-size: 13pt;
+    font-size: 12pt;
     color: #0369a1;
     border-bottom: 1.5px solid #e2e8f0;
-    padding-bottom: 4px;
-    margin: 18px 0 10px 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    padding-bottom: 3px;
+    margin: 14px 0 8px 0;
   }
 
   .highlight-banner {
     background: #fffbeb;
     border: 1px solid #fde68a;
     border-left: 4px solid #f59e0b;
-    padding: 8px 12px;
-    margin-bottom: 10px;
+    padding: 7px 10px;
+    margin-bottom: 8px;
     border-radius: 0 4px 4px 0;
-    font-size: 9pt;
+    font-size: 8.5pt;
     color: #92400e;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 16px;
-    font-size: 9.5pt;
+    margin-bottom: 12px;
+    font-size: 9pt;
   }
   
   th {
@@ -141,12 +136,12 @@
     color: #ffffff;
     font-weight: 600;
     text-align: left;
-    padding: 6px 8px;
+    padding: 5px 7px;
     border: 1px solid #0f766e;
   }
   
   td {
-    padding: 6px 8px;
+    padding: 5px 7px;
     border: 1px solid #e2e8f0;
     vertical-align: middle;
   }
@@ -158,9 +153,9 @@
   .tag-code {
     font-family: Consolas, Monaco, "Courier New", monospace;
     background: #f1f5f9;
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-size: 8.5pt;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 8.2pt;
     color: #0f766e;
     font-weight: bold;
   }
@@ -179,19 +174,20 @@
   .tips-list {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
-    padding: 10px 14px 10px 28px;
+    padding: 8px 12px 8px 24px;
     border-radius: 6px;
-    font-size: 9.5pt;
+    font-size: 8.8pt;
     color: #334155;
     margin: 0;
+    line-height: 1.45;
   }
   .tips-list li {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   
   .footer-note {
-    margin-top: 20px;
-    font-size: 8.5pt;
+    margin-top: 14px;
+    font-size: 8pt;
     color: #94a3b8;
     text-align: right;
   }
@@ -206,13 +202,13 @@
 
   <header>
     <h1>🫀 心エコー検査 DICOM SR連携 推奨項目マスター</h1>
-    <div class="subtitle">― 臨床ガイドライン（ASE / EACVI / JSE）準拠・生理検査レポート自動化仕様書 ―</div>
+    <div class="subtitle">― 臨床ガイドライン（ASE 2025新基準 / EACVI / JSE）準拠・LARS対応 生理検査レポート自動化仕様書 ―</div>
   </header>
 
   <div class="overview-box">
     <strong>【DICOM SR（Structured Report）連携の目的】</strong><br>
     超音波診断装置で測定した数値データを構造化レポートとしてレポートシステム・電子カルテへ自動転送することにより、
-    ① 転記ミス（ヒューマンエラー）の撲滅、② 検査時間の短縮、③ 拡張能・弁膜症アルゴリズムやBSA体表面積補正（LAVI, LVMI等）の完全自動演算を実現します。
+    ① 転記ミス（ヒューマンエラー）の撲滅、② 検査時間の短縮、③ 最新ASE 2025拡張能新基準（LARS・E/e'等）や弁膜症判定、BSA体表面積補正（LAVI, LVMI, SVi等）の完全自動判定を実現します。
   </div>
 
   <!-- Section 1 -->
@@ -306,29 +302,51 @@
           <td class="unit">mL, L/min</td>
           <td>有効駆出量・心係数 (CI: L/min/m²) 算出</td>
         </tr>
+        <tr>
+          <td>自動演算</td>
+          <td class="key-item">1回拍出量係数 (重要)</td>
+          <td><span class="tag-code">SVi</span> (SV Index)</td>
+          <td class="unit">mL/m²</td>
+          <td>低流量判定 (&lt;35 mL/m²: LF-LG AS, 低拍出状態)</td>
+        </tr>
       </tbody>
     </table>
   </div>
 
   <!-- Section 2 -->
   <div class="table-container">
-    <h2>2. 🌊 左室拡張能評価（ASE/EACVI ガイドライン 4大指標＋詳細）</h2>
+    <h2>2. 🌊 左室拡張能評価（ASE 2025新基準 / LARS・E/e'・LAVI・TR）</h2>
     <div class="highlight-banner">
-      <strong>【ASE/EACVI 拡張能判定 4大基準】</strong><br>
+      <strong>【ASE 2025改訂アルゴリズム & LARS】</strong><br>
       ① <strong>平均 E/e' &gt; 14</strong> &nbsp;|&nbsp; ② <strong>中隔側 e' &lt; 7 cm/s または 側壁側 e' &lt; 10 cm/s</strong> &nbsp;|&nbsp; ③ <strong>TR Vmax &gt; 2.8 m/s</strong> &nbsp;|&nbsp; ④ <strong>LAVI &gt; 34 mL/m²</strong><br>
-      ※ 4項目中 2項目以上陽性で「拡張機能低下 / 左室充満圧上昇（PCWP上昇）」とレポートで自動判定。
+      ★ <strong>【新指標 LARS（左房リザーバーストレイン）】</strong>: <strong>LARS &lt; 18%</strong> で左室充満圧（LAP/PCWP）上昇確定。LAVIが正常な早期HFpEFやグレーゾーン症例を決着させる決定打。<br>
+      ※ AF（心房細動）症例では通常アルゴリズムから <strong>「E/e' ≧ 11」 単独判定ロジック</strong> へ自動切り替え。
     </div>
     <table>
       <thead>
         <tr>
-          <th style="width: 14%;">検査手技</th>
-          <th style="width: 24%;">SR連携推奨項目</th>
-          <th style="width: 24%;">英語表記 / DICOMタグ</th>
-          <th style="width: 8%;">単位</th>
+          <th style="width: 15%;">検査手技</th>
+          <th style="width: 25%;">SR連携推奨項目</th>
+          <th style="width: 23%;">英語表記 / DICOMタグ</th>
+          <th style="width: 7%;">単位</th>
           <th style="width: 30%;">判定基準・自動連携メリット</th>
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>左房ストレイン</td>
+          <td class="key-item">左房リザーバーストレイン (新基準)</td>
+          <td><span class="tag-code">LARS</span> (LA Res. Strain)</td>
+          <td class="unit">%</td>
+          <td>充満圧上昇 (重度低下 &lt;18%, 軽度低下 &lt;24%, 正常 &gt;39%)</td>
+        </tr>
+        <tr>
+          <td>左房ストレイン</td>
+          <td>左房コンジット / ポンプストレイン</td>
+          <td><span class="tag-code">LACS / LAAS</span></td>
+          <td class="unit">%</td>
+          <td>受動的導管機能 / 心房能動的収縮機能の評価</td>
+        </tr>
         <tr>
           <td>TVI (流入血流)</td>
           <td>E波最高血流速度</td>
@@ -341,7 +359,7 @@
           <td>A波最高血流速度</td>
           <td><span class="tag-code">MV A vel</span> (Peak A)</td>
           <td class="unit">cm/s</td>
-          <td>心房収縮期流入速度</td>
+          <td>心房収縮期流入速度 (AF時は欠損)</td>
         </tr>
         <tr>
           <td>自動演算</td>
@@ -376,7 +394,7 @@
           <td class="key-item">平均 E/e' 比 (最重要)</td>
           <td><span class="tag-code">Average E/e'</span></td>
           <td class="unit">-</td>
-          <td>左房圧・左室充満圧の指標 (&gt; 14 で充満圧上昇)</td>
+          <td>左房圧・充満圧指標 (&gt; 14 で上昇, AF時は ≧ 11)</td>
         </tr>
         <tr>
           <td>Biplane容積</td>
@@ -450,7 +468,7 @@
           <td class="key-item">無次元速度指数</td>
           <td><span class="tag-code">DVI</span> (LVOT VTI / AV VTI)</td>
           <td class="unit">-</td>
-          <td>重症: &lt; 0.25 (低流量低圧較差 AS で極めて有用)</td>
+          <td>重症: &lt; 0.25 (低流量低圧較差 LF-LG AS で極めて有用)</td>
         </tr>
         <tr>
           <td>大動脈弁逆流 AR</td>
@@ -554,6 +572,13 @@
           <td class="unit">mmHg</td>
           <td>&gt; 35〜40 mmHg で肺高血圧症疑い</td>
         </tr>
+        <tr>
+          <td>予備バックアップ</td>
+          <td>肺動脈弁拡張末期逆流速度</td>
+          <td><span class="tag-code">PR end-diastolic vel</span></td>
+          <td class="unit">m/s</td>
+          <td>TR描出不良時の推定肺動脈拡張期圧 (PADP) 算出用</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -610,18 +635,20 @@
     </table>
   </div>
 
-  <!-- Operational Tips -->
-  <div class="table-container" style="margin-top: 20px;">
-    <h2>💡 現場でのSR連携 運用チェックポイント</h2>
+  <!-- Operational Tips & System Design -->
+  <div class="table-container" style="margin-top: 15px;">
+    <h2>💡 現場でのSR連携 運用・システム設計チェックポイント</h2>
     <ul class="tips-list">
-      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパー（Generic Caliper）ではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e' 等）を選択して計測すること。</li>
+      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS 等）を選択して計測すること。</li>
       <li><strong>Biplaneペアリング:</strong> 左室容積・左房容積（LAVI）は、四腔像（A4C）と二腔像（A2C）の両方を同一検査内で測定完了することで、SR上で1つのBiplane容積として統合出力される。</li>
-      <li><strong>TR Vmaxの積極的記録:</strong> 軽微なTRであってもCWドプラでピークを計測・保存することで、拡張能判定および肺高血圧スクリーニングが自動完結する。</li>
+      <li><strong>TR描出不良時のPRバックアップ:</strong> TRが得られない場合はPR end-diastolic velを記録し、肺動脈圧推定の欠損を防ぐ。</li>
+      <li><strong>単位系スケーリングの整合性:</strong> エコー機側の出力単位（cm/s ⇄ m/s、mL ⇄ L）とレポートシステム側の受信単位の整合性を結合テストで必ず照合すること。</li>
+      <li><strong>複数計測の代表値採用ルール:</strong> 不整脈や連続波ドプラ等で複数回計測した場合、レポート側で「平均値（Average）」を採用する設定に固定することを推奨する。</li>
     </ul>
   </div>
 
   <div class="footer-note">
-    心エコー検査 DICOM SR連携仕様書 / 発行日: 2026年9月 / ガイドライン準拠: 日本心エコー図学会 (JSE) / ASE / EACVI
+    心エコー検査 DICOM SR連携仕様書 / 発行日: 2026年9月 / ガイドライン準拠: ASE 2025 / EACVI / 日本心エコー図学会 (JSE)
   </div>
 </div>
 
