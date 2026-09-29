@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>心エコー検査 DICOM SR連携 推奨項目マスターリファレンス (完全版)</title>
+<title>心エコー検査 DICOM SR連携 推奨項目マスターリファレンス (完全決定版)</title>
 <style>
   @page {
     size: A4 portrait;
@@ -29,16 +29,16 @@
     color: #1e293b;
     background-color: #f8fafc;
     margin: 0;
-    padding: 12px;
-    font-size: 9.5pt;
-    line-height: 1.4;
+    padding: 10px;
+    font-size: 9pt;
+    line-height: 1.38;
   }
   
   .sheet {
     background: #ffffff;
     max-width: 210mm;
     margin: 0 auto;
-    padding: 15px 18px;
+    padding: 14px 16px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     box-sizing: border-box;
@@ -60,12 +60,12 @@
     background: #0284c7;
     color: #ffffff;
     border: none;
-    padding: 8px 16px;
-    font-size: 13px;
+    padding: 7px 14px;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -77,18 +77,18 @@
 
   header {
     border-bottom: 2.5px solid #0284c7;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
   }
   
   h1 {
-    font-size: 15pt;
+    font-size: 14pt;
     color: #0f172a;
-    margin: 0 0 3px 0;
+    margin: 0 0 2px 0;
   }
   
   .subtitle {
-    font-size: 9pt;
+    font-size: 8.5pt;
     color: #475569;
     font-weight: 500;
   }
@@ -96,39 +96,39 @@
   .overview-box {
     background: #f0f9ff;
     border-left: 4px solid #0284c7;
-    padding: 7px 10px;
-    margin-bottom: 12px;
-    border-radius: 0 5px 5px 0;
-    font-size: 8.5pt;
+    padding: 6px 9px;
+    margin-bottom: 10px;
+    border-radius: 0 4px 4px 0;
+    font-size: 8pt;
     color: #0369a1;
     line-height: 1.35;
   }
 
   h2 {
-    font-size: 11pt;
+    font-size: 10.5pt;
     color: #0369a1;
     border-bottom: 1.5px solid #e2e8f0;
     padding-bottom: 2px;
-    margin: 12px 0 6px 0;
+    margin: 10px 0 5px 0;
   }
 
   .highlight-banner {
     background: #fffbeb;
     border: 1px solid #fde68a;
     border-left: 4px solid #f59e0b;
-    padding: 6px 9px;
-    margin-bottom: 6px;
+    padding: 5px 8px;
+    margin-bottom: 5px;
     border-radius: 0 4px 4px 0;
-    font-size: 8.2pt;
+    font-size: 7.8pt;
     color: #92400e;
-    line-height: 1.35;
+    line-height: 1.3;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 10px;
-    font-size: 8.5pt;
+    margin-bottom: 8px;
+    font-size: 8pt;
   }
   
   th {
@@ -136,12 +136,12 @@
     color: #ffffff;
     font-weight: 600;
     text-align: left;
-    padding: 4px 6px;
+    padding: 3.5px 5px;
     border: 1px solid #0f766e;
   }
   
   td {
-    padding: 4px 6px;
+    padding: 3.5px 5px;
     border: 1px solid #e2e8f0;
     vertical-align: middle;
   }
@@ -155,7 +155,7 @@
     background: #f1f5f9;
     padding: 1px 3px;
     border-radius: 3px;
-    font-size: 7.8pt;
+    font-size: 7.5pt;
     color: #0f766e;
     font-weight: bold;
   }
@@ -174,20 +174,20 @@
   .tips-list {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
-    padding: 6px 10px 6px 20px;
-    border-radius: 5px;
-    font-size: 8.2pt;
+    padding: 5px 8px 5px 18px;
+    border-radius: 4px;
+    font-size: 7.8pt;
     color: #334155;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.35;
   }
   .tips-list li {
     margin-bottom: 2px;
   }
   
   .footer-note {
-    margin-top: 10px;
-    font-size: 7.8pt;
+    margin-top: 8px;
+    font-size: 7.5pt;
     color: #94a3b8;
     text-align: right;
   }
@@ -197,20 +197,22 @@
 
 <div class="sheet">
   <div class="no-print" style="text-align: right;">
-    <button class="print-btn" onclick="window.print()">🖨️ この完全版リファレンスを印刷 / PDF保存</button>
+    <button class="print-btn" onclick="window.print()">🖨️ この完全決定版リファレンスを印刷 / PDF保存</button>
   </div>
 
   <header>
-    <h1>🫀 心エコー検査 DICOM SR連携 推奨項目マスター (完全版)</h1>
-    <div class="subtitle">― 全弁逆流定量（AR/MR/TR/PR）・シャント率（Qp/Qs）・血行動態（PVR, dP/dt, RV-PA）・LARS対応 ―</div>
+    <h1>🫀 心エコー検査 DICOM SR連携 推奨項目マスター (完全決定版)</h1>
+    <div class="subtitle">― 全4弁狭窄（AS/MS/TS/PS）・全4弁逆流（AR/MR/TR/PR）・シャント（Qp/Qs）・PVR・dP/dt・LARS網羅仕様書 ―</div>
   </header>
 
   <div class="overview-box">
-    <strong>【DICOM SR連携 完全版の目的】</strong><br>
+    <strong>【DICOM SR連携 完全決定版の目的】</strong><br>
     超音波診断装置で測定した数値をDICOM SRとしてレポートシステム・電子カルテへ自動転送することにより、
-    ① 転記ミスの完全撲滅、② 検査時間の短縮、③ <strong>4弁すべての逆流症定量（PISA/VC/EROA/RVol）</strong>、
-    ④ <strong>シャント率（Qp/Qs）・肺血管抵抗（PVR）・左室収縮性（dP/dt）・右室肺動脈カップリング（TAPSE/PASP）</strong>、
-    ⑤ 最新ASE 2025拡張能新基準（LARS・E/e'等）の完全自動判定を実現します。
+    ① 転記ミスの完全撲滅、② 検査時間の大幅短縮、
+    ③ <strong>【全4弁狭窄症 AS / MS / TS / PS】</strong>の連続の式・PHT・圧較差・DVI・Wilkinsスコア、
+    ④ <strong>【全4弁逆流症 AR / MR / TR / PR】</strong>のPISA・VC幅・EROA・逆流量・血流逆転、
+    ⑤ <strong>【先進血行動態】</strong>Qp/Qs（シャント率）・PVR（肺血管抵抗）・左室 dP/dt・RV-PAカップリング、
+    ⑥ <strong>【最新拡張能 ASE 2025】</strong>LARS（左房リザーバーストレイン）・E/e'の完全自動判定を実現します。
   </div>
 
   <!-- Section 1 -->
@@ -374,13 +376,142 @@
     </table>
   </div>
 
-  <!-- Section 3 -->
+  <!-- Section 3: COMPLETE VALVULAR STENOSIS -->
   <div class="table-container">
-    <h2>3. 🎯 全弁膜逆流症の完全定量・半定量評価（AR / MR / TR / PR）</h2>
+    <h2>3. 🔒 全弁膜狭窄症の完全定量・重症度評価（AS / MS / TS / PS）</h2>
+    <div class="highlight-banner">
+      <strong>【弁狭窄評価の核心基準】</strong><br>
+      ・<strong>大動脈弁狭窄 AS</strong>: 連続の式 <strong>AVA &lt; 1.0 cm²</strong> (AVAi &lt; 0.6 cm²/m²), <strong>Vmax ≧ 4.0 m/s</strong>, <strong>Mean PG ≧ 40 mmHg</strong>, <strong>DVI &lt; 0.25</strong> (低流量判定 SVi &lt; 35 mL/m²)<br>
+      ・<strong>僧帽弁狭窄 MS</strong>: PHT法 <strong>MVA ≦ 1.5 cm²</strong> (重症 ≦ 1.0 cm²), <strong>Mean PG ≧ 10 mmHg</strong>, <strong>PHT ≧ 220 ms</strong>, <strong>Wilkinsスコア (PTMC適応 ≦ 8点)</strong><br>
+      ・<strong>三尖弁狭窄 TS</strong>: <strong>Mean PG ≧ 5 mmHg</strong>, <strong>PHT ≧ 190 ms</strong>, <strong>TVA ≦ 1.0 cm²</strong> &nbsp;|&nbsp; <strong>肺動脈弁狭窄 PS</strong>: <strong>Vmax &gt; 4.0 m/s</strong>, <strong>Max PG ≧ 64 mmHg</strong> (重症)
+    </div>
     <table>
       <thead>
         <tr>
-          <th style="width: 15%;">対象弁</th>
+          <th style="width: 15%;">対象弁狭窄</th>
+          <th style="width: 25%;">SR連携推奨項目</th>
+          <th style="width: 23%;">英語表記 / DICOMタグ</th>
+          <th style="width: 7%;">単位</th>
+          <th style="width: 30%;">重症度判定カットオフ値 (ASE/ESC基準)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">大動脈弁最高血流速度</td>
+          <td><span class="tag-code">AV Vmax</span> (Peak Vel)</td>
+          <td class="unit">m/s</td>
+          <td>重症: ≧ 4.0 m/s (中等症: 3.0〜4.0 m/s)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">大動脈弁平均圧較差 / 最大PG</td>
+          <td><span class="tag-code">AV Mean PG / AV Max PG</span></td>
+          <td class="unit">mmHg</td>
+          <td>重症: Mean PG ≧ 40 mmHg (Max PG ≧ 64 mmHg)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">大動脈弁口面積 (連続の式)</td>
+          <td><span class="tag-code">AVA</span> (Continuity Eq)</td>
+          <td class="unit">cm²</td>
+          <td>重症: &lt; 1.0 cm² (体表面積補正 AVAi &lt; 0.6 cm²/m²)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">無次元速度指数 (DVI)</td>
+          <td><span class="tag-code">DVI</span> (LVOT VTI / AV VTI)</td>
+          <td class="unit">-</td>
+          <td>重症: &lt; 0.25 (低流量低圧較差 LF-LG AS で極めて有用)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td>大動脈弁加速時間 / 駆出時間比</td>
+          <td><span class="tag-code">AV AcT / (AcT / ET)</span></td>
+          <td class="unit">ms, -</td>
+          <td>重症: AcT ≧ 100 ms, AcT/ET &gt; 0.35 (弁開放遅延)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">低流量判定 (1回拍出量係数)</td>
+          <td><span class="tag-code">SVi</span> (Stroke Volume Index)</td>
+          <td class="unit">mL/m²</td>
+          <td>SVi &lt; 35 mL/m² で Low-flow severe AS (奇異性LFLG)</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td class="key-item">僧帽弁平均圧較差 / 最大流速</td>
+          <td><span class="tag-code">MV Mean PG / MV Peak E</span></td>
+          <td class="unit">mmHg, m/s</td>
+          <td>重症: Mean PG ≧ 10 mmHg (中等症: 5〜10 mmHg)</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td>僧帽弁圧半減時間 (PHT)</td>
+          <td><span class="tag-code">MV PHT</span></td>
+          <td class="unit">ms</td>
+          <td>重症: ≧ 220 ms (MVA = 220 / PHT)</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td class="key-item">僧帽弁口面積 (PHT法 / トレース)</td>
+          <td><span class="tag-code">MVA (PHT) / MVA (Plan)</span></td>
+          <td class="unit">cm²</td>
+          <td>重症: ≦ 1.0 cm² (臨床的有意狭窄: ≦ 1.5 cm²)</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td>連続の式僧帽弁口面積</td>
+          <td><span class="tag-code">MVA (Continuity Eq)</span></td>
+          <td class="unit">cm²</td>
+          <td>AR合併等でPHT信頼性低下時の確定評価</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td class="key-item">Wilkinsエコースコア (4項目)</td>
+          <td><span class="tag-code">Wilkins Score</span> (Total)</td>
+          <td class="unit">点</td>
+          <td>弁尖肥厚・可動性・石灰化・下部病変 (PTMC適応 ≦ 8点)</td>
+        </tr>
+        <tr>
+          <td>三尖弁狭窄 TS</td>
+          <td class="key-item">三尖弁平均圧較差 / 圧半減時間</td>
+          <td><span class="tag-code">TV Mean PG / TV PHT</span></td>
+          <td class="unit">mmHg, ms</td>
+          <td>重症: Mean PG ≧ 5 mmHg / PHT ≧ 190 ms</td>
+        </tr>
+        <tr>
+          <td>三尖弁狭窄 TS</td>
+          <td class="key-item">三尖弁口面積 (PHT法 / 連続の式)</td>
+          <td><span class="tag-code">TVA (PHT) / TVA (Cont)</span></td>
+          <td class="unit">cm²</td>
+          <td>重症: ≦ 1.0 cm² (TVA = 190 / TV PHT)</td>
+        </tr>
+        <tr>
+          <td>肺動脈弁狭窄 PS</td>
+          <td class="key-item">肺動脈弁最高血流速度 / 最大PG</td>
+          <td><span class="tag-code">PV Vmax / PV Max PG</span></td>
+          <td class="unit">m/s, mmHg</td>
+          <td>重症: Vmax &gt; 4.0 m/s / Max PG ≧ 64 mmHg (中等症: 36〜64)</td>
+        </tr>
+        <tr>
+          <td>肺動脈弁狭窄 PS</td>
+          <td class="key-item">肺動脈弁平均圧較差</td>
+          <td><span class="tag-code">PV Mean PG</span></td>
+          <td class="unit">mmHg</td>
+          <td>重症: ≧ 35 mmHg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 4: COMPLETE VALVULAR REGURGITATION -->
+  <div class="table-container">
+    <h2>4. 🎯 全弁膜逆流症の完全定量・半定量評価（AR / MR / TR / PR）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">対象弁逆流</th>
           <th style="width: 25%;">SR連携推奨項目</th>
           <th style="width: 23%;">英語表記 / DICOMタグ</th>
           <th style="width: 7%;">単位</th>
@@ -511,9 +642,9 @@
     </table>
   </div>
 
-  <!-- Section 4 -->
+  <!-- Section 5: ADVANCED HEMODYNAMICS -->
   <div class="table-container">
-    <h2>4. 🫁 先進血行動態指標（Qp/Qs・PVR・RV-PAカップリング・AS狭窄）</h2>
+    <h2>5. 🫁 先進血行動態指標（Qp/Qs・PVR・RV-PAカップリング）</h2>
     <div class="highlight-banner">
       <strong>【先進演算指標の計算ロジック】</strong><br>
       ・<strong>Qp/Qs</strong> = (RVOT面積 × RVOT VTI) / (LVOT面積 × LVOT VTI) &nbsp;➔&nbsp; <strong>&gt; 1.5</strong> でシャント閉鎖術適応<br>
@@ -567,33 +698,19 @@
           <td>右室後負荷不整合の指標。正常 &gt; 0.55, 予後不良 &lt; 0.36</td>
         </tr>
         <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">大動脈弁最高血流 / 平均圧較差</td>
-          <td><span class="tag-code">AV Vmax / AV Mean PG</span></td>
-          <td class="unit">m/s, mmHg</td>
-          <td>重症AS: Vmax ≧ 4.0 m/s / Mean PG ≧ 40 mmHg</td>
-        </tr>
-        <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">大動脈弁口面積 (連続の式) / DVI</td>
-          <td><span class="tag-code">AVA / DVI (LVOT/AV VTI)</span></td>
-          <td class="unit">cm², -</td>
-          <td>重症AS: AVA &lt; 1.0 cm² (AVAi &lt; 0.6 cm²/m²), DVI &lt; 0.25</td>
-        </tr>
-        <tr>
-          <td>僧帽弁狭窄 MS</td>
-          <td>僧帽弁平均圧較差 / 弁口面積</td>
-          <td><span class="tag-code">MV Mean PG / MVA (PHT)</span></td>
-          <td class="unit">mmHg, cm²</td>
-          <td>重症MS: Mean PG ≧ 10 mmHg / MVA ≦ 1.5 cm²</td>
+          <td>右室心筋機能</td>
+          <td>右室 Tei Index (MPI)</td>
+          <td><span class="tag-code">RV Tei Index (MPI)</span></td>
+          <td class="unit">-</td>
+          <td>組織ドプラで &gt; 0.54 (パルスで &gt; 0.43) で機能低下</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Section 5 -->
+  <!-- Section 6 -->
   <div class="table-container">
-    <h2>5. 📏 右室機能・下大静脈・大動脈基部計測</h2>
+    <h2>6. 📏 右室形態・下大静脈・大動脈基部計測</h2>
     <table>
       <thead>
         <tr>
@@ -625,13 +742,6 @@
           <td><span class="tag-code">RV FAC</span></td>
           <td class="unit">%</td>
           <td>&lt; 35 % で右室機能低下</td>
-        </tr>
-        <tr>
-          <td>右室心筋機能</td>
-          <td>右室 Tei Index (MPI)</td>
-          <td><span class="tag-code">RV Tei Index (MPI)</span></td>
-          <td class="unit">-</td>
-          <td>組織ドプラで &gt; 0.54 (パルスで &gt; 0.43) で機能低下</td>
         </tr>
         <tr>
           <td>下大静脈 IVC</td>
@@ -666,20 +776,20 @@
   </div>
 
   <!-- Operational & System Engineering -->
-  <div class="table-container" style="margin-top: 10px;">
+  <div class="table-container" style="margin-top: 8px;">
     <h2>💡 現場でのSR連携 運用・システム設計チェックポイント</h2>
     <ul class="tips-list">
-      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS, RVOT diam, PISA 等）を選択して計測すること。</li>
-      <li><strong>シャント率 (Qp/Qs) のペアリング:</strong> RVOT径・RVOT VTI、および LVOT径・LVOT VTI の4項目が揃って初めてQp/Qsが完全自動算出される。</li>
-      <li><strong>肺血管抵抗 (PVR) の自動計算:</strong> TR Vmax と RVOT VTI が測定されていれば、レポートシステム側でWood単位を自動計算可能。</li>
-      <li><strong>全弁逆流定量の完全網羅:</strong> AR/MR/TR/PRのVC幅・PISA・PHT・血流逆転波形をSR連携し、弁膜症重症度を客観的数値で完全担保する。</li>
+      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS, RVOT diam, PISA, Wilkins等）を選択して計測すること。</li>
+      <li><strong>弁狭窄の連続の式ペアリング:</strong> LVOT径・LVOT VTI と AV/MV/TV/PV の各弁VTIが揃って初めて狭窄弁口面積（AVA/MVA/TVA）が完全自動算出される。</li>
+      <li><strong>シャント率 (Qp/Qs) ＆ PVRの自動計算:</strong> RVOTとLVOTの径・VTI、および TR Vmax からQp/QsとPVR（Wood単位）を完全自動演算。</li>
+      <li><strong>全4弁狭窄・全4弁逆流の完全網羅:</strong> AS/MS/TS/PS および AR/MR/TR/PR の全重症度基準値を網羅し、弁膜症レポート作成を自動化する。</li>
       <li><strong>単位系スケーリングの整合性:</strong> エコー機側の出力単位（cm/s ⇄ m/s、mL ⇄ L）とレポートシステム側の受信単位の整合性を結合テストで必ず照合すること。</li>
       <li><strong>複数計測の代表値採用ルール:</strong> 不整脈や連続波ドプラ等で複数回計測した場合、レポート側で「平均値（Average）」を採用する設定に固定することを推奨する。</li>
     </ul>
   </div>
 
   <div class="footer-note">
-    心エコー検査 DICOM SR連携仕様書 (完全版) / 発行日: 2026年9月 / ガイドライン準拠: ASE 2025 / EACVI / 日本心エコー図学会 (JSE)
+    心エコー検査 DICOM SR連携仕様書 (完全決定版) / 発行日: 2026年9月 / ガイドライン準拠: ASE 2025 / EACVI / 日本心エコー図学会 (JSE)
   </div>
 </div>
 

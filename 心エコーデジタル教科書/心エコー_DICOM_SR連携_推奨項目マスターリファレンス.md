@@ -1,20 +1,22 @@
 ---
-title: 心エコー DICOM SR連携 推奨項目マスターリファレンス (完全版)
-tags: [心エコー, DICOM_SR, 構造化レポート, 拡張能, LARS, 弁膜逆流定量, Qp_Qs, PVR, dP_dt, RV_PAカップリング, 生理検査連携, 医療IT]
-aliases: [心エコーSR連携完全版, DICOM_SR連携マスター, エコーレポート自動化, QpQs, PVR, 全弁逆流]
+title: 心エコー DICOM SR連携 推奨項目マスターリファレンス (完全決定版)
+tags: [心エコー, DICOM_SR, 構造化レポート, 拡張能, LARS, 弁狭窄定量, 弁逆流定量, Qp_Qs, PVR, dP_dt, AS, MS, TS, PS, 医療IT]
+aliases: [心エコーSR連携完全決定版, DICOM_SR連携マスター, エコーレポート自動化, 弁狭窄, 弁逆流, QpQs, PVR]
 date_created: 2026-09-29
 last_modified: 2026-09-29
 reference_guideline: ASE 2025新基準 / EACVI / 日本心エコー図学会 (JSE)
 ---
 
-# 🫀 心エコー検査 DICOM SR連携 推奨項目マスターリファレンス (完全版)
-― 全弁逆流定量（AR/MR/TR/PR）・シャント率（Qp/Qs）・血行動態（PVR, dP/dt, RV-PA）・LARS対応 生理検査レポート自動化仕様書 ―
+# 🫀 心エコー検査 DICOM SR連携 推奨項目マスターリファレンス (完全決定版)
+― 全4弁狭窄（AS/MS/TS/PS）・全4弁逆流（AR/MR/TR/PR）・シャント（Qp/Qs）・PVR・dP/dt・LARS網羅仕様書 ―
 
 > [!NOTE] 概要と目的
 > 超音波診断装置で測定した数値をDICOM SR（Structured Report: 構造化レポート）としてレポートシステム・電子カルテへ自動転送することにより、
-> ① 転記ミスの完全撲滅、② 検査時間の大幅短縮、③ **4弁すべての逆流症定量（PISA/VC/EROA/RVol/PHT）**、
-> ④ **シャント率（Qp/Qs）・肺血管抵抗（PVR）・左室収縮性（dP/dt）・右室肺動脈カップリング（TAPSE/PASP）**、
-> ⑤ 最新ASE 2025拡張能新基準（LARS・E/e'等）の完全自動判定を実現します。
+> ① 転記ミスの完全撲滅、② 検査時間の大幅短縮、
+> ③ **【全4弁狭窄症 AS / MS / TS / PS】**の連続の式・PHT・圧較差・DVI・Wilkinsスコア、
+> ④ **【全4弁逆流症 AR / MR / TR / PR】**のPISA・VC幅・EROA・逆流量・血流逆転、
+> ⑤ **【先進血行動態】**Qp/Qs（シャント率）・PVR（肺血管抵抗）・左室 dP/dt・RV-PAカップリング、
+> ⑥ **【最新拡張能 ASE 2025】**LARS（左房リザーバーストレイン）・E/e'の完全自動判定を実現します。
 
 ---
 
@@ -36,12 +38,12 @@ reference_guideline: ASE 2025新基準 / EACVI / 日本心エコー図学会 (JS
 ## 2. 🌊 左室拡張能評価（ASE 2025新基準 / LARS・E/e'・LAVI・TR）
 
 > [!IMPORTANT]
-> ### ASE 2025改訂アルゴリズム & LARS
+> ### ASE 2025新基準 判定要件
 > ① **平均 E/e' > 14**
 > ② **中隔側 e' < 7 cm/s または 側壁側 e' < 10 cm/s**
 > ③ **TR Vmax > 2.8 m/s**
 > ④ **LAVI > 34 mL/m²**
-> ★ **【新指標 LARS（左房リザーバーストレイン）】**: **LARS < 18%**（重度低下）または **< 24%**（軽度低下）で左室充満圧（LAP/PCWP）上昇確定。LAVIが正常な早期HFpEFやグレーゾーン症例を決着させる最新キーマーカー。
+> ★ **【新指標 LARS（左房リザーバーストレイン）】**: **LARS < 18%**（重度低下）または **< 24%**（軽度低下）で充満圧上昇確定。LAVI正常の早期HFpEFを決定づける。
 > ※ AF（心房細動）症例では通常判定から **「E/e' ≧ 11」 単独判定ロジック** へ自動切り替え。
 
 | 検査手技 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 判定基準・自動連携メリット |
@@ -58,37 +60,60 @@ reference_guideline: ASE 2025新基準 / EACVI / 日本心エコー図学会 (JS
 
 ---
 
-## 3. 🎯 全弁膜逆流症の完全定量・半定量評価（AR / MR / TR / PR）
+## 3. 🔒 全弁膜狭窄症の完全定量・重症度評価（AS / MS / TS / PS）
 
-| 対象弁 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 重症度判定カットオフ値 (ASE/ESC基準) |
+> [!IMPORTANT]
+> ### 弁狭窄評価の核心基準
+> ・**大動脈弁狭窄 AS**: 連続の式 **AVA < 1.0 cm²** (AVAi < 0.6 cm²/m²), **Vmax ≧ 4.0 m/s**, **Mean PG ≧ 40 mmHg**, **DVI < 0.25** (低流量判定 SVi < 35 mL/m²)
+> ・**僧帽弁狭窄 MS**: PHT法 **MVA ≦ 1.5 cm²** (重症 ≦ 1.0 cm²), **Mean PG ≧ 10 mmHg**, **PHT ≧ 220 ms**, **Wilkinsスコア (PTMC適応 ≦ 8点)**
+> ・**三尖弁狭窄 TS**: **Mean PG ≧ 5 mmHg**, **PHT ≧ 190 ms**, **TVA ≦ 1.0 cm²**
+> ・**肺動脈弁狭窄 PS**: **Vmax > 4.0 m/s**, **Max PG ≧ 64 mmHg** (重症)
+
+| 対象弁狭窄 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 重症度判定カットオフ値 (ASE/ESC基準) |
+| :--- | :--- | :--- | :---: | :--- |
+| **大動脈弁狭窄 AS** | **大動脈弁最高血流速度** | `AV Vmax` (Peak Vel) | m/s | 重症: ≧ 4.0 m/s (中等症: 3.0〜4.0 m/s) |
+| **大動脈弁狭窄 AS** | **大動脈弁平均圧較差 / 最大PG** | `AV Mean PG / AV Max PG` | mmHg | 重症: Mean PG ≧ 40 mmHg (Max PG ≧ 64 mmHg) |
+| **大動脈弁狭窄 AS** | **大動脈弁口面積 (連続の式)** | `AVA` (Continuity Eq) | cm² | 重症: < 1.0 cm² (体表面積補正 AVAi < 0.6 cm²/m²) |
+| **大動脈弁狭窄 AS** | **無次元速度指数 (DVI)** | `DVI` (LVOT VTI / AV VTI) | - | 重症: < 0.25 (低流量低圧較差 LF-LG AS で極めて有用) |
+| **大動脈弁狭窄 AS** | 大動脈弁加速時間 / 駆出時間比 | `AV AcT / (AcT / ET)` | ms, - | 重症: AcT ≧ 100 ms, AcT/ET > 0.35 (弁開放遅延) |
+| **大動脈弁狭窄 AS** | **低流量判定 (1回拍出量係数)** | `SVi` (Stroke Volume Index) | mL/m² | SVi < 35 mL/m² で Low-flow severe AS (奇異性LFLG) |
+| **僧帽弁狭窄 MS** | **僧帽弁平均圧較差 / 最大流速** | `MV Mean PG / MV Peak E` | mmHg, m/s | 重症: Mean PG ≧ 10 mmHg (中等症: 5〜10 mmHg) |
+| **僧帽弁狭窄 MS** | 僧帽弁圧半減時間 (PHT) | `MV PHT` | ms | 重症: ≧ 220 ms (MVA = 220 / PHT) |
+| **僧帽弁狭窄 MS** | **僧帽弁口面積 (PHT法 / トレース)** | `MVA (PHT) / MVA (Plan)` | cm² | 重症: ≦ 1.0 cm² (臨床的有意狭窄: ≦ 1.5 cm²) |
+| **僧帽弁狭窄 MS** | 連続の式僧帽弁口面積 | `MVA (Continuity Eq)` | cm² | AR合併等でPHT信頼性低下時の確定評価 |
+| **僧帽弁狭窄 MS** | **Wilkinsエコースコア (4項目)** | `Wilkins Score` (Total) | 点 | 弁尖肥厚・可動性・石灰化・下部病変 (PTMC適応 ≦ 8点) |
+| **三尖弁狭窄 TS** | **三尖弁平均圧較差 / 圧半減時間** | `TV Mean PG / TV PHT` | mmHg, ms | 重症: Mean PG ≧ 5 mmHg / PHT ≧ 190 ms |
+| **三尖弁狭窄 TS** | **三尖弁口面積 (PHT法 / 連続の式)** | `TVA (PHT) / TVA (Cont)` | cm² | 重症: ≦ 1.0 cm² (TVA = 190 / TV PHT) |
+| **肺動脈弁狭窄 PS** | **肺動脈弁最高血流速度 / 最大PG** | `PV Vmax / PV Max PG` | m/s, mmHg | 重症: Vmax > 4.0 m/s / Max PG ≧ 64 mmHg (中等症: 36〜64) |
+| **肺動脈弁狭窄 PS** | **肺動脈弁平均圧較差** | `PV Mean PG` | mmHg | 重症: ≧ 35 mmHg |
+
+---
+
+## 4. 🎯 全弁膜逆流症の完全定量・半定量評価（AR / MR / TR / PR）
+
+| 対象弁逆流 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 重症度判定カットオフ値 (ASE/ESC基準) |
 | :--- | :--- | :--- | :---: | :--- |
 | **大動脈弁逆流 AR** | **Vena Contracta 幅 (VC)** | `AR VC width` | mm | 重症: > 6.0 mm (軽症: < 3.0 mm) |
 | **大動脈弁逆流 AR** | 圧半減時間 (PHT) | `AR PHT` | ms | 重症: < 200 ms (軽症: > 500 ms) |
 | **大動脈弁逆流 AR** | **有効逆流弁口面積 (EROA)** | `AR EROA` | cm² | 重症: ≧ 0.30 cm² (軽症: < 0.10 cm²) |
 | **大動脈弁逆流 AR** | **逆流量 (Regurgitant Volume)** | `AR RVol` | mL | 重症: ≧ 60 mL (軽症: < 30 mL) |
-| **大動脈弁逆流 AR** | 下行大動脈拡張期逆流終末速度 | `AR Holodiastolic flow (EDV)` | cm/s | 重症: 下行大動脈全拡張期逆流 ＆ EDV > 20 cm/s |
+| **大動脈弁逆流 AR** | 下行大動脈拡張期逆流終末速度 | `AR Holodiastolic (EDV)` | cm/s | 重症: 下行大動脈全拡張期逆流 ＆ EDV > 20 cm/s |
 | **僧帽弁逆流 MR** | **Vena Contracta 幅 (VC)** | `MR VC width` | mm | 重症: ≧ 7.0 mm (軽症: < 3.0 mm) |
-| **僧帽弁逆流 MR** | PISA半径 / アライアンス速度 | `PISA Radius / Aliasing Vel` | mm, cm/s | 定量的逆流評価 (PISA法) の必須元データ |
+| **僧帽弁逆流 MR** | PISA半径 / アライアンス速度 | `PISA Radius / Aliasing` | mm, cm/s | 定量的逆流評価 (PISA法) の必須元データ |
 | **僧帽弁逆流 MR** | **有効逆流弁口面積 (EROA)** | `MR EROA` | cm² | 重症: ≧ 0.40 cm² (二次性MRでは ≧ 0.20 cm²) |
 | **僧帽弁逆流 MR** | **逆流量 (Regurgitant Volume)** | `MR RVol` | mL | 重症: ≧ 60 mL (二次性MRでは ≧ 30 mL) |
-| **僧帽弁逆流 MR** | 肺静脈逆流波 (収縮期逆流) | `PV Systolic flow reversal` | - | 重症: 肺静脈血流で収縮期逆流 (S波の陰転化) |
+| **僧帽弁逆流 MR** | 肺静脈逆流波 (収縮期逆流) | `PV Systolic reversal` | - | 重症: 肺静脈血流で収縮期逆流 (S波の陰転化) |
 | **三尖弁逆流 TR** | **三尖弁逆流最高流速 / 最大PG** | `TR Vmax / TR max PG` | m/s, mmHg | 肺動脈圧推定の基幹 (Vmax > 2.8 m/s でPH疑い) |
 | **三尖弁逆流 TR** | **TR Vena Contracta 幅 (VC)** | `TR VC width` | mm | 重症: ≧ 7.0 mm (Massive 14-20, Torrential ≧21) |
 | **三尖弁逆流 TR** | **TR PISA EROA / 逆流量** | `TR EROA / TR RVol` | cm², mL | 重症: EROA ≧ 0.40 cm² / RVol ≧ 45 mL |
-| **三尖弁逆流 TR** | 肝静脈収縮期逆流波 | `Hepatic vein flow reversal` | - | 重症: 肝静脈波形での収縮期逆流 (Blunting/Reversal) |
+| **三尖弁逆流 TR** | 肝静脈収縮期逆流波 | `Hepatic vein reversal` | - | 重症: 肝静脈波形での収縮期逆流 (Blunting/Reversal) |
 | **肺動脈弁逆流 PR** | **PR peak vel / end-diastolic vel** | `PR peak vel / PRed vel` | m/s | 平均肺動脈圧 (mPAP) ＆ 拡張期圧 (PADP) 推定 |
 | **肺動脈弁逆流 PR** | PR 圧半減時間 (PHT) | `PR PHT` | ms | 重症: < 100 ms で急峻な減衰 (Severe PR) |
-| **肺動脈弁逆流 PR** | PR Index (持続時間比) | `PR Index (PR dur / Diastole)` | - | 重症: < 0.77 (拡張期の早期に血流途絶) |
+| **肺動脈弁逆流 PR** | PR Index (持続時間比) | `PR Index (dur / Diastole)` | - | 重症: < 0.77 (拡張期の早期に血流途絶) |
 
 ---
 
-## 4. 🫁 先進血行動態指標（Qp/Qs・PVR・RV-PAカップリング・AS狭窄）
-
-> [!TIP]
-> ### 先進演算指標の計算ロジック
-> ・**Qp/Qs** = $(RVOT面積 \times RVOT\ VTI) / (LVOT面積 \times LVOT\ VTI)$ ➔ **$> 1.5$ でシャント閉鎖術適応**
-> ・**PVR (Wood units)** = $10 \times (TR\ Vmax / RVOT\ VTI) + 0.16$ ➔ **$> 3.0\text{ Wood units}$ で前毛細管性肺高血圧**
-> ・**RV-PA Coupling** = $TAPSE / PASP\ (\text{mm/mmHg})$ ➔ **$< 0.36$ で右室非代償・予後不良**
+## 5. 🫁 先進血行動態指標（Qp/Qs・PVR・RV-PAカップリング）
 
 | 演算領域 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 計算ロジック・臨床判断基準 |
 | :--- | :--- | :--- | :---: | :--- |
@@ -97,20 +122,17 @@ reference_guideline: ASE 2025新基準 / EACVI / 日本心エコー図学会 (JS
 | **Qp/Qs 基礎データ** | 左室流出道径 / LVOT VTI | `LVOT diam / LVOT VTI` | mm, cm | Qs (体血流量) 算出のための必須計測 |
 | **肺血管抵抗 (PVR)** | **肺血管抵抗 (Abbas推定式)** | `PVR (Wood Units)` | Wood U | 正常 < 2.0, > 3.0 で前毛細管性肺高血圧 (毛細血管病変) |
 | **右室PA連関** | **TAPSE / PASP 比 (カップリング)** | `TAPSE/PASP ratio` | mm/mmHg | 右室後負荷不整合の指標。正常 > 0.55, 予後不良 < 0.36 |
-| **大動脈弁狭窄 AS** | **大動脈弁最高血流 / 平均圧較差** | `AV Vmax / AV Mean PG` | m/s, mmHg | 重症AS: Vmax ≧ 4.0 m/s / Mean PG ≧ 40 mmHg |
-| **大動脈弁狭窄 AS** | **大動脈弁口面積 (連続の式) / DVI** | `AVA / DVI (LVOT/AV VTI)` | cm², - | 重症AS: AVA < 1.0 cm² (AVAi < 0.6 cm²/m²), DVI < 0.25 |
-| **僧帽弁狭窄 MS** | 僧帽弁平均圧較差 / 弁口面積 | `MV Mean PG / MVA (PHT)` | mmHg, cm² | 重症MS: Mean PG ≧ 10 mmHg / MVA ≦ 1.5 cm² |
+| **右室心筋機能** | 右室 Tei Index (MPI) | `RV Tei Index (MPI)` | - | 組織ドプラで > 0.54 (パルスで > 0.43) で機能低下 |
 
 ---
 
-## 5. 📏 右室機能・下大静脈・大動脈基部計測
+## 6. 📏 右室形態・下大静脈・大動脈基部計測
 
 | 評価領域 | SR連携推奨項目 | 英語表記 / DICOMタグ | 単位 | 判定基準・カットオフ |
 | :--- | :--- | :--- | :---: | :--- |
 | **右室収縮能** | **三尖弁輪収縮期移動距離** | `TAPSE` | mm | < 17 mm で右室収縮能低下 |
-| **右室収縮能** | 組織ドプラ三尖弁輪収縮速度 | `RV s'` (TDI S') | cm/s | < 9.5 cm/s で右室収縮能低下 |
+| **右室収縮能** | 組織ドプラ三尖弁輪収縮速度 | `RV s' (TDI S')` | cm/s | < 9.5 cm/s で右室収縮能低下 |
 | **右室収縮能** | 右室面積変化率 | `RV FAC` | % | < 35 % で右室機能低下 |
-| **右室心筋機能** | 右室 Tei Index (MPI) | `RV Tei Index (MPI)` | - | 組織ドプラで > 0.54 (パルスで > 0.43) で機能低下 |
 | **下大静脈 IVC** | 下大静脈最大径 / 虚脱率 | `IVCd max / IVC Collapse` | mm, % | > 21 mm ＆ 虚脱率 < 50% で右房圧上昇 (RAP 15mmHg) |
 | **自動演算** | **推定右房圧 / 推定肺動脈収縮期圧** | `RAP / PASP (TR-PG + RAP)` | mmHg | RAP: 3/8/15 mmHg, PASP > 35〜40 mmHg で肺高血圧 |
 | **大動脈基部** | 弁輪 / Valsalva / STJ / 上行径 | `Ao Annulus/Sinus/STJ/Asc` | mm | Valsalva / 上行 > 40 mm で拡大 (≧ 50mm 手術検討) |
@@ -120,9 +142,9 @@ reference_guideline: ASE 2025新基準 / EACVI / 日本心エコー図学会 (JS
 
 ## 💡 現場でのSR連携 運用・システム設計チェックポイント
 
-1. **計測ラベルの選択厳守**: フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS, RVOT diam, PISA 等）を選択して計測すること。
-2. **シャント率 (Qp/Qs) のペアリング**: RVOT径・RVOT VTI、および LVOT径・LVOT VTI の4項目が揃って初めてQp/Qsが完全自動算出される。
-3. **肺血管抵抗 (PVR) の自動計算**: TR Vmax と RVOT VTI が測定されていれば、レポートシステム側でWood単位を自動計算可能。
-4. **全弁逆流定量の完全網羅**: AR/MR/TR/PRのVC幅・PISA・PHT・血流逆転波形をSR連携し、弁膜症重症度を客観的数値で完全担保する。
+1. **計測ラベルの選択厳守**: フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS, RVOT diam, PISA, Wilkins等）を選択して計測すること。
+2. **弁狭窄の連続の式ペアリング**: LVOT径・LVOT VTI と AV/MV/TV/PV の各弁VTIが揃って初めて狭窄弁口面積（AVA/MVA/TVA）が完全自動算出される。
+3. **シャント率 (Qp/Qs) ＆ PVRの自動計算**: RVOTとLVOTの径・VTI、および TR Vmax からQp/QsとPVR（Wood単位）を完全自動演算。
+4. **全4弁狭窄・全4弁逆流の完全網羅**: AS/MS/TS/PS および AR/MR/TR/PR の全重症度基準値を網羅し、弁膜症レポート作成を自動化する。
 5. **単位系スケーリングの整合性**: エコー機側の出力単位（cm/s ⇄ m/s、mL ⇄ L）とレポートシステム側の受信単位の整合性を結合テストで必ず照合すること。
 6. **複数計測の代表値採用ルール**: 不整脈や連続波ドプラ等で複数回計測した場合、レポート側で「平均値（Average）」を採用する設定に固定することを推奨する。
