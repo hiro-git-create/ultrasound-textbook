@@ -2,11 +2,11 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>心エコー検査 DICOM SR連携 推奨項目マスターリファレンス</title>
+<title>心エコー検査 DICOM SR連携 推奨項目マスターリファレンス (完全版)</title>
 <style>
   @page {
     size: A4 portrait;
-    margin: 10mm 12mm 10mm 12mm;
+    margin: 8mm 10mm 8mm 10mm;
   }
   @media print {
     body {
@@ -29,16 +29,16 @@
     color: #1e293b;
     background-color: #f8fafc;
     margin: 0;
-    padding: 15px;
-    font-size: 10.5pt;
-    line-height: 1.45;
+    padding: 12px;
+    font-size: 9.5pt;
+    line-height: 1.4;
   }
   
   .sheet {
     background: #ffffff;
     max-width: 210mm;
     margin: 0 auto;
-    padding: 18px 22px;
+    padding: 15px 18px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     box-sizing: border-box;
@@ -60,15 +60,15 @@
     background: #0284c7;
     color: #ffffff;
     border: none;
-    padding: 9px 18px;
+    padding: 8px 16px;
     font-size: 13px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     transition: background 0.2s;
   }
   .print-btn:hover {
@@ -76,19 +76,19 @@
   }
 
   header {
-    border-bottom: 3px solid #0284c7;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+    border-bottom: 2.5px solid #0284c7;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
   }
   
   h1 {
-    font-size: 16.5pt;
+    font-size: 15pt;
     color: #0f172a;
-    margin: 0 0 4px 0;
+    margin: 0 0 3px 0;
   }
   
   .subtitle {
-    font-size: 9.5pt;
+    font-size: 9pt;
     color: #475569;
     font-weight: 500;
   }
@@ -96,30 +96,30 @@
   .overview-box {
     background: #f0f9ff;
     border-left: 4px solid #0284c7;
-    padding: 8px 12px;
-    margin-bottom: 14px;
-    border-radius: 0 6px 6px 0;
-    font-size: 9pt;
+    padding: 7px 10px;
+    margin-bottom: 12px;
+    border-radius: 0 5px 5px 0;
+    font-size: 8.5pt;
     color: #0369a1;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   h2 {
-    font-size: 12pt;
+    font-size: 11pt;
     color: #0369a1;
     border-bottom: 1.5px solid #e2e8f0;
-    padding-bottom: 3px;
-    margin: 14px 0 8px 0;
+    padding-bottom: 2px;
+    margin: 12px 0 6px 0;
   }
 
   .highlight-banner {
     background: #fffbeb;
     border: 1px solid #fde68a;
     border-left: 4px solid #f59e0b;
-    padding: 7px 10px;
-    margin-bottom: 8px;
+    padding: 6px 9px;
+    margin-bottom: 6px;
     border-radius: 0 4px 4px 0;
-    font-size: 8.5pt;
+    font-size: 8.2pt;
     color: #92400e;
     line-height: 1.35;
   }
@@ -127,8 +127,8 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 12px;
-    font-size: 9pt;
+    margin-bottom: 10px;
+    font-size: 8.5pt;
   }
   
   th {
@@ -136,12 +136,12 @@
     color: #ffffff;
     font-weight: 600;
     text-align: left;
-    padding: 5px 7px;
+    padding: 4px 6px;
     border: 1px solid #0f766e;
   }
   
   td {
-    padding: 5px 7px;
+    padding: 4px 6px;
     border: 1px solid #e2e8f0;
     vertical-align: middle;
   }
@@ -153,9 +153,9 @@
   .tag-code {
     font-family: Consolas, Monaco, "Courier New", monospace;
     background: #f1f5f9;
-    padding: 1px 4px;
+    padding: 1px 3px;
     border-radius: 3px;
-    font-size: 8.2pt;
+    font-size: 7.8pt;
     color: #0f766e;
     font-weight: bold;
   }
@@ -174,20 +174,20 @@
   .tips-list {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
-    padding: 8px 12px 8px 24px;
-    border-radius: 6px;
-    font-size: 8.8pt;
+    padding: 6px 10px 6px 20px;
+    border-radius: 5px;
+    font-size: 8.2pt;
     color: #334155;
     margin: 0;
-    line-height: 1.45;
+    line-height: 1.4;
   }
   .tips-list li {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
   
   .footer-note {
-    margin-top: 14px;
-    font-size: 8pt;
+    margin-top: 10px;
+    font-size: 7.8pt;
     color: #94a3b8;
     text-align: right;
   }
@@ -197,23 +197,25 @@
 
 <div class="sheet">
   <div class="no-print" style="text-align: right;">
-    <button class="print-btn" onclick="window.print()">🖨️ このリファレンスを印刷 / PDF保存</button>
+    <button class="print-btn" onclick="window.print()">🖨️ この完全版リファレンスを印刷 / PDF保存</button>
   </div>
 
   <header>
-    <h1>🫀 心エコー検査 DICOM SR連携 推奨項目マスター</h1>
-    <div class="subtitle">― 臨床ガイドライン（ASE 2025新基準 / EACVI / JSE）準拠・LARS対応 生理検査レポート自動化仕様書 ―</div>
+    <h1>🫀 心エコー検査 DICOM SR連携 推奨項目マスター (完全版)</h1>
+    <div class="subtitle">― 全弁逆流定量（AR/MR/TR/PR）・シャント率（Qp/Qs）・血行動態（PVR, dP/dt, RV-PA）・LARS対応 ―</div>
   </header>
 
   <div class="overview-box">
-    <strong>【DICOM SR（Structured Report）連携の目的】</strong><br>
-    超音波診断装置で測定した数値データを構造化レポートとしてレポートシステム・電子カルテへ自動転送することにより、
-    ① 転記ミス（ヒューマンエラー）の撲滅、② 検査時間の短縮、③ 最新ASE 2025拡張能新基準（LARS・E/e'等）や弁膜症判定、BSA体表面積補正（LAVI, LVMI, SVi等）の完全自動判定を実現します。
+    <strong>【DICOM SR連携 完全版の目的】</strong><br>
+    超音波診断装置で測定した数値をDICOM SRとしてレポートシステム・電子カルテへ自動転送することにより、
+    ① 転記ミスの完全撲滅、② 検査時間の短縮、③ <strong>4弁すべての逆流症定量（PISA/VC/EROA/RVol）</strong>、
+    ④ <strong>シャント率（Qp/Qs）・肺血管抵抗（PVR）・左室収縮性（dP/dt）・右室肺動脈カップリング（TAPSE/PASP）</strong>、
+    ⑤ 最新ASE 2025拡張能新基準（LARS・E/e'等）の完全自動判定を実現します。
   </div>
 
   <!-- Section 1 -->
   <div class="table-container">
-    <h2>1. 🫀 左室形態・収縮能（最優先ルーチン計測項目）</h2>
+    <h2>1. 🫀 左室形態・収縮能 ＆ 特殊血行動態指標（dP/dt）</h2>
     <table>
       <thead>
         <tr>
@@ -227,31 +229,17 @@
       <tbody>
         <tr>
           <td>Mモード / 2D</td>
-          <td>左室拡張末期径</td>
-          <td><span class="tag-code">LVDd</span> (LVEDD)</td>
+          <td>左室拡張末期径 / 収縮末期径</td>
+          <td><span class="tag-code">LVDd / LVDs</span></td>
           <td class="unit">mm</td>
-          <td>左室拡大の評価・BSA補正値算出</td>
+          <td>左室径・容量負荷評価・BSA補正値算出</td>
         </tr>
         <tr>
           <td>Mモード / 2D</td>
-          <td>左室収縮末期径</td>
-          <td><span class="tag-code">LVDs</span> (LVESD)</td>
+          <td>心室中隔壁厚 / 後壁厚</td>
+          <td><span class="tag-code">IVSTd / PWTd</span></td>
           <td class="unit">mm</td>
-          <td>左室収縮末期容積・リモデリング評価</td>
-        </tr>
-        <tr>
-          <td>Mモード / 2D</td>
-          <td>心室中隔壁厚</td>
-          <td><span class="tag-code">IVSTd</span> (IVSd)</td>
-          <td class="unit">mm</td>
-          <td>壁肥厚・肥大型心筋症 (HCM) 判定</td>
-        </tr>
-        <tr>
-          <td>Mモード / 2D</td>
-          <td>左室後壁厚</td>
-          <td><span class="tag-code">PWTd</span> (LVPWd)</td>
-          <td class="unit">mm</td>
-          <td>求心性肥大の評価</td>
+          <td>壁肥厚・HCM・求心性肥大の評価</td>
         </tr>
         <tr>
           <td>自動演算</td>
@@ -262,52 +250,38 @@
         </tr>
         <tr>
           <td>自動演算</td>
-          <td>相対的壁厚</td>
-          <td><span class="tag-code">RWT</span> (2×PWTd/LVDd)</td>
-          <td class="unit">-</td>
-          <td>求心性肥大 vs 遠心性肥大の分類 (基準>0.42)</td>
-        </tr>
-        <tr>
-          <td>自動演算</td>
-          <td>左室短縮率</td>
-          <td><span class="tag-code">FS</span> (%FS)</td>
-          <td class="unit">%</td>
-          <td>左室円周方向収縮能 (正常 28〜45%)</td>
+          <td>相対的壁厚 / 左室短縮率</td>
+          <td><span class="tag-code">RWT / FS</span></td>
+          <td class="unit">-, %</td>
+          <td>求心性vs遠心性肥大分類 (RWT>0.42), 円周収縮能</td>
         </tr>
         <tr>
           <td>Simpson法</td>
-          <td>左室拡張末期容積</td>
-          <td><span class="tag-code">LVEDV</span> (EDV Biplane)</td>
+          <td>左室拡張末期 / 収縮末期容積</td>
+          <td><span class="tag-code">LVEDV / LVESV</span></td>
           <td class="unit">mL</td>
-          <td>容量負荷評価・BSA補正 (EDVI)</td>
-        </tr>
-        <tr>
-          <td>Simpson法</td>
-          <td>左室収縮末期容積</td>
-          <td><span class="tag-code">LVESV</span> (ESV Biplane)</td>
-          <td class="unit">mL</td>
-          <td>BSA補正 (ESVI)</td>
+          <td>容量負荷評価・BSA補正 (EDVI, ESVI)</td>
         </tr>
         <tr>
           <td>Simpson法</td>
           <td class="key-item">左室駆出率 (最重要)</td>
           <td><span class="tag-code">LVEF</span> (Biplane EF)</td>
           <td class="unit">%</td>
-          <td>収縮能の国際基準 (HFrEF/HFmrEF/HFpEF分類)</td>
+          <td>心機能分類 (HFrEF / HFmrEF / HFpEF)</td>
         </tr>
         <tr>
           <td>Simpson法</td>
-          <td>1回拍出量 / 心拍出量</td>
-          <td><span class="tag-code">SV / CO</span></td>
-          <td class="unit">mL, L/min</td>
-          <td>有効駆出量・心係数 (CI: L/min/m²) 算出</td>
+          <td>1回拍出量 / 心拍出量 / SVi</td>
+          <td><span class="tag-code">SV / CO / SVi</span></td>
+          <td class="unit">mL, L/min, mL/m²</td>
+          <td>有効拍出量・心係数 (CI)・低流量判定 (&lt;35 mL/m²)</td>
         </tr>
         <tr>
-          <td>自動演算</td>
-          <td class="key-item">1回拍出量係数 (重要)</td>
-          <td><span class="tag-code">SVi</span> (SV Index)</td>
-          <td class="unit">mL/m²</td>
-          <td>低流量判定 (&lt;35 mL/m²: LF-LG AS, 低拍出状態)</td>
+          <td>MR連続波 CW</td>
+          <td class="key-item">左室収縮期圧上昇率 (dP/dt)</td>
+          <td><span class="tag-code">LV dP/dt</span></td>
+          <td class="unit">mmHg/s</td>
+          <td>MR波形1-3m/s時間より算出。正常&gt;1200, 低下&lt;1000</td>
         </tr>
       </tbody>
     </table>
@@ -317,10 +291,10 @@
   <div class="table-container">
     <h2>2. 🌊 左室拡張能評価（ASE 2025新基準 / LARS・E/e'・LAVI・TR）</h2>
     <div class="highlight-banner">
-      <strong>【ASE 2025改訂アルゴリズム & LARS】</strong><br>
+      <strong>【ASE 2025新基準 判定要件】</strong><br>
       ① <strong>平均 E/e' &gt; 14</strong> &nbsp;|&nbsp; ② <strong>中隔側 e' &lt; 7 cm/s または 側壁側 e' &lt; 10 cm/s</strong> &nbsp;|&nbsp; ③ <strong>TR Vmax &gt; 2.8 m/s</strong> &nbsp;|&nbsp; ④ <strong>LAVI &gt; 34 mL/m²</strong><br>
-      ★ <strong>【新指標 LARS（左房リザーバーストレイン）】</strong>: <strong>LARS &lt; 18%</strong> で左室充満圧（LAP/PCWP）上昇確定。LAVIが正常な早期HFpEFやグレーゾーン症例を決着させる決定打。<br>
-      ※ AF（心房細動）症例では通常アルゴリズムから <strong>「E/e' ≧ 11」 単独判定ロジック</strong> へ自動切り替え。
+      ★ <strong>【新指標 LARS（左房リザーバーストレイン）】</strong>: <strong>LARS &lt; 18%</strong> で充満圧上昇確定。LAVI正常の早期HFpEFを決定づける。<br>
+      ※ AF（心房細動）症例では通常判定から <strong>「E/e' ≧ 11」 単独判定ロジック</strong> へ自動切り替え。
     </div>
     <table>
       <thead>
@@ -338,7 +312,7 @@
           <td class="key-item">左房リザーバーストレイン (新基準)</td>
           <td><span class="tag-code">LARS</span> (LA Res. Strain)</td>
           <td class="unit">%</td>
-          <td>充満圧上昇 (重度低下 &lt;18%, 軽度低下 &lt;24%, 正常 &gt;39%)</td>
+          <td>充満圧上昇確定 (重度低下 &lt;18%, 軽度低下 &lt;24%, 正常 &gt;39%)</td>
         </tr>
         <tr>
           <td>左房ストレイン</td>
@@ -349,45 +323,24 @@
         </tr>
         <tr>
           <td>TVI (流入血流)</td>
-          <td>E波最高血流速度</td>
-          <td><span class="tag-code">MV E vel</span> (Peak E)</td>
+          <td>E波最高血流速度 / A波最高血流速度</td>
+          <td><span class="tag-code">MV E vel / MV A vel</span></td>
           <td class="unit">cm/s</td>
-          <td>拡張早期左室流入速度</td>
-        </tr>
-        <tr>
-          <td>TVI (流入血流)</td>
-          <td>A波最高血流速度</td>
-          <td><span class="tag-code">MV A vel</span> (Peak A)</td>
-          <td class="unit">cm/s</td>
-          <td>心房収縮期流入速度 (AF時は欠損)</td>
+          <td>拡張早期 / 心房収縮期流入速度 (AF時はA波欠損)</td>
         </tr>
         <tr>
           <td>自動演算</td>
-          <td class="key-item">E/A比</td>
-          <td><span class="tag-code">E/A ratio</span></td>
-          <td class="unit">-</td>
-          <td>弛緩障害型 (&lt;0.8), 偽正常型, 拘束型 (&gt;2.0)</td>
-        </tr>
-        <tr>
-          <td>TVI (流入血流)</td>
-          <td>E波減速時間</td>
-          <td><span class="tag-code">MV DT</span></td>
-          <td class="unit">ms</td>
-          <td>左室コンプライアンス評価 (&lt;160ms: 拘束型)</td>
+          <td class="key-item">E/A比 / E波減速時間 (DT)</td>
+          <td><span class="tag-code">E/A ratio / MV DT</span></td>
+          <td class="unit">-, ms</td>
+          <td>弛緩障害型 (&lt;0.8), 拘束型 (&gt;2.0, DT&lt;160ms)</td>
         </tr>
         <tr>
           <td>組織ドプラ TDI</td>
-          <td class="key-item">中隔側 拡張早期弁輪速度</td>
-          <td><span class="tag-code">Septal e'</span></td>
+          <td class="key-item">中隔側 / 側壁側 e' 速度</td>
+          <td><span class="tag-code">Septal e' / Lateral e'</span></td>
           <td class="unit">cm/s</td>
-          <td>心筋局所弛緩能 (&lt; 7.0 cm/s で低下)</td>
-        </tr>
-        <tr>
-          <td>組織ドプラ TDI</td>
-          <td class="key-item">側壁側 拡張早期弁輪速度</td>
-          <td><span class="tag-code">Lateral e'</span></td>
-          <td class="unit">cm/s</td>
-          <td>心筋局所弛緩能 (&lt; 10.0 cm/s で低下)</td>
+          <td>局所弛緩能低下 (中隔 &lt; 7.0, 側壁 &lt; 10.0 cm/s)</td>
         </tr>
         <tr>
           <td>自動演算</td>
@@ -412,17 +365,10 @@
         </tr>
         <tr>
           <td>肺静脈血流 PW</td>
-          <td>S波速度 / D波速度</td>
-          <td><span class="tag-code">PV S vel / PV D vel</span></td>
-          <td class="unit">cm/s</td>
-          <td>S/D比による左房圧推定 (S &lt; D: 左房圧上昇)</td>
-        </tr>
-        <tr>
-          <td>肺静脈血流 PW</td>
-          <td>心房逆流波持続時間差</td>
-          <td><span class="tag-code">PV Ar dur - MV A dur</span></td>
-          <td class="unit">ms</td>
-          <td>Ar - A ≧ 30 ms で左室拡張末期圧 (LVEDP) 上昇</td>
+          <td>S/D比 ＆ Ar-A持続時間差</td>
+          <td><span class="tag-code">PV S/D / (Ar dur - A dur)</span></td>
+          <td class="unit">-, ms</td>
+          <td>S &lt; D: 左房圧上昇 / Ar-A ≧ 30ms: LVEDP上昇</td>
         </tr>
       </tbody>
     </table>
@@ -430,59 +376,66 @@
 
   <!-- Section 3 -->
   <div class="table-container">
-    <h2>3. 🎯 弁膜症の重症度・定量評価（AS / AR / MS / MR）</h2>
+    <h2>3. 🎯 全弁膜逆流症の完全定量・半定量評価（AR / MR / TR / PR）</h2>
     <table>
       <thead>
         <tr>
-          <th style="width: 16%;">弁膜症区分</th>
-          <th style="width: 24%;">SR連携推奨項目</th>
-          <th style="width: 24%;">英語表記 / DICOMタグ</th>
-          <th style="width: 8%;">単位</th>
-          <th style="width: 28%;">重症度判定カットオフ値</th>
+          <th style="width: 15%;">対象弁</th>
+          <th style="width: 25%;">SR連携推奨項目</th>
+          <th style="width: 23%;">英語表記 / DICOMタグ</th>
+          <th style="width: 7%;">単位</th>
+          <th style="width: 30%;">重症度判定カットオフ値 (ASE/ESC基準)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">大動脈弁最高血流速度</td>
-          <td><span class="tag-code">AV Vmax</span> (Peak Vel)</td>
-          <td class="unit">m/s</td>
-          <td>重症: ≧ 4.0 m/s</td>
-        </tr>
-        <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">大動脈弁平均圧較差</td>
-          <td><span class="tag-code">AV Mean PG</span></td>
-          <td class="unit">mmHg</td>
-          <td>重症: ≧ 40 mmHg</td>
-        </tr>
-        <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">大動脈弁口面積 (連続の式)</td>
-          <td><span class="tag-code">AVA</span> (Continuity Eq)</td>
-          <td class="unit">cm²</td>
-          <td>重症: &lt; 1.0 cm² (指数化 AVAi &lt; 0.6 cm²/m²)</td>
-        </tr>
-        <tr>
-          <td>大動脈弁狭窄 AS</td>
-          <td class="key-item">無次元速度指数</td>
-          <td><span class="tag-code">DVI</span> (LVOT VTI / AV VTI)</td>
-          <td class="unit">-</td>
-          <td>重症: &lt; 0.25 (低流量低圧較差 LF-LG AS で極めて有用)</td>
+          <td>大動脈弁逆流 AR</td>
+          <td class="key-item">Vena Contracta 幅 (VC)</td>
+          <td><span class="tag-code">AR VC width</span></td>
+          <td class="unit">mm</td>
+          <td>重症: &gt; 6.0 mm (軽症: &lt; 3.0 mm)</td>
         </tr>
         <tr>
           <td>大動脈弁逆流 AR</td>
-          <td>圧半減時間</td>
+          <td>圧半減時間 (PHT)</td>
           <td><span class="tag-code">AR PHT</span></td>
           <td class="unit">ms</td>
           <td>重症: &lt; 200 ms (軽症: &gt; 500 ms)</td>
         </tr>
         <tr>
+          <td>大動脈弁逆流 AR</td>
+          <td class="key-item">有効逆流弁口面積 (EROA)</td>
+          <td><span class="tag-code">AR EROA</span></td>
+          <td class="unit">cm²</td>
+          <td>重症: ≧ 0.30 cm² (軽症: &lt; 0.10 cm²)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁逆流 AR</td>
+          <td class="key-item">逆流量 (Regurgitant Volume)</td>
+          <td><span class="tag-code">AR RVol</span></td>
+          <td class="unit">mL</td>
+          <td>重症: ≧ 60 mL (軽症: &lt; 30 mL)</td>
+        </tr>
+        <tr>
+          <td>大動脈弁逆流 AR</td>
+          <td>下行大動脈拡張期逆流終末速度</td>
+          <td><span class="tag-code">AR Holodiastolic (EDV)</span></td>
+          <td class="unit">cm/s</td>
+          <td>重症: 下行大動脈全拡張期逆流 ＆ EDV &gt; 20 cm/s</td>
+        </tr>
+        <tr>
+          <td>僧帽弁逆流 MR</td>
+          <td class="key-item">Vena Contracta 幅 (VC)</td>
+          <td><span class="tag-code">MR VC width</span></td>
+          <td class="unit">mm</td>
+          <td>重症: ≧ 7.0 mm (軽症: &lt; 3.0 mm)</td>
+        </tr>
+        <tr>
           <td>僧帽弁逆流 MR</td>
           <td>PISA半径 / アライアンス速度</td>
-          <td><span class="tag-code">PISA Radius / Aliasing Vel</span></td>
+          <td><span class="tag-code">PISA Radius / Aliasing</span></td>
           <td class="unit">mm, cm/s</td>
-          <td>定量的逆流評価の必須元データ</td>
+          <td>定量的逆流評価 (PISA法) の必須元データ</td>
         </tr>
         <tr>
           <td>僧帽弁逆流 MR</td>
@@ -493,33 +446,162 @@
         </tr>
         <tr>
           <td>僧帽弁逆流 MR</td>
-          <td class="key-item">逆流量 (Regurgitant Vol)</td>
+          <td class="key-item">逆流量 (Regurgitant Volume)</td>
           <td><span class="tag-code">MR RVol</span></td>
           <td class="unit">mL</td>
           <td>重症: ≧ 60 mL (二次性MRでは ≧ 30 mL)</td>
         </tr>
         <tr>
-          <td>僧帽弁狭窄 MS</td>
-          <td>平均圧較差 / 弁口面積</td>
-          <td><span class="tag-code">MV Mean PG / MVA (PHT)</span></td>
-          <td class="unit">mmHg, cm²</td>
-          <td>重症: Mean PG ≧ 10 mmHg / MVA ≦ 1.5 cm²</td>
+          <td>僧帽弁逆流 MR</td>
+          <td>肺静脈逆流波 (収縮期逆流)</td>
+          <td><span class="tag-code">PV Systolic reversal</span></td>
+          <td class="unit">-</td>
+          <td>重症: 肺静脈血流で収縮期逆流 (S波の陰転化)</td>
+        </tr>
+        <tr>
+          <td>三尖弁逆流 TR</td>
+          <td class="key-item">三尖弁逆流最高流速 / 最大PG</td>
+          <td><span class="tag-code">TR Vmax / TR max PG</span></td>
+          <td class="unit">m/s, mmHg</td>
+          <td>肺動脈圧推定の基幹 (Vmax &gt; 2.8 m/s でPH疑い)</td>
+        </tr>
+        <tr>
+          <td>三尖弁逆流 TR</td>
+          <td class="key-item">TR Vena Contracta 幅 (VC)</td>
+          <td><span class="tag-code">TR VC width</span></td>
+          <td class="unit">mm</td>
+          <td>重症: ≧ 7.0 mm (Massive 14-20, Torrential ≧21)</td>
+        </tr>
+        <tr>
+          <td>三尖弁逆流 TR</td>
+          <td class="key-item">TR PISA EROA / 逆流量</td>
+          <td><span class="tag-code">TR EROA / TR RVol</span></td>
+          <td class="unit">cm², mL</td>
+          <td>重症: EROA ≧ 0.40 cm² / RVol ≧ 45 mL</td>
+        </tr>
+        <tr>
+          <td>三尖弁逆流 TR</td>
+          <td>肝静脈収縮期逆流波</td>
+          <td><span class="tag-code">Hepatic vein reversal</span></td>
+          <td class="unit">-</td>
+          <td>重症: 肝静脈波形での収縮期逆流 (Blunting/Reversal)</td>
+        </tr>
+        <tr>
+          <td>肺動脈弁逆流 PR</td>
+          <td class="key-item">PR peak vel / end-diastolic vel</td>
+          <td><span class="tag-code">PR peak vel / PRed vel</span></td>
+          <td class="unit">m/s</td>
+          <td>平均肺動脈圧 (mPAP) ＆ 拡張期圧 (PADP) 推定</td>
+        </tr>
+        <tr>
+          <td>肺動脈弁逆流 PR</td>
+          <td>PR 圧半減時間 (PHT)</td>
+          <td><span class="tag-code">PR PHT</span></td>
+          <td class="unit">ms</td>
+          <td>重症: &lt; 100 ms で急峻な減衰 (Severe PR)</td>
+        </tr>
+        <tr>
+          <td>肺動脈弁逆流 PR</td>
+          <td>PR Index (持続時間比)</td>
+          <td><span class="tag-code">PR Index (dur / Diastole)</span></td>
+          <td class="unit">-</td>
+          <td>重症: &lt; 0.77 (拡張期の早期に血流途絶)</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Section 4 & 5 -->
+  <!-- Section 4 -->
   <div class="table-container">
-    <h2>4. 🫁 右心系機能・肺高血圧・下大静脈（右心不全評価）</h2>
+    <h2>4. 🫁 先進血行動態指標（Qp/Qs・PVR・RV-PAカップリング・AS狭窄）</h2>
+    <div class="highlight-banner">
+      <strong>【先進演算指標の計算ロジック】</strong><br>
+      ・<strong>Qp/Qs</strong> = (RVOT面積 × RVOT VTI) / (LVOT面積 × LVOT VTI) &nbsp;➔&nbsp; <strong>&gt; 1.5</strong> でシャント閉鎖術適応<br>
+      ・<strong>PVR (Wood units)</strong> = 10 × (TR Vmax / RVOT VTI) + 0.16 &nbsp;➔&nbsp; <strong>&gt; 3.0 Wood units</strong> で前毛細管性肺高血圧<br>
+      ・<strong>RV-PA Coupling</strong> = TAPSE / PASP (mm/mmHg) &nbsp;➔&nbsp; <strong>&lt; 0.36</strong> で右室非代償・予後不良
+    </div>
     <table>
       <thead>
         <tr>
-          <th style="width: 16%;">評価領域</th>
-          <th style="width: 24%;">SR連携推奨項目</th>
-          <th style="width: 24%;">英語表記 / DICOMタグ</th>
-          <th style="width: 8%;">単位</th>
-          <th style="width: 28%;">判定基準・カットオフ</th>
+          <th style="width: 15%;">演算領域</th>
+          <th style="width: 25%;">SR連携推奨項目</th>
+          <th style="width: 23%;">英語表記 / DICOMタグ</th>
+          <th style="width: 7%;">単位</th>
+          <th style="width: 30%;">計算ロジック・臨床判断基準</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>シャント率 (Qp/Qs)</td>
+          <td class="key-item">肺体血流比 (Qp/Qs)</td>
+          <td><span class="tag-code">Qp/Qs ratio</span></td>
+          <td class="unit">-</td>
+          <td>ASD/VSD/PDAの評価。正常 1.0, &gt; 1.5 で閉鎖適応</td>
+        </tr>
+        <tr>
+          <td>Qp/Qs 基礎データ</td>
+          <td>右室流出道径 / RVOT VTI</td>
+          <td><span class="tag-code">RVOT diam / RVOT VTI</span></td>
+          <td class="unit">mm, cm</td>
+          <td>Qp (肺血流量) 算出のための必須計測</td>
+        </tr>
+        <tr>
+          <td>Qp/Qs 基礎データ</td>
+          <td>左室流出道径 / LVOT VTI</td>
+          <td><span class="tag-code">LVOT diam / LVOT VTI</span></td>
+          <td class="unit">mm, cm</td>
+          <td>Qs (体血流量) 算出のための必須計測</td>
+        </tr>
+        <tr>
+          <td>肺血管抵抗 (PVR)</td>
+          <td class="key-item">肺血管抵抗 (Abbas推定式)</td>
+          <td><span class="tag-code">PVR (Wood Units)</span></td>
+          <td class="unit">Wood U</td>
+          <td>正常 &lt; 2.0, &gt; 3.0 で前毛細管性肺高血圧 (毛細血管病変)</td>
+        </tr>
+        <tr>
+          <td>右室PA連関</td>
+          <td class="key-item">TAPSE / PASP 比 (カップリング)</td>
+          <td><span class="tag-code">TAPSE/PASP ratio</span></td>
+          <td class="unit">mm/mmHg</td>
+          <td>右室後負荷不整合の指標。正常 &gt; 0.55, 予後不良 &lt; 0.36</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">大動脈弁最高血流 / 平均圧較差</td>
+          <td><span class="tag-code">AV Vmax / AV Mean PG</span></td>
+          <td class="unit">m/s, mmHg</td>
+          <td>重症AS: Vmax ≧ 4.0 m/s / Mean PG ≧ 40 mmHg</td>
+        </tr>
+        <tr>
+          <td>大動脈弁狭窄 AS</td>
+          <td class="key-item">大動脈弁口面積 (連続の式) / DVI</td>
+          <td><span class="tag-code">AVA / DVI (LVOT/AV VTI)</span></td>
+          <td class="unit">cm², -</td>
+          <td>重症AS: AVA &lt; 1.0 cm² (AVAi &lt; 0.6 cm²/m²), DVI &lt; 0.25</td>
+        </tr>
+        <tr>
+          <td>僧帽弁狭窄 MS</td>
+          <td>僧帽弁平均圧較差 / 弁口面積</td>
+          <td><span class="tag-code">MV Mean PG / MVA (PHT)</span></td>
+          <td class="unit">mmHg, cm²</td>
+          <td>重症MS: Mean PG ≧ 10 mmHg / MVA ≦ 1.5 cm²</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="table-container">
+    <h2>5. 📏 右室機能・下大静脈・大動脈基部計測</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 15%;">評価領域</th>
+          <th style="width: 25%;">SR連携推奨項目</th>
+          <th style="width: 23%;">英語表記 / DICOMタグ</th>
+          <th style="width: 7%;">単位</th>
+          <th style="width: 30%;">判定基準・カットオフ</th>
         </tr>
       </thead>
       <tbody>
@@ -533,7 +615,7 @@
         <tr>
           <td>右室収縮能</td>
           <td>組織ドプラ三尖弁輪収縮速度</td>
-          <td><span class="tag-code">RV s'</span> (TDI S')</td>
+          <td><span class="tag-code">RV s' (TDI S')</span></td>
           <td class="unit">cm/s</td>
           <td>&lt; 9.5 cm/s で右室収縮能低下</td>
         </tr>
@@ -545,84 +627,32 @@
           <td>&lt; 35 % で右室機能低下</td>
         </tr>
         <tr>
-          <td>下大静脈 IVC</td>
-          <td>下大静脈最大径 (呼気時)</td>
-          <td><span class="tag-code">IVCd max</span></td>
-          <td class="unit">mm</td>
-          <td>&gt; 21 mm で拡大 (右房圧上昇示唆)</td>
+          <td>右室心筋機能</td>
+          <td>右室 Tei Index (MPI)</td>
+          <td><span class="tag-code">RV Tei Index (MPI)</span></td>
+          <td class="unit">-</td>
+          <td>組織ドプラで &gt; 0.54 (パルスで &gt; 0.43) で機能低下</td>
         </tr>
         <tr>
           <td>下大静脈 IVC</td>
-          <td>IVC虚脱率 (吸気時虚脱)</td>
-          <td><span class="tag-code">IVC Collapse Index</span></td>
-          <td class="unit">%</td>
-          <td>&gt; 50 % で正常虚脱 (≦ 50% で虚脱不良)</td>
+          <td>下大静脈最大径 / 虚脱率</td>
+          <td><span class="tag-code">IVCd max / IVC Collapse</span></td>
+          <td class="unit">mm, %</td>
+          <td>&gt; 21 mm ＆ 虚脱率 &lt; 50% で右房圧上昇 (RAP 15mmHg)</td>
         </tr>
         <tr>
           <td>自動演算</td>
-          <td class="key-item">推定右房圧</td>
-          <td><span class="tag-code">RAP</span> (eRAP)</td>
+          <td class="key-item">推定右房圧 / 推定肺動脈収縮期圧</td>
+          <td><span class="tag-code">RAP / PASP (TR-PG + RAP)</span></td>
           <td class="unit">mmHg</td>
-          <td>IVC径と虚脱率より 3 / 8 / 15 mmHg 自動算出</td>
-        </tr>
-        <tr>
-          <td>自動演算</td>
-          <td class="key-item">推定肺動脈収縮期圧</td>
-          <td><span class="tag-code">PASP</span> (TR-PG + RAP)</td>
-          <td class="unit">mmHg</td>
-          <td>&gt; 35〜40 mmHg で肺高血圧症疑い</td>
-        </tr>
-        <tr>
-          <td>予備バックアップ</td>
-          <td>肺動脈弁拡張末期逆流速度</td>
-          <td><span class="tag-code">PR end-diastolic vel</span></td>
-          <td class="unit">m/s</td>
-          <td>TR描出不良時の推定肺動脈拡張期圧 (PADP) 算出用</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="table-container">
-    <h2>5. 📏 大血管・心膜腔計測</h2>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 16%;">計測部位</th>
-          <th style="width: 24%;">SR連携推奨項目</th>
-          <th style="width: 24%;">英語表記 / DICOMタグ</th>
-          <th style="width: 8%;">単位</th>
-          <th style="width: 28%;">臨床的意義・拡大基準</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>大動脈基部</td>
-          <td>大動脈弁輪径</td>
-          <td><span class="tag-code">Ao Annulus</span></td>
-          <td class="unit">mm</td>
-          <td>TAVI / 人工弁サイズ選択</td>
+          <td>RAP: 3/8/15 mmHg, PASP &gt; 35〜40 mmHg で肺高血圧</td>
         </tr>
         <tr>
           <td>大動脈基部</td>
-          <td>バルサルバ洞径</td>
-          <td><span class="tag-code">Sinus of Valsalva</span></td>
+          <td>弁輪 / Valsalva / STJ / 上行径</td>
+          <td><span class="tag-code">Ao Annulus/Sinus/STJ/Asc</span></td>
           <td class="unit">mm</td>
-          <td>&gt; 40 mm で拡大 (大動脈基部拡張症)</td>
-        </tr>
-        <tr>
-          <td>大動脈基部</td>
-          <td>洞管接合部径</td>
-          <td><span class="tag-code">ST Junction</span></td>
-          <td class="unit">mm</td>
-          <td>上行大動脈瘤・解離好発部</td>
-        </tr>
-        <tr>
-          <td>大動脈基部</td>
-          <td>上行大動脈径</td>
-          <td><span class="tag-code">Ascending Aorta</span></td>
-          <td class="unit">mm</td>
-          <td>&gt; 40 mm で拡大 (≧ 50mm 手術検討)</td>
+          <td>Valsalva / 上行 &gt; 40 mm で拡大 (≧ 50mm 手術検討)</td>
         </tr>
         <tr>
           <td>心膜腔</td>
@@ -635,20 +665,21 @@
     </table>
   </div>
 
-  <!-- Operational Tips & System Design -->
-  <div class="table-container" style="margin-top: 15px;">
+  <!-- Operational & System Engineering -->
+  <div class="table-container" style="margin-top: 10px;">
     <h2>💡 現場でのSR連携 運用・システム設計チェックポイント</h2>
     <ul class="tips-list">
-      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS 等）を選択して計測すること。</li>
-      <li><strong>Biplaneペアリング:</strong> 左室容積・左房容積（LAVI）は、四腔像（A4C）と二腔像（A2C）の両方を同一検査内で測定完了することで、SR上で1つのBiplane容積として統合出力される。</li>
-      <li><strong>TR描出不良時のPRバックアップ:</strong> TRが得られない場合はPR end-diastolic velを記録し、肺動脈圧推定の欠損を防ぐ。</li>
+      <li><strong>計測ラベルの選択厳守:</strong> フリーキャリパーではなく、必ず装置内蔵の専用ラベル（例: Ao Diam, MV E, Sep e', LARS, RVOT diam, PISA 等）を選択して計測すること。</li>
+      <li><strong>シャント率 (Qp/Qs) のペアリング:</strong> RVOT径・RVOT VTI、および LVOT径・LVOT VTI の4項目が揃って初めてQp/Qsが完全自動算出される。</li>
+      <li><strong>肺血管抵抗 (PVR) の自動計算:</strong> TR Vmax と RVOT VTI が測定されていれば、レポートシステム側でWood単位を自動計算可能。</li>
+      <li><strong>全弁逆流定量の完全網羅:</strong> AR/MR/TR/PRのVC幅・PISA・PHT・血流逆転波形をSR連携し、弁膜症重症度を客観的数値で完全担保する。</li>
       <li><strong>単位系スケーリングの整合性:</strong> エコー機側の出力単位（cm/s ⇄ m/s、mL ⇄ L）とレポートシステム側の受信単位の整合性を結合テストで必ず照合すること。</li>
       <li><strong>複数計測の代表値採用ルール:</strong> 不整脈や連続波ドプラ等で複数回計測した場合、レポート側で「平均値（Average）」を採用する設定に固定することを推奨する。</li>
     </ul>
   </div>
 
   <div class="footer-note">
-    心エコー検査 DICOM SR連携仕様書 / 発行日: 2026年9月 / ガイドライン準拠: ASE 2025 / EACVI / 日本心エコー図学会 (JSE)
+    心エコー検査 DICOM SR連携仕様書 (完全版) / 発行日: 2026年9月 / ガイドライン準拠: ASE 2025 / EACVI / 日本心エコー図学会 (JSE)
   </div>
 </div>
 
