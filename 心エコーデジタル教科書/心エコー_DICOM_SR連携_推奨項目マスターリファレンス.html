@@ -367,6 +367,13 @@
           <td>低流量判定 (&lt;35 mL/m²: LF-LG AS, 低拍出状態)</td>
         </tr>
         <tr>
+          <td>ドプラ / CW</td>
+          <td class="key-item">HOCM流出道圧較差 (安静時/負荷時)</td>
+          <td><span class="tag-code">LVOT Peak PG (Rest / Prov)</span></td>
+          <td class="unit">mmHg</td>
+          <td>安静時≧30 (閉塞), Valsalva/負荷時≧50 (外科切除/アブレーション)</td>
+        </tr>
+        <tr>
           <td>TVI (流入血流)</td>
           <td>E波 / A波最高速度 / E/A比</td>
           <td><span class="tag-code">MV E / MV A / E/A</span></td>
@@ -393,6 +400,13 @@
           <td><span class="tag-code">LAVI</span></td>
           <td class="unit">mL/m²</td>
           <td>慢性左房圧上昇 (&gt; 34 mL/m² で拡大陽性)</td>
+        </tr>
+        <tr>
+          <td>PW ドプラ</td>
+          <td class="key-item">左心耳駆出血流速度 (LAA血栓評価)</td>
+          <td><span class="tag-code">LAA Peak Velocity</span></td>
+          <td class="unit">cm/s</td>
+          <td>&lt; 20〜25 cm/s で血栓形成高リスク (AFアブレーション/DC前必須)</td>
         </tr>
         <tr>
           <td>MR連続波 CW</td>
@@ -453,6 +467,20 @@
           <td><span class="tag-code">AV AcT / (AcT / ET)</span></td>
           <td class="unit">ms, -</td>
           <td>重症: AcT ≧ 100 ms, AcT/ET &gt; 0.35 (弁開放遅延)</td>
+        </tr>
+        <tr>
+          <td>人工弁評価 (PPM)</td>
+          <td class="key-item">人工弁有効弁口面積係数 (PPM判定)</td>
+          <td><span class="tag-code">Prosthetic EOAi</span></td>
+          <td class="unit">cm²/m²</td>
+          <td>重度PPM: ≦ 0.65, 中等度PPM: ≦ 0.85 (肥満時: ≦0.55/0.70)</td>
+        </tr>
+        <tr>
+          <td>人工弁評価</td>
+          <td class="key-item">人工弁 DVI / 加速時間 (AT)</td>
+          <td><span class="tag-code">Prosthetic DVI / AT</span></td>
+          <td class="unit">-, ms</td>
+          <td>DVI &lt; 0.30, AT &gt; 100 ms で人工弁狭窄・機能不全疑い</td>
         </tr>
         <tr>
           <td>僧帽弁狭窄 MS</td>
@@ -687,6 +715,13 @@
           <td>10×(TR Vmax/RVOT VTI)+0.16 (正常&lt;2.0, &gt;3.0 前毛細管性PH)</td>
         </tr>
         <tr>
+          <td>肺動脈血流 PW</td>
+          <td class="key-item">RVOT加速時間 / 収縮中期ノッチ</td>
+          <td><span class="tag-code">RVOT AcT / Mid-systolic notch</span></td>
+          <td class="unit">ms, -</td>
+          <td>AcT &lt; 100 ms または収縮中期ノッチ出現でPVR著増・肺高血圧確定</td>
+        </tr>
+        <tr>
           <td>右室PA連関</td>
           <td class="key-item">TAPSE / PASP 比 (カップリング)</td>
           <td><span class="tag-code">TAPSE/PASP ratio</span></td>
@@ -699,6 +734,20 @@
           <td><span class="tag-code">TAPSE / RV s' / RV FAC</span></td>
           <td class="unit">mm, cm/s, %</td>
           <td>TAPSE&lt;17mm, s'&lt;9.5cm/s, FAC&lt;35% で右室機能低下</td>
+        </tr>
+        <tr>
+          <td>右室形態・壁厚</td>
+          <td class="key-item">右室前壁厚 (RVWT)</td>
+          <td><span class="tag-code">RVWT (Diastole)</span></td>
+          <td class="unit">mm</td>
+          <td>≧ 5.0 mm で右室肥大 (RVH) 確定 (慢性圧負荷)</td>
+        </tr>
+        <tr>
+          <td>右房容積</td>
+          <td class="key-item">右房容積係数 (RAVI)</td>
+          <td><span class="tag-code">RAVI (RA Volume Index)</span></td>
+          <td class="unit">mL/m²</td>
+          <td>&gt; 30 mL/m² (男) / &gt; 28 mL/m² (女) で右房拡大・右心不全</td>
         </tr>
         <tr>
           <td>右室心筋機能</td>
@@ -729,11 +778,11 @@
           <td>Valsalva / 上行 &gt; 40 mm で拡大 (≧ 50mm 手術検討)</td>
         </tr>
         <tr>
-          <td>心膜腔</td>
-          <td>心嚢液深度 (拡張末期)</td>
-          <td><span class="tag-code">Pericardial Effusion Depth</span></td>
-          <td class="unit">mm</td>
-          <td>少量 &lt;10mm, 中等量 10-20mm, 大量 &gt;20mm</td>
+          <td>心膜腔・タンポナーデ</td>
+          <td class="key-item">心嚢液深度 / 僧帽弁流入呼吸変動</td>
+          <td><span class="tag-code">PE Depth / MV Respiratory Var</span></td>
+          <td class="unit">mm, %</td>
+          <td>液貯留量評価。吸気時にMV E波 &gt; 25% 低下で心タンポナーデ・収縮性心膜炎示唆</td>
         </tr>
       </tbody>
     </table>
@@ -741,13 +790,13 @@
 
   <!-- Operational & System Engineering -->
   <div class="table-container" style="margin-top: 6px;">
-    <h2>💡 現場でのSR連携 運用・システム設計チェックポイント</h2>
+    <h2>💡 現場でのSR連携 運用・システム設計チェックポイント（鬼査読反映）</h2>
     <ul class="tips-list">
-      <li><strong>ストレイン解析のベンダー独立性:</strong> GE (EchoPAC), Philips (AutoSTRAIN), Canon (Wall Motion Tracking) 等でGLSやBulls-eyeのタグ定義が異なるため、DICOM SRのTID 5200 User-defined strainタグのマッピングを必ず確認すること。</li>
-      <li><strong>CTRCD心毒性監視のベースライン連携:</strong> 過去のベースラインGLSと比較し、相対低下率 (Baseline - Current)/Baseline &gt; 15% を自動算出するアラートロジックをレポートシステムへ実装すること。</li>
-      <li><strong>心アミロイドーシス Apical Sparing の自動算出:</strong> 心尖部（4セグメント）平均歪み ÷ (基部6セグメント + 中部6セグメント平均歪み) &gt; 1.0 のフラグ付けで特異的検出を自動化。</li>
-      <li><strong>弁狭窄・逆流・血行動態の整合性:</strong> LVOT/RVOTペアリング（Qp/Qs）、TR Vmax＋RVOT VTI（PVR）、連続の式（AVA/MVA/TVA）がワンストップで欠損なく連動するプリセットを固定する。</li>
-      <li><strong>単位系スケーリング整合性:</strong> cm/s ⇄ m/s、mL ⇄ L のスケールバグを結合テストで排除し、不整脈時は複数心拍平均 (Average) を採用すること。</li>
+      <li><strong>ストレイン解析のベンダー独立性とPrivate Tagマッピング:</strong> GE (EchoPAC), Philips (AutoSTRAIN), Canon (Wall Motion Tracking) 等でGLSやBulls-eyeのタグ定義（Private Tag）が異なるため、DICOM SR TID 5200 User-defined strainタグとのマッピング辞書を構築すること。</li>
+      <li><strong>CTRCD心毒性監視の複合自動判定:</strong> 過去のベースラインGLSと比較し、相対低下率 (Baseline - Current)/Baseline &gt; 15% をアラート表示。あわせてLVEF 10%以上の低下かつ50%未満の症候性心毒性との複合判定を自動化すること。</li>
+      <li><strong>心アミロイドーシス Apical Sparing の自動算出:</strong> 心尖部（4セグメント）平均歪み ÷ (基部6セグメント + 中部6セグメント平均歪み) &gt; 1.0 および LVEF/|GLS| &gt; 4.1 の同時フラグ付けで特異的検出を自動化。</li>
+      <li><strong>先進血行動態の例外処理（PS合併マスク）:</strong> Abbasの式によるPVR自動計算は、肺動脈弁狭窄（PS）合併時およびTR Vmax欠損時には不正確となるため、システム側で自動計算をマスク（除外）する条件分岐を設けること。</li>
+      <li><strong>単位系スケーリング整合性:</strong> cm/s ⇄ m/s、mL ⇄ L のスケールバグを結合テストで排除し、不整脈（心房細動等）時は複数心拍平均（Average）を採用すること。</li>
     </ul>
   </div>
 

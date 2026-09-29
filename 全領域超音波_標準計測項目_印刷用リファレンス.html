@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>超音波検査 全領域 標準計測項目・基準値＆小児Zスコア・心エコーレポート 完全リファレンス</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    color: #1a202c;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    /* 読みやすい大きな文字サイズ設定 */
+    font-size: 11.5pt;
+    line-height: 1.5;
+  }
+  .header {
+    border-bottom: 2.5px solid #2b6cb0;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  h1 {
+    font-size: 16pt;
+    margin: 0;
+    color: #2b6cb0;
+    font-weight: bold;
+  }
+  .sub-title {
+    font-size: 10pt;
+    color: #4a5568;
+    text-align: right;
+    font-weight: 500;
+  }
+  .section-title {
+    background-color: #ebf8ff;
+    border-left: 5px solid #3182ce;
+    padding: 5px 10px;
+    margin: 14px 0 8px 0;
+    font-size: 13pt;
+    font-weight: bold;
+    color: #2b6cb0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sub-section-title {
+    font-size: 11.5pt;
+    font-weight: bold;
+    color: #2d3748;
+    margin: 10px 0 5px 0;
+    border-bottom: 1.5px dashed #cbd5e0;
+    padding-bottom: 3px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 10.5pt;
+  }
+  th, td {
+    border: 1.5px solid #a0aec0;
+    padding: 6px 8px;
+    vertical-align: middle;
+  }
+  th {
+    background-color: #edf2f7;
+    color: #1a202c;
+    font-weight: bold;
+    text-align: center;
+    font-size: 11pt;
+  }
+  tr:nth-child(even) td {
+    background-color: #f7fafc;
+  }
+  .formula-card {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+  .formula-title {
+    font-weight: bold;
+    color: #2b6cb0;
+    font-size: 12pt;
+    margin-bottom: 4px;
+  }
+  .formula-text {
+    font-family: "Courier New", Consolas, monospace;
+    font-size: 12pt;
+    font-weight: bold;
+    background: #e2e8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    color: #1a202c;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 9.5pt;
+    font-weight: bold;
+  }
+  .badge-danger { background-color: #fed7d7; color: #9b2c2c; }
+  .badge-primary { background-color: #e2e8f0; color: #2d3748; }
+  .highlight { font-weight: bold; color: #c53030; }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  .bold { font-weight: bold; }
+  
+  /* レポート枠デザイン（ゆったり見やすいサイズ） */
+  .report-box {
+    border: 2px solid #2b6cb0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+  }
+  .report-header {
+    text-align: center;
+    border-bottom: 2px solid #2b6cb0;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14pt;
+    color: #2b6cb0;
+  }
+  .report-row {
+    margin-bottom: 8px;
+    font-size: 11pt;
+  }
+  .report-field {
+    border-bottom: 1.5px solid #4a5568;
+    display: inline-block;
+    min-width: 60px;
+    height: 16px;
+    margin: 0 4px;
+  }
+  .report-section {
+    background: #ebf8ff;
+    font-weight: bold;
+    padding: 4px 8px;
+    margin: 10px 0 6px 0;
+    font-size: 11.5pt;
+    color: #2b6cb0;
+    border-left: 4px solid #3182ce;
+  }
+  
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+  @media screen {
+    body {
+      max-width: 210mm;
+      margin: 20px auto;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      background: white;
+    }
+    .print-btn-bar {
+      position: sticky;
+      top: 10px;
+      margin-bottom: 20px;
+      background: #2b6cb0;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .print-btn {
+      background: white;
+      color: #2b6cb0;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14pt;
+    }
+    .print-btn:hover { background: #edf2f7; }
+    .page-break {
+      border-top: 3px dashed #a0aec0;
+      margin: 30px 0;
+      position: relative;
+    }
+    .page-break::after {
+      content: "▼ 次のページ (PAGE BREAK)";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #edf2f7;
+      padding: 2px 14px;
+      font-size: 11pt;
+      font-weight: bold;
+      color: #4a5568;
+      border-radius: 4px;
+    }
+  }
+  @media print {
+    .print-btn-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-btn-bar">
+  <div><strong style="font-size: 14pt;">🖨️ 超音波検査 大文字・超高視認性プリント版</strong>（全8ページ・ゆったりA4設計）</div>
+  <button class="print-btn" onclick="window.print()">今すぐ印刷する（Ctrl + P）</button>
+</div>
+
+<!-- ==================== PAGE 1: 小児Zスコア計算式・数理モデル ==================== -->
+<div class="header">
+  <div>
+    <h1>小児心エコー Zスコア（Z-score）計算式・数理モデル</h1>
+  </div>
+  <div class="sub-title">
+    準拠: Boston / JPIC (Kobayashi) / NCCHD<br>
+    <strong>PAGE 1</strong>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>📐 1. Zスコアの基本統計原理 ＆ BSA計算式</span>
+</div>
+
+<div class="formula-card">
+  <div class="formula-title">■ Zスコア 基本公式</div>
+  <div style="font-size: 11pt; margin-bottom: 4px;">
+    小児は体格変動が大きいため絶対値ではなく、同体格児の平均からの乖離をSD（標準偏差）単位で評価します：
+  </div>
+  <div class="formula-text">Z = ( 実測値 － 体格予測平均値 y^ ) ÷ 予測標準偏差 (SD)</div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Zスコア範囲</th>
+      <th style="width: 25%;">統計的割合</th>
+      <th style="width: 50%;">臨床的判定・アクション</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center bold">Z = 0</td>
+      <td class="text-center">50%（中央値）</td>
+      <td>同体格児の完全な平均値</td>
+    </tr>
+    <tr>
+      <td class="text-center bold" style="color: #276749; font-size: 12pt;">-2.0 ≤ Z ≤ +2.0</td>
+      <td class="text-center">約 95.4%</td>
+      <td><b>正常基準範囲（健常発育）</b></td>
+    </tr>
+    <tr>
+      <td class="text-center bold" style="color: #c05621; font-size: 12pt;">|Z| &gt; 2.0</td>
+      <td class="text-center">約 4.6%</td>
+      <td>統計的異常域（低形成・拡大・壁肥厚の疑い）</td>
+    </tr>
+    <tr>
+      <td class="text-center bold highlight" style="font-size: 12pt;">|Z| &gt; 3.0</td>
+      <td class="text-center">約 99.7%外側</td>
+      <td><b>明らかな病的大小異常（要精査・治療介入）</b></td>
+    </tr>
+    <tr>
+      <td class="text-center bold highlight" style="font-size: 12pt;">Z &lt; -4.0 / Z &gt; +4.0</td>
+      <td class="text-center">極度の偏り</td>
+      <td>重症低形成（単心室ルート考慮）/ 巨大心拡大</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="sub-section-title">■ 体表面積（BSA：m²）算出の公式（小児標準）</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 30%;">計算式名</th>
+      <th style="width: 70%;">計算公式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Haycock の式<br><small style="color: #2b6cb0;">（小児国際標準・推奨）</small></b></td>
+      <td><span class="formula-text">BSA = 0.024265 × 身長(cm)^0.3964 × 体重(kg)^0.5378</span></td>
+    </tr>
+    <tr>
+      <td><b>Mosteller の式<br><small>（手計算・簡便式）</small></b></td>
+      <td><span class="formula-text">BSA = √[ 身長(cm) × 体重(kg) ÷ 3600 ]</span></td>
+    </tr>
+    <tr>
+      <td><b>Fujimoto（藤本）式<br><small>（日本人小児用）</small></b></td>
+      <td><span class="formula-text">BSA = 0.01792 × 身長(cm)^0.425 × 体重(kg)^0.525</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="sub-section-title">■ 主要な3大数理モデル（装置内蔵の仕組み）</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 28%;">モデル名</th>
+      <th style="width: 72%;">計算式と特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>① Boston 実空間モデル<br>(Pettersen 2008)</b></td>
+      <td>
+        <span class="formula-text">y^ = β₁ · BSA^β₂</span> ｜ <span class="formula-text">Z = (実測値 y － y^) ÷ √MSE</span><br>
+        例) AOD(バルサルバ洞): <b>Z = [ AOD(cm) － 1.4166·BSA^0.4682 ] ÷ 0.1417</b>
+      </td>
+    </tr>
+    <tr>
+      <td><b>② Boston 自然対数モデル<br>(Colan / Sluysmans)</b></td>
+      <td>
+        <span class="formula-text">ln(y^) = a + b·ln(BSA)</span> ｜ <span class="formula-text">Z = [ ln(y) － ln(y^) ] ÷ SD_ln</span><br>
+        成長に伴うばらつき（異分散性）を解消し、正規分布へ近似。
+      </td>
+    </tr>
+    <tr>
+      <td><b>③ 日本人基準モデル<br>(Kobayashi式 / 成育)</b></td>
+      <td>
+        日本人多施設共同研究データ（RAISE Study等）。<br>
+        <b>川崎病の冠動脈病変判定における国内統一絶対基準。</b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 2: 小児Zスコア臨床適応 ＆ 心腔基準値 ==================== -->
+<div class="header">
+  <div>
+    <h1>小児心エコー Zスコア臨床適応 ＆ 体格別基準値</h1>
+  </div>
+  <div class="sub-title">
+    準拠: ASE 2024 Pediatric / 日本小児循環器学会<br>
+    <strong>PAGE 2</strong>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>📋 1. 冠動脈以外の主要計測部位とZスコア臨床適応</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">計測部位</th>
+      <th style="width: 30%;">主な計測箇所</th>
+      <th style="width: 45%;">臨床適応・診断カットオフ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>大動脈基部・弓部</b></td>
+      <td>弁輪、バルサルバ洞(AOD)、STJ、上行、弓部、峡部</td>
+      <td>マルファン等の基部拡大（Z&gt;+2〜+3）、大動脈縮窄(CoA)峡部低形成評価</td>
+    </tr>
+    <tr>
+      <td><b>肺動脈系</b></td>
+      <td>肺動脈弁輪、主肺動脈(MPA)、左右末梢(RPA/LPA)</td>
+      <td><b>ファロー四徴症(TOF)</b>の弁温存可否（弁輪 <span class="highlight">Z &lt; -2〜-3</span> で経弁輪パッチ考慮）</td>
+    </tr>
+    <tr>
+      <td><b>房室弁</b></td>
+      <td>僧帽弁弁輪、三尖弁弁輪</td>
+      <td>HLHS・単心室での弁低形成、Ebstein奇形、二心室修復境界例判定</td>
+    </tr>
+    <tr>
+      <td><b>心室内腔</b></td>
+      <td>左室拡張末期径(LVDd)、収縮末期径(LVDs)</td>
+      <td><b>DCM(拡張型心筋症)</b>拡大判定（<span class="highlight">Z &gt; +2.0</span>）、左室低形成判定（<span class="highlight">Z &lt; -3〜-4</span>）</td>
+    </tr>
+    <tr>
+      <td><b>心室壁厚</b></td>
+      <td>心室中隔厚(IVSTd)、後壁厚(PWTd)</td>
+      <td><b>HCM(肥大型心筋症)</b>診断（<span class="highlight">Z &gt; +2.0〜+3.0</span>）、糖尿病母体児の一過性肥厚</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">
+  <span>👶 2. 体格（BSA / 体重）別 心腔・大血管径の正常基準値（平均値 ＆ ±2SD）</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 26%;">計測項目</th>
+      <th style="width: 18%;">新生児<br>(0.2m² / 3kg)</th>
+      <th style="width: 18%;">乳幼児<br>(0.5m² / 10kg)</th>
+      <th style="width: 18%;">学童期<br>(1.0m² / 30kg)</th>
+      <th style="width: 14%;">青年期<br>(1.5m² / 50kg)</th>
+      <th style="width: 6%;">単位</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>左室拡張末期径 (LVDd)</b></td>
+      <td class="text-center"><b>17</b> (14〜20)</td>
+      <td class="text-center"><b>27</b> (23〜31)</td>
+      <td class="text-center"><b>38</b> (33〜43)</td>
+      <td class="text-center"><b>46</b> (40〜52)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>左室収縮末期径 (LVDs)</b></td>
+      <td class="text-center"><b>11</b> (9〜13)</td>
+      <td class="text-center"><b>17</b> (14〜20)</td>
+      <td class="text-center"><b>24</b> (20〜28)</td>
+      <td class="text-center"><b>29</b> (24〜34)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>心室中隔壁厚 (IVSTd)</b></td>
+      <td class="text-center"><b>3.0</b> (2.0〜4.0)</td>
+      <td class="text-center"><b>4.5</b> (3.5〜5.5)</td>
+      <td class="text-center"><b>6.0</b> (4.8〜7.2)</td>
+      <td class="text-center"><b>7.5</b> (6.0〜9.0)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>左室後壁厚 (PWTd)</b></td>
+      <td class="text-center"><b>3.0</b> (2.0〜4.0)</td>
+      <td class="text-center"><b>4.5</b> (3.5〜5.5)</td>
+      <td class="text-center"><b>6.0</b> (4.8〜7.2)</td>
+      <td class="text-center"><b>7.5</b> (6.0〜9.0)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>大動脈弁輪径 (Ao Annulus)</b></td>
+      <td class="text-center"><b>6.5</b> (5.5〜7.5)</td>
+      <td class="text-center"><b>11.0</b> (9.5〜12.5)</td>
+      <td class="text-center"><b>15.5</b> (13.5〜17.5)</td>
+      <td class="text-center"><b>19.0</b> (17.0〜21.0)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>左房前後径 (LAD)</b></td>
+      <td class="text-center"><b>11</b> (9〜13)</td>
+      <td class="text-center"><b>18</b> (15〜21)</td>
+      <td class="text-center"><b>25</b> (21〜29)</td>
+      <td class="text-center"><b>31</b> (26〜36)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>右室基部径 (RV Base)</b></td>
+      <td class="text-center"><b>12</b> (10〜14)</td>
+      <td class="text-center"><b>19</b> (16〜22)</td>
+      <td class="text-center"><b>27</b> (23〜31)</td>
+      <td class="text-center"><b>34</b> (29〜39)</td>
+      <td class="text-center">mm</td>
+    </tr>
+    <tr>
+      <td><b>肺動脈弁輪径 (PV Annulus)</b></td>
+      <td class="text-center"><b>7.0</b> (6.0〜8.0)</td>
+      <td class="text-center"><b>12.0</b> (10.5〜13.5)</td>
+      <td class="text-center"><b>17.0</b> (15.0〜19.0)</td>
+      <td class="text-center"><b>21.0</b> (18.5〜23.5)</td>
+      <td class="text-center">mm</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 3: 川崎病冠動脈 ＆ シャント ＆ 小児ドプラ ==================== -->
+<div class="header">
+  <div>
+    <h1>川崎病冠動脈Zスコア ＆ 先天性シャント比 ＆ 小児ドプラ</h1>
+  </div>
+  <div class="sub-title">
+    準拠: 日本小児循環器学会 (RAISE基準) / JCS ACHD<br>
+    <strong>PAGE 3</strong>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>🫀 1. 川崎病 冠動脈病変評価（日本小児循環器学会 / RAISE基準）</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">病変分類</th>
+      <th style="width: 22%;">Z-score 定義</th>
+      <th style="width: 18%;">絶対径の目安</th>
+      <th style="width: 35%;">臨床管理方針</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>正常 (Normal)</b></td>
+      <td class="text-center"><b>Z &lt; +2.0</b></td>
+      <td class="text-center">正常範囲内</td>
+      <td>冠動脈病変なし。定期フォロー</td>
+    </tr>
+    <tr>
+      <td><b>軽度拡大 (Dilation)</b></td>
+      <td class="text-center"><b>+2.0 ≤ Z &lt; +2.5</b></td>
+      <td class="text-center">境界域</td>
+      <td>一過性拡大の可能性。解熱後も追跡</td>
+    </tr>
+    <tr>
+      <td><b>小冠動脈瘤 (Small)</b></td>
+      <td class="text-center bold" style="color: #c05621; font-size: 11pt;">+2.5 ≤ Z &lt; +5.0</td>
+      <td class="text-center">&lt; 4.0 mm</td>
+      <td>冠動脈瘤確定診断。アスピリン継続</td>
+    </tr>
+    <tr>
+      <td><b>中等大冠動脈瘤 (Medium)</b></td>
+      <td class="text-center bold" style="color: #c53030; font-size: 11pt;">+5.0 ≤ Z &lt; +10.0</td>
+      <td class="text-center">&lt; 8.0 mm</td>
+      <td>抗血小板＋抗凝固薬併用考慮</td>
+    </tr>
+    <tr>
+      <td><b>巨大冠動脈瘤 (Giant)</b></td>
+      <td class="text-center bold highlight" style="font-size: 12pt;">Z ≥ +10.0 または 径≥8mm</td>
+      <td class="text-center bold highlight" style="font-size: 12pt;">≥ 8.0 mm</td>
+      <td><b>最重症。虚血・血栓閉塞リスク極大。厳重な抗凝固療法必須</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="formula-card">
+  <div class="formula-title">■ 正常冠動脈内径の平均目安（Kobayashi）</div>
+  <div style="font-size: 10.5pt; line-height: 1.6;">
+    ・<b>乳児 (&lt; 1歳 / 約8kg)</b> : #5 LMT 2.0mm ｜ #6 LAD 1.5mm ｜ #11 LCx 1.3mm ｜ #1 RCA 1.5mm<br>
+    ・<b>幼児 (1〜5歳 / 約15kg)</b>: #5 LMT 2.5mm ｜ #6 LAD 2.0mm ｜ #11 LCx 1.7mm ｜ #1 RCA 2.0mm<br>
+    ・<b>学童 (6〜10歳 / 約30kg)</b>: #5 LMT 3.0mm ｜ #6 LAD 2.4mm ｜ #11 LCx 2.0mm ｜ #1 RCA 2.4mm
+  </div>
+</div>
+
+<div class="section-title">
+  <span>🔄 2. 先天性短絡シャント計算（Qp/Qs）＆ 小児ドプラ心機能</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">評価項目</th>
+      <th style="width: 35%;">計算公式 / 正常基準値</th>
+      <th style="width: 40%;">臨床判定基準・管理方針</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>短絡シャント比<br>(Qp/Qs)</b></td>
+      <td>
+        <span class="formula-text" style="font-size: 10.5pt;">(RVOT断面積×VTI) ÷ (LVOT断面積×VTI)</span>
+      </td>
+      <td>
+        ・<b>&lt; 1.5:</b> 軽度短絡（経過観察）<br>
+        ・<span class="highlight" style="font-size: 11pt;">≥ 1.5: 有意短絡（手術・閉鎖適応）</span><br>
+        ・<span class="highlight" style="font-size: 11pt;">&lt; 1.0: アイゼンメンジャー（手術禁忌）</span>
+      </td>
+    </tr>
+    <tr>
+      <td><b>小児ドプラ弛緩能</b></td>
+      <td class="text-center">
+        <b>僧帽弁 E/A 比: 1.5 〜 2.5</b><br>
+        <b>減速時間 DT: 100 〜 160 ms</b>
+      </td>
+      <td>
+        小児は心筋弛緩能が優れるため成人より高値。<br>
+        高心拍時は安静・睡眠時計測推奨。
+      </td>
+    </tr>
+    <tr>
+      <td><b>小児組織ドプラ</b></td>
+      <td class="text-center">
+        <b>中隔 e' ≥ 10.0 / 側壁 e' ≥ 13.0 cm/s</b><br>
+        <b>平均 E/e' 比 ≤ 8.0</b>
+      </td>
+      <td>
+        成人基準(≤14)と異なり、<b>E/e' &gt; 10.0 で左室充満圧(LAP)上昇</b>を疑う。
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 4: 成人心臓超音波基準値 ==================== -->
+<div class="header">
+  <div>
+    <h1>成人心臓超音波（心エコー）基準値一覧</h1>
+  </div>
+  <div class="sub-title">
+    準拠: ASE/EACVI 2015 & ASE 2025 Diastolic Guidelines<br>
+    <strong>PAGE 4</strong>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>🫀 1. 左室形態・壁厚・収縮能（成人）</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">計測項目</th>
+      <th style="width: 12%;">略語</th>
+      <th style="width: 15%;">男性基準値</th>
+      <th style="width: 15%;">女性基準値</th>
+      <th style="width: 8%;">単位</th>
+      <th style="width: 25%;">判定基準・手技</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>左室拡張末期径</b></td>
+      <td class="text-center bold">LVDd</td>
+      <td class="text-center">42 〜 58</td>
+      <td class="text-center">38 〜 52</td>
+      <td class="text-center">mm</td>
+      <td>PLAX 拡張末期 (Q波開始時)</td>
+    </tr>
+    <tr>
+      <td><b>左室収縮末期径</b></td>
+      <td class="text-center bold">LVDs</td>
+      <td class="text-center">25 〜 40</td>
+      <td class="text-center">22 〜 35</td>
+      <td class="text-center">mm</td>
+      <td>PLAX 収縮末期 (最小内径時)</td>
+    </tr>
+    <tr>
+      <td><b>心室中隔壁厚</b></td>
+      <td class="text-center bold">IVSTd</td>
+      <td class="text-center">6 〜 10</td>
+      <td class="text-center">6 〜 9</td>
+      <td class="text-center">mm</td>
+      <td><span class="highlight">≥ 11 mm</span> で心筋肥大</td>
+    </tr>
+    <tr>
+      <td><b>左室後壁厚</b></td>
+      <td class="text-center bold">PWTd</td>
+      <td class="text-center">6 〜 10</td>
+      <td class="text-center">6 〜 9</td>
+      <td class="text-center">mm</td>
+      <td><span class="highlight">≥ 11 mm</span> で心筋肥大</td>
+    </tr>
+    <tr>
+      <td><b>心筋重量係数</b></td>
+      <td class="text-center bold">LVMI</td>
+      <td class="text-center">44 〜 115</td>
+      <td class="text-center">43 〜 95</td>
+      <td class="text-center">g/m²</td>
+      <td>体表面積補正（&gt;115男, &gt;95女 でLVH）</td>
+    </tr>
+    <tr>
+      <td><b>相対的壁厚</b></td>
+      <td class="text-center bold">RWT</td>
+      <td class="text-center">≤ 0.42</td>
+      <td class="text-center">≤ 0.42</td>
+      <td class="text-center">—</td>
+      <td>(2×PWTd)/LVDd（&gt;0.42で求心性）</td>
+    </tr>
+    <tr>
+      <td><b>左室駆出率 (Simpson)</b></td>
+      <td class="text-center bold">LVEF</td>
+      <td class="text-center bold" style="font-size: 11.5pt;">≥ 52 %</td>
+      <td class="text-center bold" style="font-size: 11.5pt;">≥ 54 %</td>
+      <td class="text-center">%</td>
+      <td>Biplane Simpson法</td>
+    </tr>
+    <tr>
+      <td><b>グローバル縦方向歪み</b></td>
+      <td class="text-center bold">GLS</td>
+      <td class="text-center bold" colspan="2" style="font-size: 11.5pt;">≤ -20.0 %</td>
+      <td class="text-center">%</td>
+      <td>-16%未満で明確な収縮低下</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">
+  <span>🌊 2. 左室拡張能（ASE 2025 最新改訂）＆ 右心系・大血管</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 28%;">計測項目</th>
+      <th style="width: 14%;">略語</th>
+      <th style="width: 20%;">正常基準値 / カットオフ</th>
+      <th style="width: 8%;">単位</th>
+      <th style="width: 30%;">臨床的意義</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>僧帽弁輪中隔側 e'</b></td>
+      <td class="text-center">Septal e'</td>
+      <td class="text-center bold">≥ 7.0</td>
+      <td class="text-center">cm/s</td>
+      <td>&lt; 7.0 で弛緩能障害</td>
+    </tr>
+    <tr>
+      <td><b>僧帽弁輪側壁側 e'</b></td>
+      <td class="text-center">Lateral e'</td>
+      <td class="text-center bold">≥ 10.0</td>
+      <td class="text-center">cm/s</td>
+      <td>&lt; 10.0 で弛緩能障害</td>
+    </tr>
+    <tr>
+      <td><b>平均 E/e' 比</b></td>
+      <td class="text-center bold">Mean E/e'</td>
+      <td class="text-center bold">≤ 14.0</td>
+      <td class="text-center">—</td>
+      <td><span class="highlight">&gt; 14.0</span> で左房圧(LAP)上昇</td>
+    </tr>
+    <tr>
+      <td><b>★ 左房リザーバーストレイン</b></td>
+      <td class="text-center bold" style="color: #b7791f; font-size: 11.5pt;">LARS</td>
+      <td class="text-center bold" style="color: #b7791f; font-size: 11.5pt;">&gt; 18.0 %</td>
+      <td class="text-center">%</td>
+      <td><b>ASE 2025新指標:</b> ≤18%で左房機能低下・LAP上昇</td>
+    </tr>
+    <tr>
+      <td><b>左房最大容積係数</b></td>
+      <td class="text-center">LAVi</td>
+      <td class="text-center bold">≤ 34.0</td>
+      <td class="text-center">mL/m²</td>
+      <td>&gt; 34 で左房拡大</td>
+    </tr>
+    <tr>
+      <td><b>三尖弁逆流最高速度</b></td>
+      <td class="text-center">TR Vmax</td>
+      <td class="text-center bold">≤ 2.8</td>
+      <td class="text-center">m/s</td>
+      <td>&gt; 2.8 で肺動脈圧上昇疑い</td>
+    </tr>
+    <tr>
+      <td><b>三尖弁輪移動距離</b></td>
+      <td class="text-center bold">TAPSE</td>
+      <td class="text-center bold">≥ 17</td>
+      <td class="text-center">mm</td>
+      <td>右室収縮能評価（&lt;17で低下）</td>
+    </tr>
+    <tr>
+      <td><b>下大静脈径 ＆ 虚脱率</b></td>
+      <td class="text-center">IVC</td>
+      <td class="text-center bold">≤ 21 mm ＋ &gt;50%虚脱</td>
+      <td class="text-center">mm</td>
+      <td>正常虚脱 ➔ RAP 3 mmHg推計</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 5: 腹部・血管・表在超音波 ==================== -->
+<div class="header">
+  <div>
+    <h1>腹部・血管・甲状腺・乳腺・表在超音波 基準値一覧</h1>
+  </div>
+  <div class="sub-title">
+    準拠: JSS 腹部・血管 / 日本透析医学会 / JABTS<br>
+    <strong>PAGE 5</strong>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>🩺 1. 腹部超音波 基準値一覧（JSS基準）</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">臓器</th>
+      <th style="width: 25%;">計測項目</th>
+      <th style="width: 22%;">正常基準値</th>
+      <th style="width: 33%;">臨床チェックポイント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><b>肝臓</b></td>
+      <td><b>肝腎コントラスト</b></td>
+      <td class="text-center">同等（陰性）</td>
+      <td>高エコー化＋深部減衰で脂肪肝</td>
+    </tr>
+    <tr>
+      <td><b>門脈本幹径</b></td>
+      <td class="text-center">≤ 12.0 mm</td>
+      <td><span class="highlight">&gt; 13 mm</span> で門脈圧亢進症を疑う</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>胆嚢・胆管</b></td>
+      <td><b>胆嚢壁厚</b></td>
+      <td class="text-center">≤ 3.0 mm</td>
+      <td><span class="highlight">&gt; 3.0 mm</span> で急性胆嚢炎・肥厚</td>
+    </tr>
+    <tr>
+      <td><b>総胆管径 (CBD)</b></td>
+      <td class="text-center">≤ 7.0 mm</td>
+      <td>&gt; 7 mmで拡張（高齢者・術後8mm許容）</td>
+    </tr>
+    <tr>
+      <td><b>膵臓</b></td>
+      <td><b>主膵管径 (MPD)</b></td>
+      <td class="text-center bold" style="font-size: 11pt;">≤ 2.0 mm</td>
+      <td><span class="highlight">&gt; 2.5〜3.0 mm</span> で主膵管拡張（精査）</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>腎臓</b></td>
+      <td><b>腎長径 / 実質厚</b></td>
+      <td class="text-center">9.0〜12.0cm / ≥15mm</td>
+      <td><span class="highlight">&lt; 8.5 cm</span> で慢性腎不全（萎縮腎）</td>
+    </tr>
+    <tr>
+      <td><b>腎動脈本幹 (RAR)</b></td>
+      <td class="text-center">PSV &lt; 150 (RAR &lt; 3.5)</td>
+      <td><span class="highlight">≥ 180〜200 cm/s または RAR &gt; 3.5</span> で狭窄</td>
+    </tr>
+    <tr>
+      <td><b>脾臓</b></td>
+      <td><b>脾長径</b></td>
+      <td class="text-center">≤ 10.0 cm</td>
+      <td><span class="highlight">&gt; 10.0 cm</span> で脾腫（門脈圧亢進等）</td>
+    </tr>
+    <tr>
+      <td><b>消化管</b></td>
+      <td><b>虫垂短軸外径</b></td>
+      <td class="text-center bold" style="font-size: 11pt;">≤ 6.0 mm</td>
+      <td><span class="highlight">&gt; 6.0 mm</span> ＋ 圧痛・糞石で急性虫垂炎</td>
+    </tr>
+    <tr>
+      <td><b>腹水</b></td>
+      <td><b>五味の計算公式</b></td>
+      <td class="text-center">(250 × D[cm]) － 250</td>
+      <td>モリソン窩最深径（D=2cm ➔ 500mL）</td>
+    </tr>
+    <tr>
+      <td><b>肥満評価</b></td>
+      <td><b>内臓脂肪厚 (VFT)</b></td>
+      <td class="text-center">男 &lt;40 / 女 &lt;30 mm</td>
+      <td><b>異常: 男≥50, 女≥40mm</b>（CT 100cm²相当）</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">
+  <span>🩸 2. 血管超音波 ＆ 🔬 表在超音波 基準値一覧</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">領域</th>
+      <th style="width: 25%;">計測項目</th>
+      <th style="width: 22%;">正常基準値</th>
+      <th style="width: 33%;">診断基準・手技</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><b>頸動脈</b></td>
+      <td><b>IMT / Max IMT</b></td>
+      <td class="text-center bold">≤ 1.0 mm</td>
+      <td>総頸動脈遠位壁。<span class="highlight">≥ 1.1 mm</span> でプラーク</td>
+    </tr>
+    <tr>
+      <td><b>ICA PSV (最高流速)</b></td>
+      <td class="text-center">&lt; 125 cm/s</td>
+      <td>125〜230:中等度 / <span class="highlight">&gt; 230:高度狭窄(≥70%)</span></td>
+    </tr>
+    <tr>
+      <td><b>下肢静脈</b></td>
+      <td><b>静脈圧迫性 (CUS法)</b></td>
+      <td class="text-center bold">完全虚脱（圧閉可能）</td>
+      <td>圧迫しても潰れない ➔ <span class="badge badge-danger">深部静脈血栓症 (DVT)</span></td>
+    </tr>
+    <tr>
+      <td><b>透析シャント</b></td>
+      <td><b>シャント血流量 (FV)</b></td>
+      <td class="text-center bold" style="font-size: 11pt;">400 〜 800 mL/min</td>
+      <td><b>&lt; 300〜400:</b> 低血流（狭窄） / <b>&gt; 1500:</b> 心不全</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><b>甲状腺</b></td>
+      <td><b>左右葉 厚み / 長径</b></td>
+      <td class="text-center">厚 10〜15 / 長 40〜50 mm</td>
+      <td>横断気管直交最大厚（<span class="highlight">&gt; 20 mm</span> で腫大）</td>
+    </tr>
+    <tr>
+      <td><b>峡部厚</b></td>
+      <td class="text-center">≤ 3.0 mm</td>
+      <td>気管前面。<span class="highlight">&gt; 4.0 mm</span> でびまん性腫大</td>
+    </tr>
+    <tr>
+      <td><b>乳腺</b></td>
+      <td><b>結節 縦横比 (D/W比)</b></td>
+      <td class="text-center bold">&lt; 0.7（良性傾向）</td>
+      <td>前後径/長径。<span class="highlight">≥ 0.7</span> は縦長（悪性・乳癌疑い）</td>
+    </tr>
+    <tr>
+      <td><b>表在リンパ節</b></td>
+      <td><b>長短径比 (L/S比)</b></td>
+      <td class="text-center bold">≥ 2.0（扁平・良性）</td>
+      <td><span class="highlight">&lt; 2.0</span> で球形化（悪性・転移疑い）</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 6: 成人用 心エコー報告書 ==================== -->
+<div class="header">
+  <div>
+    <h1>心臓超音波検査報告書（成人用・ASE 2025準拠）</h1>
+  </div>
+  <div class="sub-title">
+    検査室ワークシート ＆ 電子カルテ用<br>
+    <strong>PAGE 6</strong>
+  </div>
+</div>
+
+<div class="report-box">
+  <div class="report-header">心臓超音波検査報告書（成人用）</div>
+  
+  <div class="report-row">
+    ID: <span class="report-field" style="min-width: 110px;"></span> 
+    氏名: <span class="report-field" style="min-width: 140px;"></span> 
+    年齢: <span class="report-field" style="min-width: 40px;"></span>歳 
+    性別: [ 男 / 女 ] 
+    BSA: <span class="report-field" style="min-width: 50px;"></span>m² 
+    BP: <span class="report-field" style="min-width: 70px;"></span> 
+    HR: <span class="report-field" style="min-width: 45px;"></span>bpm
+  </div>
+
+  <div class="report-section">1. 左室形態・壁厚・収縮能 (LV Function)</div>
+  <div class="report-row">
+    ・LVDd  (左室拡張末期径) : <span class="report-field" style="min-width: 60px;"></span> mm （ Index: <span class="report-field" style="min-width: 60px;"></span> mm/m² / 正常: 男42-58, 女38-52 ）<br>
+    ・LVDs  (左室収縮末期径) : <span class="report-field" style="min-width: 60px;"></span> mm （ Index: <span class="report-field" style="min-width: 60px;"></span> mm/m² / 正常: 男25-40, 女22-35 ）<br>
+    ・IVSTd (心室中隔壁厚)   : <span class="report-field" style="min-width: 60px;"></span> mm （ 正常: 男 6-10 / 女 6-9 ）<br>
+    ・PWTd  (左室後壁厚)     : <span class="report-field" style="min-width: 60px;"></span> mm （ 正常: 男 6-10 / 女 6-9 ）<br>
+    ・LVEF  (Biplane Simpson): <span class="report-field" style="min-width: 60px;"></span> %  （ 正常: 男 ≥ 52 / 女 ≥ 54 ）<br>
+    ・GLS   (縦方向歪み)     : <span class="report-field" style="min-width: 60px;"></span> %  （ 正常: ≤ -20.0 ）<br>
+    ・壁運動異常 (RWMA)      : [ なし / あり （ 領域: <span class="report-field" style="min-width: 200px;"></span> ） ]
+  </div>
+
+  <div class="report-section">2. 左室拡張能 (ASE 2025改訂ガイドライン) ＆ 右心系</div>
+  <div class="report-row">
+    ・Septal e': <span class="report-field" style="min-width: 50px;"></span> cm/s ｜ Lateral e': <span class="report-field" style="min-width: 50px;"></span> cm/s ｜ Mean e': <span class="report-field" style="min-width: 50px;"></span> cm/s<br>
+    ・Mean E/e' 比: <span class="report-field" style="min-width: 50px;"></span> （ 正常: ≤ 14.0 ） ｜ E/A 比: <span class="report-field" style="min-width: 50px;"></span><br>
+    ・★ LARS (左房ストレイン): <span class="report-field" style="min-width: 50px;"></span> % （ 正常: &gt; 18.0% ） ｜ LAVi: <span class="report-field" style="min-width: 50px;"></span> mL/m²<br>
+    ・TR Vmax : <span class="report-field" style="min-width: 50px;"></span> m/s ｜ TAPSE: <span class="report-field" style="min-width: 50px;"></span> mm<br>
+    ・IVC 径  : <span class="report-field" style="min-width: 50px;"></span> mm ｜ 呼吸虚脱: [ &gt;50% / &lt;50% ] ➔ 推定RAP: <span class="report-field" style="min-width: 40px;"></span> mmHg<br>
+    ・[ 拡張能判定: 正常 (Normal) / Grade I (弛緩低下) / Grade II (偽正常) / Grade III (拘束型) ]
+  </div>
+
+  <div class="report-section">3. 弁膜症 (Valvular Disease)</div>
+  <div class="report-row">
+    ・僧帽弁 (MV): [ 正常 / MR （ 軽度 / 中等度 / 高度 ） ]<br>
+    ・大動脈弁(AV): [ 正常 / AR （ 軽度 / 中等度 / 高度 ） / AS （ Vmax: <span class="report-field"></span>m/s, AVA: <span class="report-field"></span>cm² ） ]<br>
+    ・三尖弁 (TV): [ 正常 / TR （ 軽度 / 中等度 / 高度 ） ]
+  </div>
+
+  <div class="report-section">4. 総合診断インプレッション (Impression)</div>
+  <div class="report-row" style="line-height: 1.8;">
+    1. 左室収縮能: [ 良好に保持 (LVEF <span class="report-field" style="min-width: 35px;"></span>%) / 軽度低下 / 中等度低下 / 高度低下 ]。<br>
+    2. 左室拡張能: ASE 2025基準で [ 正常 / Grade I / Grade II / Grade III ] です。<br>
+    3. 特記事項・所見: <span class="report-field" style="min-width: 350px;"></span>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 7: 小児用 ＆ POCUS 心エコー報告書 ==================== -->
+<div class="header">
+  <div>
+    <h1>小児心エコー（Z-score）＆ 緊急POCUS 報告書</h1>
+  </div>
+  <div class="sub-title">
+    検査室ワークシート ＆ 救急用<br>
+    <strong>PAGE 7</strong>
+  </div>
+</div>
+
+<!-- 小児用レポート -->
+<div class="report-box">
+  <div class="report-header">小児心臓超音波検査報告書（Z-score併記・川崎病対応）</div>
+  
+  <div class="report-row">
+    ID: <span class="report-field" style="min-width: 90px;"></span> 
+    氏名: <span class="report-field" style="min-width: 120px;"></span> 
+    日齢/月齢/年齢: <span class="report-field" style="min-width: 60px;"></span> 
+    性別: [ 男 / 女 ]<br>
+    身長: <span class="report-field" style="min-width: 45px;"></span>cm 
+    体重: <span class="report-field" style="min-width: 45px;"></span>kg 
+    BSA(Haycock): <span class="report-field" style="min-width: 50px;"></span>m² 
+    HR: <span class="report-field" style="min-width: 45px;"></span>bpm 
+    Situs: [ Solitus / Inversus ]
+  </div>
+
+  <div class="report-section">1. 心腔・大血管径 (Z-score評価)</div>
+  <div class="report-row">
+    ・LVDd  : <span class="report-field" style="min-width: 50px;"></span> mm （ Z-score: <span class="report-field" style="min-width: 50px;"></span> ） ｜ LVDs: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 50px;"></span> ）<br>
+    ・IVSTd : <span class="report-field" style="min-width: 50px;"></span> mm （ Z-score: <span class="report-field" style="min-width: 50px;"></span> ） ｜ PWTd: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 50px;"></span> ）<br>
+    ・Ao弁輪: <span class="report-field" style="min-width: 50px;"></span> mm （ Z-score: <span class="report-field" style="min-width: 50px;"></span> ） ｜ PV弁輪: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 50px;"></span> ）
+  </div>
+
+  <div class="report-section">2. 川崎病 冠動脈病変評価 (CAL Z-score: Kobayashi式)</div>
+  <div class="report-row">
+    ・#5 LMT : <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 45px;"></span> ） ｜ #6 LAD: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 45px;"></span> ）<br>
+    ・#11 LCx: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 45px;"></span> ） ｜ #1 RCA: <span class="report-field" style="min-width: 50px;"></span> mm （ Z: <span class="report-field" style="min-width: 45px;"></span> ）<br>
+    ・[ 冠動脈判定: 正常 (Z&lt;2) / 軽度拡大 (Z 2-2.5) / 小瘤 (Z 2.5-5) / 中等大瘤 (Z 5-10) / 巨大瘤 (Z≥10) ]
+  </div>
+
+  <div class="report-section">3. 短絡シャント ＆ 総合インプレッション</div>
+  <div class="report-row" style="line-height: 1.8;">
+    ・シャント: [ なし / ASD <span class="report-field"></span>mm / VSD <span class="report-field"></span>mm / PDA <span class="report-field"></span>mm ] ｜ Qp/Qs: <span class="report-field"></span><br>
+    ・<b>【インプレッション】</b>: 心腔サイズ [ 全心腔正常範囲 (Z±2以内) / 拡大 ] ｜ 冠動脈 [ 正常 / 瘤形成 ]
+  </div>
+</div>
+
+<!-- 緊急POCUSレポート -->
+<div class="report-box" style="margin-top: 10px;">
+  <div class="report-header" style="color: #c53030; border-color: #c53030;">緊急心エコー報告書（POCUS / FATE 1分速攻型）</div>
+  <div class="report-row" style="line-height: 1.7;">
+    ID: <span class="report-field" style="min-width: 90px;"></span> 氏名: <span class="report-field" style="min-width: 120px;"></span> 適応: [ ショック / 心停止 / 呼吸困難 / 胸痛 / 外傷 ]<br>
+    <b>① 心タンポナーデ :</b> [ 陰性 / 陽性 （ 液貯留 <span class="report-field" style="min-width: 35px;"></span>mm ＋ RA/RV虚脱あり ➔ <span class="highlight">超緊急!</span> ） ]<br>
+    <b>② 急性右心負荷(PE):</b> [ 陰性 / 陽性 （ RV/LV ≥ 1.0 ＋ D-shaped LV ＋ McConnell ➔ <span class="highlight">PE疑い!</span> ） ]<br>
+    <b>③ 左室収縮不全   :</b> [ 正常〜軽度 (Eyeball EF ≥45%) / 重度低下 (EF &lt;30% ➔ <span class="highlight">心原性ショック</span>) ]<br>
+    <b>④ IVC脱水/うっ血 :</b> [ 虚脱/脱水 (IVC&lt;15mm ＋ 虚脱&gt;50%) / 充盈/うっ血 (IVC&gt;21mm ＋ 虚脱&lt;50%) ]<br>
+    <b>⑤ 急性大動脈解離 :</b> [ 陰性 / 陽性 （ 上行Ao拡大 ＋ 内膜フラップあり ➔ <span class="highlight">Stanford A型解離!</span> ） ]<br>
+    <b>【緊急判定】:</b> [ 正常 / 心タンポナーデ / PE疑い / 心原性ショック / 低容量性ショック / 解離疑い ]<br>
+    <b>【推奨対応】:</b> [ 心外緊急呼出 / 緊急カテ / 造影CT / 輸液負荷 / 昇圧薬開始 ]
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== PAGE 8: 経食道心エコー (TEE) 報告書 ＆ ガイド ==================== -->
+<div class="header">
+  <div>
+    <h1>経食道心臓超音波検査（TEE）標準レポート用紙 ＆ ガイド</h1>
+  </div>
+  <div class="sub-title">
+    準拠: ASE/EACVI TEE Guidelines / 日本心臓超音波学会<br>
+    <strong>PAGE 8</strong>
+  </div>
+</div>
+
+<div class="report-box">
+  <div class="report-header" style="color: #2c5282;">経食道心臓超音波検査報告書（TEE Report）</div>
+  
+  <div class="report-row">
+    ID: <span class="report-field" style="min-width: 100px;"></span> 
+    氏名: <span class="report-field" style="min-width: 130px;"></span> 
+    年齢: <span class="report-field" style="min-width: 35px;"></span>歳 
+    性別: [ 男 / 女 ] 
+    義歯外し確認: [ 済 ] 
+    挿入: [ スムーズ / 困難 ]<br>
+    麻酔・鎮静: [ 咽頭キシロカインスプレー ] ｜ 鎮静薬: [ ミダゾラム <span class="report-field" style="min-width: 35px;"></span>mg / プロポフォール / なし ]<br>
+    検査適応: [ 左心耳血栓検索 / 感染性心内膜炎(IE) / 僧帽弁(MR/3D) / ASD・PFO術前 / 人工弁 / 解離 ]
+  </div>
+
+  <div class="report-section">1. 左心房・左心耳評価 (LA & LAA) ＆ 心房中隔</div>
+  <div class="report-row">
+    ・左心耳内血栓  : [ なし / あり （ 部位: <span class="report-field" style="min-width: 80px;"></span> 径: <span class="report-field" style="min-width: 40px;"></span>mm ） ]<br>
+    ・煙状エコー(SEC): [ なし / 軽度 / 中等度 / 高度(Sludge) ]<br>
+    ・LAA 空出血流速: <span class="report-field" style="min-width: 50px;"></span> cm/s （ &gt;40: 正常 / ≤20: 血栓ハイリスク ）<br>
+    ・LAA 形態 (3D) : [ Chicken wing / Cactus / Windsock / Cauliflower ]<br>
+    ・ASD / PFO     : [ なし / あり （ 欠損径: <span class="report-field" style="min-width: 60px;"></span>mm ） ] ｜ Bubbleテスト: [ 陰性 / 陽性 ]<br>
+    ・ASD 周囲Rim長 : AV rim <span class="report-field" style="min-width: 35px;"></span>mm ｜ IVC rim <span class="report-field" style="min-width: 35px;"></span>mm ｜ SVC rim <span class="report-field" style="min-width: 35px;"></span>mm
+  </div>
+
+  <div class="report-section">2. 僧帽弁 (MV: 2D & 3D) ＆ 感染性心内膜炎 (IE)</div>
+  <div class="report-row">
+    ・弁葉形態      : [ 正常 / Prolapse(逸脱) / Flail(浮遊) / 腱索断裂 / 穿孔 / 石灰化 ]<br>
+    ・病変部位 (3D) : [ A1 / A2 / A3 / P1 / P2 / P3 / 連合部 ]<br>
+    ・僧帽弁逆流(MR): [ なし / 軽度 / 中等度 / 重度 ] ｜ PISA EROA: <span class="report-field" style="min-width: 50px;"></span> cm²<br>
+    ・疣贅(Vegetation): [ なし / あり （ 部位: <span class="report-field" style="min-width: 80px;"></span> 径: <span class="report-field" style="min-width: 40px;"></span>mm 可動性:[有/無] ） ]<br>
+    ・膿瘍・解離    : [ なし / 弁輪部膿瘍あり / 大動脈解離あり （ Stanford A / B型 ） ]
+  </div>
+
+  <div class="report-section">3. TEE 総合診断インプレッション (Conclusion)</div>
+  <div class="report-row" style="line-height: 1.8;">
+    1. 左心耳 (LAA): [ 血栓認めず (流速: <span class="report-field" style="min-width: 40px;"></span>cm/s) / 左心耳内に血栓を認めます ]。<br>
+    2. 僧帽弁 (MV) : [ 正常形態 / <span class="report-field" style="min-width: 60px;"></span> の [ Prolapse / Flail ] による [ 軽・中・重度 ] MR ]。<br>
+    3. 特記事項    : <span class="report-field" style="min-width: 300px;"></span>
+  </div>
+</div>
+
+<div class="section-title">
+  <span>💡 経食道心エコー (TEE) 臨床判定カットオフ・クイックガイド</span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">評価項目</th>
+      <th style="width: 25%;">正常基準値 / カットオフ</th>
+      <th style="width: 50%;">臨床判定・脳塞栓リスク・外科的適応</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>LAA 空出血流速度</b></td>
+      <td class="text-center bold">正常 &gt; 40 cm/s</td>
+      <td><span class="highlight">≤ 20 cm/s で左心耳内うっ血・血栓形成高リスク</span></td>
+    </tr>
+    <tr>
+      <td><b>大動脈複合プラーク</b></td>
+      <td class="text-center bold">Grade 4 (≥4mm) / 5</td>
+      <td>厚さ ≥4mm または可動性(Mobile)は<b>絶対的塞栓源</b></td>
+    </tr>
+    <tr>
+      <td><b>ASD 経皮閉鎖適応</b></td>
+      <td class="text-center bold">周囲 Rim ≥ 5 mm</td>
+      <td>特に <b>IVC rim &lt; 5 mm</b> では経皮閉鎖困難（外科適応）</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
