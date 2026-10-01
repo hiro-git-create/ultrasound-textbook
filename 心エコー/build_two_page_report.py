@@ -347,18 +347,19 @@ def build_report():
     # 左側：セグメント記入表
     c_wma_l = t_wma.rows[1].cells[0]
     p_wl = c_wma_l.paragraphs[0]
-    p_wl.runs[0].font.size = Pt(7)
     p_wl.text = (
         "Basal:   1.Ant[  ]   2.Ant-Sept[  ]   3.Inf-Sept[  ]   4.Inf[  ]   5.Inf-Lat[  ]   6.Ant-Lat[  ]\n"
         "Mid:     7.Ant[  ]   8.Ant-Sept[  ]   9.Inf-Sept[  ]  10.Inf[  ]  11.Inf-Lat[  ]  12.Ant-Lat[  ]\n"
         "Apical: 13.Ant[  ]  14.Sept[  ]      15.Inf[  ]      16.Lat[  ]  17.Apex[  ]\n"
         "※添付のBull's-eye・4腔・2腔・長軸断面図を参照"
     )
+    if p_wl.runs:
+        p_wl.runs[0].font.size = Pt(7)
+
 
     # 右側：スコア定義
     c_wma_r = t_wma.rows[1].cells[1]
     p_wr = c_wma_r.paragraphs[0]
-    p_wr.runs[0].font.size = Pt(7)
     p_wr.text = (
         "1: Normal\n"
         "2: Mild Hypokinesis\n"
@@ -366,6 +367,9 @@ def build_report():
         "4: Severe Hypokinesis\n"
         "5: Akinesis / Dyskinesis"
     )
+    if p_wr.runs:
+        p_wr.runs[0].font.size = Pt(7)
+
     for c in [c_wma_l, c_wma_r]:
         set_cell_margins(c, top=40, bottom=40, left=50, right=50)
 

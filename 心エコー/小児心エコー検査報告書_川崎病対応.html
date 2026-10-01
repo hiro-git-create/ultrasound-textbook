@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小児心エコー検査報告書（川崎病・小児循環器対応 A4 1枚完結仕様・高密度バランス調整版）</title>
+<style>
+  :root {
+    --primary: #0284c7;        /* Sky 600 */
+    --primary-dark: #0369a1;   /* Sky 700 */
+    --primary-navy: #1e3a8a;   /* Blue 900 */
+    --primary-bg: #f0f9ff;     /* Sky 50 */
+    --text-main: #0f172a;      /* Slate 900 */
+    --text-sub: #475569;       /* Slate 600 */
+    --border-color: #cbd5e1;   /* Slate 300 */
+    --border-dark: #94a3b8;    /* Slate 400 */
+    --bg-gray: #f8fafc;        /* Slate 50 */
+    --accent-teal: #0d9488;    /* Teal 600 */
+    --danger: #ef4444;         /* Red 500 */
+    --warning: #f59e0b;        /* Amber 500 */
+    --success: #10b981;        /* Emerald 500 */
+    --purple: #8b5cf6;         /* Violet 500 */
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Yu Gothic", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: var(--text-main);
+    font-size: 9.8px;
+    line-height: 1.30;
+  }
+
+  /* ==========================================================================
+     Web 操作用ヘッダー & ダッシュボード
+     ========================================================================== */
+  .app-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 8px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0284c7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .app-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .app-title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #f8fafc;
+  }
+  .app-badge {
+    background: #0284c7;
+    color: #fff;
+    font-size: 9.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .quick-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.7);
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid #334155;
+    font-size: 10.5px;
+  }
+  .quick-item {
+    display: flex;
+    gap: 4px;
+  }
+  .quick-label { color: #94a3b8; }
+  .quick-val { font-weight: 700; color: #38bdf8; }
+
+  .header-actions {
+    display: flex;
+    gap: 6px;
+  }
+  .btn {
+    border: none;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+  }
+  .btn-print {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(2, 132, 199, 0.4);
+  }
+  .btn-print:hover { background: #0369a1; transform: translateY(-1px); }
+  .btn-case {
+    background: #334155;
+    color: #f1f5f9;
+  }
+  .btn-case:hover { background: #475569; color: #fff; }
+
+  /* 画面表示用ダッシュボード */
+  .dashboard-banner {
+    max-width: 214mm;
+    margin: 8px auto 6px auto;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1.3fr 1.2fr;
+    gap: 8px;
+    color: #fff;
+  }
+  .dash-card {
+    background: #0f172a;
+    padding: 5px 8px;
+    border-radius: 4px;
+    border-left: 3px solid #0284c7;
+  }
+  .dash-title {
+    font-size: 8.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+  .dash-main {
+    font-size: 12px;
+    font-weight: 800;
+    color: #f8fafc;
+  }
+  .dash-sub {
+    font-size: 8.5px;
+    color: #cbd5e1;
+  }
+
+  /* ==========================================================================
+     印刷用紙フレーム (A4縦・1枚完結仕様: 210mm × 297mm)
+     ========================================================================== */
+  .report-wrapper {
+    max-width: 214mm;
+    margin: 0 auto 20px auto;
+  }
+
+  .print-page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    padding: 6.0mm 8.5mm 5.0mm 8.5mm;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  /* テーブル & 入力パーツ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3.5px;
+  }
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 2.0px 4.0px;
+    font-size: 8.8px;
+    vertical-align: middle;
+  }
+  th {
+    background-color: var(--bg-gray);
+    font-weight: 600;
+    color: #334155;
+    text-align: left;
+  }
+  .sec-title {
+    background: #1e3a8a;
+    color: #ffffff;
+    padding: 2.5px 6px;
+    font-size: 9.2px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    border-left: 3.5px solid #38bdf8;
+    margin-top: 2px;
+    margin-bottom: 2.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sec-title-sub {
+    font-size: 7.8px;
+    color: #bae6fd;
+    font-weight: normal;
+  }
+
+  /* フォーム要素 */
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 8.8px;
+    color: var(--text-main);
+    padding: 0 1px;
+    outline: none;
+  }
+  input[type="number"] {
+    text-align: right;
+  }
+  input:focus, select:focus, textarea:focus {
+    background: #f0f9ff;
+    box-shadow: inset 0 0 0 1px #0284c7;
+    border-radius: 2px;
+  }
+  textarea {
+    resize: none;
+    line-height: 1.32;
+  }
+
+  /* 状態表示バッジ */
+  .badge {
+    display: inline-block;
+    padding: 0.5px 5px;
+    border-radius: 3px;
+    font-size: 7.8px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .badge-normal { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+  .badge-dilation { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+  .badge-small { background: #fed7aa; color: #9a3412; border: 1px solid #fdba74; }
+  .badge-medium { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+  .badge-giant { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; font-weight: 800; }
+
+  /* Zスコア強調 */
+  .z-val {
+    font-weight: bold;
+    font-family: Consolas, monospace;
+    font-size: 9.2px;
+    text-align: right;
+    display: block;
+  }
+  .z-normal { color: #15803d; }
+  .z-dilation { color: #b45309; }
+  .z-small { color: #c2410c; }
+  .z-medium { color: #b91c1c; }
+  .z-giant { color: #7e22ce; }
+
+  /* 2カラム並列 (心腔計測 & 弁膜症サマリー) */
+  .grid-2col {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+  .col-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 弁膜症ビジュアル重症度バー (参考画像準拠・完全再現) */
+  .valve-select {
+    width: 52px !important;
+    height: 16px;
+    font-size: 8.2px !important;
+    padding: 0 1px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 2px;
+    background: #fff !important;
+  }
+  .valve-gauge-bar {
+    display: flex;
+    height: 9.5px;
+    border-radius: 2px;
+    overflow: hidden;
+    font-size: 6.8px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 9.5px;
+    margin-top: 1px;
+    border: 1px solid #cbd5e1;
+  }
+  .gauge-none { flex: 1; background: #dcfce7; color: #166534; }
+  .gauge-mild { flex: 1; background: #fef9c3; color: #854d0e; }
+  .gauge-mod  { flex: 1; background: #fed7aa; color: #9a3412; }
+  .gauge-sev  { flex: 1; background: #fee2e2; color: #991b1b; }
+  .gauge-active {
+    box-shadow: inset 0 0 0 1.5px #0f172a;
+    font-weight: 900;
+    color: #0f172a;
+    text-decoration: underline;
+  }
+
+  /* ページヘッダー・フッター */
+  .page-header {
+    border-bottom: 2px solid #1e3a8a;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .hospital-name {
+    font-size: 9.8px;
+    color: var(--text-sub);
+    font-weight: 600;
+  }
+  .doc-title {
+    font-size: 13.8px;
+    font-weight: 800;
+    color: #1e3a8a;
+    letter-spacing: 0.5px;
+  }
+  .page-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2px;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7.5px;
+    color: #64748b;
+  }
+
+  /* 冠動脈スケールバー */
+  .z-legend-bar {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 7.5px;
+    margin-top: 1px;
+    margin-bottom: 2.5px;
+    padding: 1.5px 5px;
+    background: #f1f5f9;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* 印刷用スタイル (A4 1枚厳格収載) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    body {
+      background: none !important;
+      color: #000 !important;
+      padding: 0 !important;
+    }
+    .app-header, .dashboard-banner, .btn, .no-print {
+      display: none !important;
+    }
+    .report-wrapper {
+      margin: 0 !important;
+      max-width: none !important;
+    }
+    .print-page {
+      width: 210mm !important;
+      height: 297mm !important;
+      max-height: 297mm !important;
+      padding: 5.5mm 8.0mm 4.5mm 8.0mm !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+      page-break-inside: avoid !important;
+      page-break-after: avoid !important;
+    }
+    input, select, textarea {
+      color: #000 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Web 操作用ヘッダー -->
+<header class="app-header no-print">
+  <div class="app-brand">
+    <div class="app-title">小児心エコー検査報告書システム</div>
+    <span class="app-badge">A4 1枚完結・高密度バランス調整版</span>
+    <span class="app-version">JCS/JSPCCS 2020 準拠</span>
+  </div>
+
+  <div class="quick-bar">
+    <div class="quick-item"><span class="quick-label">BSA(Haycock):</span> <span class="quick-val" id="qb-bsa">0.464 m²</span></div>
+    <div class="quick-item"><span class="quick-label">最大冠動脈Z:</span> <span class="quick-val" id="qb-max-z">+4.10 (小動脈瘤)</span></div>
+    <div class="quick-item"><span class="quick-label">左室LVDd Z:</span> <span class="quick-val" id="qb-lvdd-z">+2.50 (拡大)</span></div>
+  </div>
+
+  <div class="header-actions">
+    <button class="btn btn-case" onclick="loadCase('kawasaki_active')">📋 急性期川崎病 (瘤・心筋炎・MR)</button>
+    <button class="btn btn-case" onclick="loadCase('kawasaki_normal')">📋 正常対照例</button>
+    <button class="btn btn-case" onclick="loadCase('giant_aneurysm')">📋 巨大動脈瘤例</button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ A4 1枚 印刷 / PDF保存</button>
+  </div>
+</header>
+
+<!-- 5秒把握エグゼクティブ・ダッシュボード（画面表示専用） -->
+<div class="dashboard-banner no-print">
+  <div class="dash-card">
+    <div class="dash-title">患児体格 &amp; 体表面積</div>
+    <div class="dash-main" id="dash-patient">1歳0か月 (10.0kg / 75cm)</div>
+    <div class="dash-sub">BSA: <strong id="dash-bsa">0.464 m²</strong> (Haycock式)</div>
+  </div>
+  <div class="dash-card" style="border-left-color: #f59e0b;">
+    <div class="dash-title">冠動脈病変（JCS 2020基準）</div>
+    <div class="dash-main" id="dash-cad" style="color: #f59e0b;">小動脈瘤 (Small)</div>
+    <div class="dash-sub">最大: LAD <strong id="dash-max-z">Z = +4.10</strong> (3.1mm)</div>
+  </div>
+  <div class="dash-card" style="border-left-color: #0d9488;">
+    <div class="dash-title">心筋炎・左室収縮機能</div>
+    <div class="dash-main" id="dash-carditis" style="color: #2dd4bf;">心筋炎疑い (LVDd Z > 2)</div>
+    <div class="dash-sub">LVDd: 34.0mm (<strong id="dash-lvdd-z">Z=+2.50</strong>), FS: <strong id="dash-fs">24.5%</strong></div>
+  </div>
+  <div class="dash-card" style="border-left-color: #8b5cf6;">
+    <div class="dash-title">弁膜症 &amp; 大動脈基部</div>
+    <div class="dash-main" id="dash-ao" style="color: #c084fc;">弁膜炎性MR / 基部拡大</div>
+    <div class="dash-sub">MR: 軽度 (Mild), Sinus: <strong id="dash-sinus-z">Z=+3.76</strong></div>
+  </div>
+</div>
+
+<div class="report-wrapper">
+
+  <!-- =========================================================================
+       A4 1枚完結型 小児心エコー検査報告書
+       ========================================================================= -->
+  <div class="print-page" id="page-1">
+    
+    <!-- 1. ヘッダー -->
+    <div class="page-header">
+      <div>
+        <div class="hospital-name">小児総合医療センター / 小児循環器科・小児科</div>
+        <div class="doc-title">小児心臓超音波検査報告書（川崎病・循環器評価）</div>
+      </div>
+      <div style="text-align: right; font-size: 8.2px; color: var(--text-sub);">
+        <div>検査日: <input type="text" value="2026/10/01" style="width: 65px; font-weight: bold;"></div>
+        <div><strong>A4 1枚完結仕様</strong>（JCS/JSPCCS 2020 準拠）</div>
+      </div>
+    </div>
+
+    <!-- 2. 基本情報テーブル (3行) -->
+    <table>
+      <colgroup>
+        <col style="width: 8%;">
+        <col style="width: 14%;">
+        <col style="width: 7%;">
+        <col style="width: 16%;">
+        <col style="width: 8%;">
+        <col style="width: 12%;">
+        <col style="width: 9%;">
+        <col style="width: 12%;">
+        <col style="width: 7%;">
+        <col style="width: 7%;">
+      </colgroup>
+      <tr>
+        <th>患者ID</th>
+        <td><input type="text" id="pt-id" value="P-20261001" style="font-weight: bold;"></td>
+        <th>氏名</th>
+        <td><input type="text" id="pt-name" value="川崎 花子 (カナコ)" style="font-weight: bold;"></td>
+        <th>生年月日</th>
+        <td><input type="text" id="pt-birth" value="2025/10/01"></td>
+        <th>月齢/年齢</th>
+        <td><input type="text" id="pt-age" value="1歳0か月 (12M)" style="font-weight: bold;"></td>
+        <th>性別</th>
+        <td>
+          <select id="pt-sex">
+            <option value="F" selected>女</option>
+            <option value="M">男</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>身長 (cm)</th>
+        <td><input type="number" id="inp-ht" step="0.1" value="75.0" oninput="recalcAll()"></td>
+        <th>体重 (kg)</th>
+        <td><input type="number" id="inp-wt" step="0.1" value="10.0" oninput="recalcAll()"></td>
+        <th>体表面積</th>
+        <td style="background: #f0f9ff;">
+          <span id="disp-bsa" style="font-weight: 800; color: #0284c7;">0.464</span> m²
+          <span style="font-size: 7px; color: #64748b;">(Haycock)</span>
+        </td>
+        <th>心拍数 / 圧</th>
+        <td><input type="text" id="inp-hr" value="138 bpm / 92/54"></td>
+        <th>SpO2</th>
+        <td><input type="text" value="98%"></td>
+      </tr>
+      <tr>
+        <th>依頼科/Dr</th>
+        <td colspan="3"><input type="text" value="小児科 / 田中 医師 (内線: 3201)"></td>
+        <th>鎮静状態</th>
+        <td>
+          <select id="inp-sedation">
+            <option value="自然入眠" selected>自然入眠 (哺乳後)</option>
+            <option value="トリクロール鎮静">トリクロール鎮静</option>
+            <option value="覚醒・安静">覚醒・安静</option>
+            <option value="啼泣あり">啼泣あり (体動)</option>
+          </select>
+        </td>
+        <th>病日/目的</th>
+        <td colspan="3"><input type="text" id="inp-purpose" value="川崎病疑い 第5病日 (IVIG開始前評価)" style="color: #b91c1c; font-weight: bold;"></td>
+      </tr>
+    </table>
+
+    <!-- 3. 冠動脈病変評価 (JCS/JSPCCS 2020 準拠) -->
+    <div class="sec-title">
+      <span>■ 1. 冠動脈病変評価（JCS/JSPCCS 2020年改訂版・Z Score Project / 小林式準拠）</span>
+      <span class="sec-title-sub">Inner-to-Inner 計測 / 心電図同期・拡張末期</span>
+    </div>
+
+    <div class="z-legend-bar">
+      <strong>【病変分類】</strong>
+      <span class="badge badge-normal">正常: Z &lt; 2.0</span>
+      <span class="badge badge-dilation">拡大: 2.0 ≤ Z &lt; 2.5</span>
+      <span class="badge badge-small">小動脈瘤: 2.5 ≤ Z &lt; 5.0</span>
+      <span class="badge badge-medium">中等度瘤: 5.0 ≤ Z &lt; 10.0 (&lt;8mm)</span>
+      <span class="badge badge-giant">巨大瘤: Z ≥ 10.0 (または ≥8mm)</span>
+    </div>
+
+    <table>
+      <colgroup>
+        <col style="width: 22%;">
+        <col style="width: 11%;">
+        <col style="width: 11%;">
+        <col style="width: 12%;">
+        <col style="width: 14%;">
+        <col style="width: 14%;">
+        <col style="width: 16%;">
+      </colgroup>
+      <thead>
+        <tr style="background: #e2e8f0;">
+          <th>計測血管・セグメント</th>
+          <th style="text-align: right;">実測内径</th>
+          <th style="text-align: right;">予測平均</th>
+          <th style="text-align: right;">Zスコア</th>
+          <th style="text-align: center;">病変分類</th>
+          <th style="text-align: center;">血管周囲輝度</th>
+          <th style="text-align: center;">瘤形態 / 血栓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>左主幹部 (LMCA)</strong></td>
+          <td><input type="number" id="cad-lmca" step="0.1" value="2.2" oninput="recalcAll()"> mm</td>
+          <td style="text-align: right;"><span id="mean-lmca">1.91</span> mm</td>
+          <td><span class="z-val z-normal" id="z-lmca">+0.86</span></td>
+          <td style="text-align: center;"><span class="badge badge-normal" id="badge-lmca">正常</span></td>
+          <td style="text-align: center;">
+            <select id="pbr-lmca">
+              <option value="なし" selected>なし (Normal)</option>
+              <option value="軽度">軽度輝度亢進</option>
+              <option value="明瞭">明瞭 (浮腫)</option>
+            </select>
+          </td>
+          <td style="text-align: center;"><input type="text" value="円滑 / なし" style="text-align: center;"></td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td><strong>左前下行枝 近位部 (pLAD)</strong></td>
+          <td><input type="number" id="cad-lad" step="0.1" value="3.1" oninput="recalcAll()" style="font-weight: bold; color: #b45309;"> mm</td>
+          <td style="text-align: right;"><span id="mean-lad">1.54</span> mm</td>
+          <td><span class="z-val z-small" id="z-lad">+4.10</span></td>
+          <td style="text-align: center;"><span class="badge badge-small" id="badge-lad">小動脈瘤</span></td>
+          <td style="text-align: center;">
+            <select id="pbr-lad">
+              <option value="なし">なし (Normal)</option>
+              <option value="軽度">軽度輝度亢進</option>
+              <option value="明瞭" selected>明瞭 (浮腫陽性)</option>
+            </select>
+          </td>
+          <td style="text-align: center;">
+            <select>
+              <option value="紡錘状/なし" selected>紡錘状 / 血栓(-)</option>
+              <option value="嚢状/なし">嚢状 / 血栓(-)</option>
+              <option value="血栓疑い">壁在血栓疑い</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>左前下行枝 中間部 (mLAD)</strong></td>
+          <td><input type="number" id="cad-lad-mid" step="0.1" value="1.9" oninput="recalcAll()"> mm</td>
+          <td style="text-align: right;"><span id="mean-lad-mid">1.45</span> mm</td>
+          <td><span class="z-val z-dilation" id="z-lad-mid">+1.78</span></td>
+          <td style="text-align: center;"><span class="badge badge-normal" id="badge-lad-mid">正常</span></td>
+          <td style="text-align: center;"><input type="text" value="軽度輝度亢進" style="text-align: center;"></td>
+          <td style="text-align: center;"><input type="text" value="管状 / なし" style="text-align: center;"></td>
+        </tr>
+        <tr>
+          <td><strong>左回旋枝 近位部 (pLCx)</strong></td>
+          <td><input type="number" id="cad-lcx" step="0.1" value="1.5" oninput="recalcAll()"> mm</td>
+          <td style="text-align: right;"><span id="mean-lcx">1.37</span> mm</td>
+          <td><span class="z-val z-normal" id="z-lcx">+0.48</span></td>
+          <td style="text-align: center;"><span class="badge badge-normal" id="badge-lcx">正常</span></td>
+          <td style="text-align: center;"><input type="text" value="なし" style="text-align: center;"></td>
+          <td style="text-align: center;"><input type="text" value="正常 / なし" style="text-align: center;"></td>
+        </tr>
+        <tr style="background: #fffbeb;">
+          <td><strong>右冠動脈 近位部 (RCA seg 1)</strong></td>
+          <td><input type="number" id="cad-rca" step="0.1" value="2.5" oninput="recalcAll()" style="font-weight: bold; color: #b45309;"> mm</td>
+          <td style="text-align: right;"><span id="mean-rca">1.51</span> mm</td>
+          <td><span class="z-val z-small" id="z-rca">+2.88</span></td>
+          <td style="text-align: center;"><span class="badge badge-small" id="badge-rca">小動脈瘤</span></td>
+          <td style="text-align: center;">
+            <select>
+              <option value="なし">なし</option>
+              <option value="軽度" selected>軽度輝度亢進</option>
+              <option value="明瞭">明瞭</option>
+            </select>
+          </td>
+          <td style="text-align: center;"><input type="text" value="紡錘状 / 血栓(-)" style="text-align: center;"></td>
+        </tr>
+        <tr>
+          <td><strong>右冠動脈 中間部 (RCA seg 2)</strong></td>
+          <td><input type="number" id="cad-rca2" step="0.1" value="1.8" oninput="recalcAll()"> mm</td>
+          <td style="text-align: right;"><span id="mean-rca2">1.40</span> mm</td>
+          <td><span class="z-val z-normal" id="z-rca2">+1.32</span></td>
+          <td style="text-align: center;"><span class="badge badge-normal" id="badge-rca2">正常</span></td>
+          <td style="text-align: center;"><input type="text" value="なし" style="text-align: center;"></td>
+          <td style="text-align: center;"><input type="text" value="管状 / なし" style="text-align: center;"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 冠動脈総合判定バー -->
+    <table style="background: #f8fafc; border: 1.5px solid #0284c7; margin-bottom: 3.5px;">
+      <tr>
+        <td style="width: 22%; font-weight: bold; background: #e0f2fe; color: #0369a1;">川崎病 冠動脈総合判定</td>
+        <td style="width: 38%;">
+          <span class="badge badge-small" id="cad-final-badge" style="font-size: 8.5px; padding: 1.5px 6px;">小動脈瘤 (Small Aneurysm)</span>
+          （最大: <span id="cad-final-branch" style="font-weight: bold;">LAD Z = +4.10</span>）
+        </td>
+        <td style="width: 14%; font-weight: bold; background: #f1f5f9;">病変形態/局在</td>
+        <td style="width: 26%;"><input type="text" value="LAD/RCA 両側性紡錘状拡張" style="font-weight: bold;"></td>
+      </tr>
+    </table>
+
+    <!-- 4. 2カラム統合レイアウト: 左列（心腔・心筋炎） & 右列（弁膜症サマリー完全再現） -->
+    <div class="grid-2col">
+      
+      <!-- 左列：心腔計測 & 急性期汎心筋炎 -->
+      <div class="col-box">
+        <div class="sec-title" style="margin-top:0;">
+          <span>■ 2. 心腔計測 &amp; 急性期汎心筋炎 (Pettersen)</span>
+          <span class="sec-title-sub">2D Inner-to-Inner</span>
+        </div>
+
+        <table>
+          <colgroup>
+            <col style="width: 44%;">
+            <col style="width: 18%;">
+            <col style="width: 19%;">
+            <col style="width: 19%;">
+          </colgroup>
+          <thead>
+            <tr style="background: #e2e8f0;">
+              <th>左室・左房形態</th>
+              <th style="text-align: right;">実測値</th>
+              <th style="text-align: right;">予測平均</th>
+              <th style="text-align: right;">Zスコア</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: #f0fdfa;">
+              <td><strong>左室拡張末期径 (LVDd)</strong></td>
+              <td><input type="number" id="ch-lvdd" step="0.1" value="34.0" oninput="recalcAll()" style="font-weight: bold; color: #0d9488;"> mm</td>
+              <td style="text-align: right;"><span id="mean-lvdd">28.3</span></td>
+              <td><span class="z-val z-small" id="z-lvdd" style="color: #0d9488;">+2.50</span></td>
+            </tr>
+            <tr>
+              <td><strong>左室収縮末期径 (LVDs)</strong></td>
+              <td><input type="number" id="ch-lvds" step="0.1" value="25.7" oninput="recalcAll()"> mm</td>
+              <td style="text-align: right;"><span id="mean-lvds">18.5</span></td>
+              <td><span class="z-val z-small" id="z-lvds">+2.82</span></td>
+            </tr>
+            <tr>
+              <td><strong>中隔 / 後壁 (IVS/PW)</strong></td>
+              <td><input type="text" value="4.8 / 4.6 mm" style="text-align: right;"></td>
+              <td style="text-align: right;">4.3 / 4.2</td>
+              <td><span class="z-val z-normal">+0.68 / +0.55</span></td>
+            </tr>
+            <tr>
+              <td><strong>左房前後径 (LAD)</strong></td>
+              <td><input type="number" id="ch-lad" step="0.1" value="18.2" oninput="recalcAll()"> mm</td>
+              <td style="text-align: right;"><span id="mean-lad-ch">15.2</span></td>
+              <td><span class="z-val z-dilation" id="z-lad-ch">+1.85</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 収縮機能 & 心嚢液 -->
+        <table style="background: #f8fafc;">
+          <tr>
+            <th style="width: 36%;">左室短縮率 (FS)</th>
+            <td style="width: 32%; font-weight: bold;"><span id="disp-fs" style="color: #b91c1c; font-size: 10px;">24.5</span> % <span style="font-size: 7px; color: #64748b;">(28-40)</span></td>
+            <th style="width: 14%;">EF</th>
+            <td style="width: 18%; font-weight: bold;"><span id="disp-ef">51.2</span> %</td>
+          </tr>
+          <tr>
+            <th>壁運動 (WMA)</th>
+            <td colspan="3"><input type="text" value="びまん性軽度低下 (diffuse hypokinesis)" style="font-weight: bold; color: #b45309;"></td>
+          </tr>
+          <tr>
+            <th>心嚢液 (PE)</th>
+            <td colspan="3"><input type="text" value="後壁側に微量貯留あり (2.0 mm)" style="font-weight: bold; color: #b45309;"></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 右列：【弁膜症サマリー (狭窄 & 逆流)】完全再現 ＆ 大動脈基部 -->
+      <div class="col-box">
+        <div class="sec-title" style="background:#312e81; border-left-color:#818cf8; margin-top:0;">
+          <span>■ 3. 【 弁膜症サマリー (狭窄 &amp; 逆流) 】</span>
+          <span class="sec-title-sub">カラー / ドプラ血流</span>
+        </div>
+
+        <table>
+          <colgroup>
+            <col style="width: 22%;">
+            <col style="width: 39%;">
+            <col style="width: 39%;">
+          </colgroup>
+          <thead>
+            <tr style="background:#e0e7ff; text-align:center;">
+              <th style="text-align:center; color:#312e81; padding:1.5px;">弁</th>
+              <th style="text-align:center; color:#312e81; padding:1.5px;">狭窄 (Stenosis)</th>
+              <th style="text-align:center; color:#312e81; padding:1.5px;">逆流 (Regurg.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- AV -->
+            <tr>
+              <td style="font-weight:bold; text-align:center; padding:1.5px;">【AV】大動脈</td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">AS:</span>
+                  <select class="valve-select" onchange="updateValveGauge('as', this.value.toLowerCase())">
+                    <option value="none" selected>なし</option>
+                    <option value="mild">軽度</option>
+                    <option value="mod">中等度</option>
+                    <option value="sev">重度</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none gauge-active" id="gauge-as-none">None</div>
+                  <div class="gauge-mild" id="gauge-as-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-as-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-as-sev">Sev</div>
+                </div>
+              </td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">AR:</span>
+                  <select class="valve-select" onchange="updateValveGauge('ar', this.value.toLowerCase())">
+                    <option value="none" selected>None</option>
+                    <option value="mild">Mild</option>
+                    <option value="mod">Mod</option>
+                    <option value="sev">Sev</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none gauge-active" id="gauge-ar-none">None</div>
+                  <div class="gauge-mild" id="gauge-ar-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-ar-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-ar-sev">Sev</div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- MV -->
+            <tr>
+              <td style="font-weight:bold; text-align:center; padding:1.5px;">【MV】僧帽弁</td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">MS:</span>
+                  <select class="valve-select" onchange="updateValveGauge('ms', this.value.toLowerCase())">
+                    <option value="none" selected>なし</option>
+                    <option value="mild">軽度</option>
+                    <option value="mod">中等度</option>
+                    <option value="sev">重度</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none gauge-active" id="gauge-ms-none">None</div>
+                  <div class="gauge-mild" id="gauge-ms-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-ms-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-ms-sev">Sev</div>
+                </div>
+              </td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">MR:</span>
+                  <select class="valve-select" id="sel-mr" onchange="updateValveGauge('mr', this.value.toLowerCase())">
+                    <option value="none">None</option>
+                    <option value="mild" selected>Mild (軽度)</option>
+                    <option value="mod">Mod</option>
+                    <option value="sev">Sev</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none" id="gauge-mr-none">None</div>
+                  <div class="gauge-mild gauge-active" id="gauge-mr-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-mr-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-mr-sev">Sev</div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- TV -->
+            <tr>
+              <td style="font-weight:bold; text-align:center; padding:1.5px;">【TV】三尖弁</td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">TS:</span>
+                  <select class="valve-select" onchange="updateValveGauge('ts', this.value.toLowerCase())">
+                    <option value="none" selected>なし</option>
+                    <option value="mild">軽度</option>
+                    <option value="mod">中等度</option>
+                    <option value="sev">重度</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none gauge-active" id="gauge-ts-none">None</div>
+                  <div class="gauge-mild" id="gauge-ts-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-ts-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-ts-sev">Sev</div>
+                </div>
+              </td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">TR:</span>
+                  <select class="valve-select" id="sel-tr" onchange="updateValveGauge('tr', this.value.toLowerCase())">
+                    <option value="none">None</option>
+                    <option value="mild" selected>Mild (軽度)</option>
+                    <option value="mod">Mod</option>
+                    <option value="sev">Sev</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none" id="gauge-tr-none">None</div>
+                  <div class="gauge-mild gauge-active" id="gauge-tr-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-tr-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-tr-sev">Sev</div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- PV -->
+            <tr>
+              <td style="font-weight:bold; text-align:center; padding:1.5px;">【PV】肺動脈</td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">PS:</span>
+                  <select class="valve-select" onchange="updateValveGauge('ps', this.value.toLowerCase())">
+                    <option value="none" selected>なし</option>
+                    <option value="mild">軽度</option>
+                    <option value="mod">中等度</option>
+                    <option value="sev">重度</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none gauge-active" id="gauge-ps-none">None</div>
+                  <div class="gauge-mild" id="gauge-ps-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-ps-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-ps-sev">Sev</div>
+                </div>
+              </td>
+              <td style="padding:1.5px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:bold; font-size:8px;">PR:</span>
+                  <select class="valve-select" id="sel-pr" onchange="updateValveGauge('pr', this.value.toLowerCase())">
+                    <option value="none">None</option>
+                    <option value="mild" selected>Mild (Trace)</option>
+                    <option value="mod">Mod</option>
+                    <option value="sev">Sev</option>
+                  </select>
+                </div>
+                <div class="valve-gauge-bar">
+                  <div class="gauge-none" id="gauge-pr-none">None</div>
+                  <div class="gauge-mild gauge-active" id="gauge-pr-mild">Mild</div>
+                  <div class="gauge-mod" id="gauge-pr-mod">Mod</div>
+                  <div class="gauge-sev" id="gauge-pr-sev">Sev</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 大動脈基部計測 (バルサルバ洞・弁輪) -->
+        <table>
+          <colgroup>
+            <col style="width: 44%;">
+            <col style="width: 18%;">
+            <col style="width: 19%;">
+            <col style="width: 19%;">
+          </colgroup>
+          <tr style="background:#f3e8ff;">
+            <td><strong>バルサルバ洞 (Sinus)</strong></td>
+            <td><input type="number" id="ch-sinus" step="0.1" value="19.5" oninput="recalcAll()" style="font-weight: bold; color: #7e22ce;"> mm</td>
+            <td style="text-align: right;"><span id="mean-sinus">14.1</span></td>
+            <td><span class="z-val z-medium" id="z-sinus" style="color: #7e22ce;">+3.76</span></td>
+          </tr>
+          <tr>
+            <td><strong>大動脈弁輪 (Ao Ann)</strong></td>
+            <td><input type="number" id="ch-ao-ann" step="0.1" value="12.0" oninput="recalcAll()"> mm</td>
+            <td style="text-align: right;"><span id="mean-ao-ann">10.3</span></td>
+            <td><span class="z-val z-dilation" id="z-ao-ann">+1.52</span></td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- 5. 先天性スクリーニング & 肺循環血行動態 -->
+    <div class="sec-title">
+      <span>■ 4. 先天性形態異常スクリーニング &amp; 肺循環・右心血行動態</span>
+      <span class="sec-title-sub">必須チェック</span>
+    </div>
+
+    <table>
+      <colgroup>
+        <col style="width: 14%;">
+        <col style="width: 20%;">
+        <col style="width: 12%;">
+        <col style="width: 20%;">
+        <col style="width: 14%;">
+        <col style="width: 20%;">
+      </colgroup>
+      <tr>
+        <th>ASD / VSD</th>
+        <td><input type="text" value="短絡なし (心房間・心室間閉鎖確認)"></td>
+        <th>PDA / CoAA</th>
+        <td><input type="text" value="動脈管閉鎖 / 弓部縮窄なし"></td>
+        <th>冠動脈起始</th>
+        <td><input type="text" value="左右ともに正常洞起始確認 (異常なし)"></td>
+      </tr>
+      <tr>
+        <th>TR-PG / eRVSP</th>
+        <td><input type="text" value="TR-PG: 22.1 mmHg (eRVSP: 27.1)"></td>
+        <th>下大静脈 (IVC)</th>
+        <td><input type="text" value="5.2 mm (吸気虚脱良好 &gt;50%)"></td>
+        <th>組織ドプラ (TDI)</th>
+        <td><input type="text" value="Septal e': 9.2 cm/s (E/e': 10.3)"></td>
+      </tr>
+    </table>
+
+    <!-- 6. 検査技師総括所見 & カンファレンス用対話サマリー (余白なく自然に展開) -->
+    <div class="sec-title">
+      <span>■ 5. 検査技師総括所見 &amp; 小児科医カンファレンス用臨床対話サマリー</span>
+      <span class="sec-title-sub">申し送り・回覧用</span>
+    </div>
+
+    <div style="border: 1px solid var(--border-color); padding: 5px 8px; background: #fafafa; border-radius: 4px; margin-bottom: 4px;">
+      <div style="font-weight: bold; color: #1e3a8a; font-size: 8.8px; margin-bottom: 2px;">【検査技師によるエコー所見総合】</div>
+      <textarea rows="4" style="font-size: 8.6px; width: 100%;">本日第5病日初回評価。体表面積 BSA 0.464 m² (Haycock式)。
+1. 冠動脈病変: LAD近位部 3.1mm (小林式 Z = +4.10, 小動脈瘤)、RCA seg 1 2.5mm (Z = +2.88, 小動脈瘤) と2枝に小型瘤を認める。pLAD周囲に浮腫を反映した明瞭な Perivascular brightness を伴う。
+2. 心機能・弁膜炎: LVDd 34.0mm (Pettersen Z = +2.50) と左室拡大あり、FS 24.5% へ低下。全周性に軽度壁運動低下、軽度MR（弁膜炎性接合不全）、および後壁側に 2.0mm の心嚢液貯留を認め、急性期汎心筋炎 (Carditis) を合併。
+3. 大動脈基部: バルサルバ洞 19.5mm (Z = +3.76) と一過性に拡大し、強い血管炎波及を示唆。</textarea>
+    </div>
+
+    <div style="border: 1px solid #0284c7; padding: 5px 8px; background: #f0f9ff; border-radius: 4px; margin-bottom: 4px;">
+      <div style="font-weight: bold; color: #0369a1; font-size: 8.8px; margin-bottom: 2px;">【小児科医カンファレンス用・臨床的提言 (Clinical Recommendation)】</div>
+      <div style="font-size: 8.4px; color: #0c4a6e; line-height: 1.35;">
+        • <strong>冠動脈管理:</strong> 最大Zスコア +4.10 (小動脈瘤) のため、JCS 2020ガイドラインに従いアスピリン抗血小板療法 (急性期 30mg/kg/日 → 解熱後 3〜5mg/kg/日) の徹底を推奨。<br>
+        • <strong>IVIG反応性フォロー:</strong> 心筋炎・弁膜炎合併 (FS 24.5%, LVDd Z>2.5, MR軽度) および大動脈基部拡大を伴うため、IVIG不応リスクを念頭に第7〜8病日 (または解熱後48時間) に ΔZ 追跡エコー再検を提案。<br>
+        • <strong>注意サイン:</strong> 啼泣・頻脈時のショック兆候 (KDSS) や、LAD/RCAの拡張進展 (Z≥5.0 中等度瘤化) に厳重警戒。
+      </div>
+    </div>
+
+    <!-- 7. サイン欄 -->
+    <table style="margin-top: 3px; margin-bottom: 2px;">
+      <colgroup>
+        <col style="width: 14%;">
+        <col style="width: 36%;">
+        <col style="width: 14%;">
+        <col style="width: 36%;">
+      </colgroup>
+      <tr>
+        <th style="text-align: center; padding: 2.5px;">検査担当技師</th>
+        <td style="padding: 2.5px;">
+          <input type="text" value="臨床太郎, 臨床検査技師 (超音波指導検査士)" style="font-weight: bold;">
+        </td>
+        <th style="text-align: center; padding: 2.5px;">確認・判定医師</th>
+        <td style="padding: 2.5px;">
+          <input type="text" value="佐藤 健一, 小児循環器専門医 (印)" style="font-weight: bold; color: #1e3a8a;">
+        </td>
+      </tr>
+    </table>
+
+    <!-- 8. ページフッター -->
+    <div class="page-footer">
+      <div>算出基準: 冠動脈=Z Score Project (Kobayashi et al.) / 心腔=Pettersen et al. JASE 2008 / BSA=Haycock公式</div>
+      <div>日本小児循環器学会・日本川崎病学会 JCS 2020 準拠 小児心エコー報告書 (A4 1枚完結版)</div>
+      <div>Page 1 of 1</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================================================
+     JavaScript: 自動計算 & プリセット切り替え & 弁膜症ゲージ連動
+     ========================================================================= -->
+<script>
+// 体表面積 (Haycock式)
+function calcBSA(ht, wt) {
+  if (!ht || !wt || ht <= 0 || wt <= 0) return 0.5;
+  return 0.024265 * Math.pow(ht, 0.3964) * Math.pow(wt, 0.5378);
+}
+
+// 弁膜症ゲージバーのアクティブ更新
+function updateValveGauge(valveId, grade) {
+  ['none', 'mild', 'mod', 'sev'].forEach(g => {
+    const el = document.getElementById(`gauge-${valveId}-${g}`);
+    if (el) el.classList.remove('gauge-active');
+  });
+  const target = document.getElementById(`gauge-${valveId}-${grade}`);
+  if (target) target.classList.add('gauge-active');
+}
+
+// 小林式 冠動脈予測平均 & SD (Circ J 2006/2016)
+function calcCoronaryZ(branch, measured, bsa) {
+  if (!measured || measured <= 0 || !bsa) return { mean: 0, z: 0, cls: 'normal', text: '正常' };
+  
+  let a, b, sd;
+  if (branch === 'LMCA') {
+    a = 0.384; b = 0.942; sd = 0.165;
+  } else if (branch === 'LAD' || branch === 'LAD_mid') {
+    a = 0.342; b = 0.697; sd = 0.170;
+  } else if (branch === 'LCx') {
+    a = 0.334; b = 0.589; sd = 0.180;
+  } else { // RCA
+    a = 0.355; b = 0.686; sd = 0.175;
+  }
+  
+  let mean = Math.exp(a * Math.log(bsa) + b);
+  let z = (Math.log(measured) - Math.log(mean)) / sd;
+  
+  // 病変分類 (JCS 2020)
+  let cls = 'normal', text = '正常';
+  if (z >= 10.0 || measured >= 8.0) {
+    cls = 'giant'; text = '巨大動脈瘤';
+  } else if (z >= 5.0 && measured < 8.0) {
+    cls = 'medium'; text = '中等度瘤';
+  } else if (z >= 2.5) {
+    cls = 'small'; text = '小動脈瘤';
+  } else if (z >= 2.0) {
+    cls = 'dilation'; text = '拡大';
+  }
+  
+  return { mean: mean, z: z, cls: cls, text: text };
+}
+
+// Pettersen 心腔計測 Zスコア (JASE 2008)
+function calcPettersenZ(item, measured_mm, bsa) {
+  if (!measured_mm || measured_mm <= 0 || !bsa) return { mean: 0, z: 0 };
+  
+  let mean_cm, sd_cm;
+  if (item === 'LVDd') {
+    mean_cm = 3.998 * Math.pow(bsa, 0.449);
+    sd_cm = 0.284 * Math.pow(bsa, 0.285);
+  } else if (item === 'LVDs') {
+    mean_cm = 2.610 * Math.pow(bsa, 0.440);
+    sd_cm = 0.260 * Math.pow(bsa, 0.280);
+  } else if (item === 'LAD_ch') {
+    mean_cm = 2.220 * Math.pow(bsa, 0.440);
+    sd_cm = 0.180 * Math.pow(bsa, 0.300);
+  } else if (item === 'Sinus') {
+    mean_cm = 2.052 * Math.pow(bsa, 0.485);
+    sd_cm = 0.180 * Math.pow(bsa, 0.300);
+  } else if (item === 'AoAnn') {
+    mean_cm = 1.489 * Math.pow(bsa, 0.490);
+    sd_cm = 0.130 * Math.pow(bsa, 0.300);
+  }
+  
+  let mean_mm = mean_cm * 10;
+  let sd_mm = sd_cm * 10;
+  let z = (measured_mm - mean_mm) / sd_mm;
+  return { mean: mean_mm, z: z };
+}
+
+// 全体再計算処理
+function recalcAll() {
+  const ht = parseFloat(document.getElementById('inp-ht').value) || 75.0;
+  const wt = parseFloat(document.getElementById('inp-wt').value) || 10.0;
+  const bsa = calcBSA(ht, wt);
+  
+  // BSA 表示更新
+  document.getElementById('disp-bsa').textContent = bsa.toFixed(3);
+  document.getElementById('qb-bsa').textContent = bsa.toFixed(3) + ' m²';
+  document.getElementById('dash-bsa').textContent = bsa.toFixed(3) + ' m²';
+  document.getElementById('dash-patient').textContent = document.getElementById('pt-age').value + ' (' + wt.toFixed(1) + 'kg / ' + ht.toFixed(1) + 'cm)';
+
+  // 1. 冠動脈Zスコア計算
+  const cadItems = [
+    { id: 'lmca',    branch: 'LMCA',    input: 'cad-lmca' },
+    { id: 'lad',     branch: 'LAD',     input: 'cad-lad' },
+    { id: 'lad-mid', branch: 'LAD_mid', input: 'cad-lad-mid' },
+    { id: 'lcx',     branch: 'LCx',     input: 'cad-lcx' },
+    { id: 'rca',     branch: 'RCA',     input: 'cad-rca' },
+    { id: 'rca2',    branch: 'RCA',     input: 'cad-rca2' }
+  ];
+
+  let maxZ = -999;
+  let maxBranch = 'LAD';
+  let maxClass = 'normal';
+  let maxText = '正常';
+
+  cadItems.forEach(item => {
+    const val = parseFloat(document.getElementById(item.input).value) || 0;
+    const res = calcCoronaryZ(item.branch, val, bsa);
+    
+    document.getElementById('mean-' + item.id).textContent = res.mean.toFixed(2);
+    const zElem = document.getElementById('z-' + item.id);
+    zElem.textContent = (res.z >= 0 ? '+' : '') + res.z.toFixed(2);
+    zElem.className = 'z-val z-' + res.cls;
+
+    const bElem = document.getElementById('badge-' + item.id);
+    bElem.textContent = res.text;
+    bElem.className = 'badge badge-' + res.cls;
+
+    if (res.z > maxZ) {
+      maxZ = res.z;
+      maxBranch = item.branch.replace('_mid', '');
+      maxClass = res.cls;
+      maxText = res.text;
+    }
+  });
+
+  // 冠動脈総合判定更新
+  const fBadge = document.getElementById('cad-final-badge');
+  fBadge.textContent = maxText;
+  fBadge.className = 'badge badge-' + maxClass;
+  document.getElementById('cad-final-branch').textContent = maxBranch + ' Z = ' + (maxZ >= 0 ? '+' : '') + maxZ.toFixed(2);
+  
+  document.getElementById('qb-max-z').textContent = (maxZ >= 0 ? '+' : '') + maxZ.toFixed(2) + ' (' + maxText + ')';
+  document.getElementById('dash-cad').textContent = maxText;
+  document.getElementById('dash-max-z').textContent = 'Z = ' + (maxZ >= 0 ? '+' : '') + maxZ.toFixed(2);
+
+  // 2. 心腔計測Zスコア計算
+  const chItems = [
+    { id: 'lvdd',    key: 'LVDd',    inp: 'ch-lvdd' },
+    { id: 'lvds',    key: 'LVDs',    inp: 'ch-lvds' },
+    { id: 'lad-ch',  key: 'LAD_ch',  inp: 'ch-lad' },
+    { id: 'sinus',   key: 'Sinus',   inp: 'ch-sinus' },
+    { id: 'ao-ann',  key: 'AoAnn',   inp: 'ch-ao-ann' }
+  ];
+
+  chItems.forEach(item => {
+    const val = parseFloat(document.getElementById(item.inp).value) || 0;
+    const res = calcPettersenZ(item.key, val, bsa);
+    
+    const meanElem = document.getElementById('mean-' + item.id);
+    if (meanElem) meanElem.textContent = res.mean.toFixed(1);
+    
+    const zElem = document.getElementById('z-' + item.id);
+    if (zElem) {
+      zElem.textContent = (res.z >= 0 ? '+' : '') + res.z.toFixed(2);
+      if (res.z >= 2.5) zElem.style.color = '#b91c1c';
+      else if (res.z >= 2.0) zElem.style.color = '#b45309';
+      else zElem.style.color = '#0f172a';
+    }
+  });
+
+  // 3. 左室短縮率 (FS) & EF
+  const lvdd = parseFloat(document.getElementById('ch-lvdd').value) || 30.0;
+  const lvds = parseFloat(document.getElementById('ch-lvds').value) || 20.0;
+  let fs = 0;
+  if (lvdd > 0) fs = ((lvdd - lvds) / lvdd) * 100;
+  document.getElementById('disp-fs').textContent = fs.toFixed(1);
+  document.getElementById('dash-fs').textContent = fs.toFixed(1) + '%';
+  
+  let teich_edv = (7.0 / (2.4 + (lvdd / 10))) * Math.pow(lvdd / 10, 3);
+  let teich_esv = (7.0 / (2.4 + (lvds / 10))) * Math.pow(lvds / 10, 3);
+  let ef = ((teich_edv - teich_esv) / teich_edv) * 100;
+  document.getElementById('disp-ef').textContent = ef.toFixed(1);
+
+  // ダッシュボード更新
+  const lvddZ = (parseFloat(document.getElementById('z-lvdd').textContent) || 0);
+  document.getElementById('qb-lvdd-z').textContent = (lvddZ >= 0 ? '+' : '') + lvddZ.toFixed(2) + (lvddZ >= 2 ? ' (拡大)' : '');
+  document.getElementById('dash-lvdd-z').textContent = 'Z=' + (lvddZ >= 0 ? '+' : '') + lvddZ.toFixed(2);
+  document.getElementById('dash-sinus-z').textContent = 'Z=' + document.getElementById('z-sinus').textContent;
+}
+
+// 症例プリセット読み込み
+function loadCase(type) {
+  if (type === 'kawasaki_active') {
+    document.getElementById('pt-id').value = 'P-20261001';
+    document.getElementById('pt-name').value = '川崎 花子 (カナコ)';
+    document.getElementById('pt-age').value = '1歳0か月 (12M)';
+    document.getElementById('pt-sex').value = 'F';
+    document.getElementById('inp-ht').value = 75.0;
+    document.getElementById('inp-wt').value = 10.0;
+    document.getElementById('inp-hr').value = '138 bpm / 92/54';
+    document.getElementById('inp-purpose').value = '川崎病疑い 第5病日 (IVIG開始前評価)';
+    document.getElementById('cad-lmca').value = 2.2;
+    document.getElementById('cad-lad').value = 3.1;
+    document.getElementById('cad-lad-mid').value = 1.9;
+    document.getElementById('cad-lcx').value = 1.5;
+    document.getElementById('cad-rca').value = 2.5;
+    document.getElementById('cad-rca2').value = 1.8;
+    document.getElementById('ch-lvdd').value = 34.0;
+    document.getElementById('ch-lvds').value = 25.7;
+    document.getElementById('ch-lad').value = 18.2;
+    document.getElementById('ch-sinus').value = 19.5;
+    document.getElementById('ch-ao-ann').value = 12.0;
+    document.getElementById('pbr-lad').value = '明瞭';
+    document.getElementById('sel-mr').value = 'mild';
+    updateValveGauge('mr', 'mild');
+    document.getElementById('sel-tr').value = 'mild';
+    updateValveGauge('tr', 'mild');
+    document.getElementById('sel-pr').value = 'mild';
+    updateValveGauge('pr', 'mild');
+  } else if (type === 'kawasaki_normal') {
+    document.getElementById('pt-id').value = 'P-20261002';
+    document.getElementById('pt-name').value = '鈴木 健太 (ケンタ)';
+    document.getElementById('pt-age').value = '2歳2か月 (26M)';
+    document.getElementById('pt-sex').value = 'M';
+    document.getElementById('inp-ht').value = 86.0;
+    document.getElementById('inp-wt').value = 12.0;
+    document.getElementById('inp-hr').value = '112 bpm / 96/58';
+    document.getElementById('inp-purpose').value = '発熱5日目精査 (川崎病疑い否定例)';
+    document.getElementById('cad-lmca').value = 2.1;
+    document.getElementById('cad-lad').value = 1.6;
+    document.getElementById('cad-lad-mid').value = 1.4;
+    document.getElementById('cad-lcx').value = 1.4;
+    document.getElementById('cad-rca').value = 1.6;
+    document.getElementById('cad-rca2').value = 1.4;
+    document.getElementById('ch-lvdd').value = 30.2;
+    document.getElementById('ch-lvds').value = 19.8;
+    document.getElementById('ch-lad').value = 15.5;
+    document.getElementById('ch-sinus').value = 14.8;
+    document.getElementById('ch-ao-ann').value = 10.8;
+    document.getElementById('pbr-lad').value = 'なし';
+    ['as','ar','ms','mr','ts','tr','ps','pr'].forEach(v => {
+      updateValveGauge(v, 'none');
+    });
+  } else if (type === 'giant_aneurysm') {
+    document.getElementById('pt-id').value = 'P-20261003';
+    document.getElementById('pt-name').value = '佐藤 一郎 (イチロウ)';
+    document.getElementById('pt-age').value = '0歳8か月 (8M)';
+    document.getElementById('pt-sex').value = 'M';
+    document.getElementById('inp-ht').value = 69.0;
+    document.getElementById('inp-wt').value = 8.2;
+    document.getElementById('inp-hr').value = '145 bpm / 88/50';
+    document.getElementById('inp-purpose').value = '川崎病IVIG不応例 第12病日 (巨大冠動脈瘤評価)';
+    document.getElementById('cad-lmca').value = 4.2;
+    document.getElementById('cad-lad').value = 8.2;
+    document.getElementById('cad-lad-mid').value = 3.6;
+    document.getElementById('cad-lcx').value = 2.4;
+    document.getElementById('cad-rca').value = 5.5;
+    document.getElementById('cad-rca2').value = 4.8;
+    document.getElementById('ch-lvdd').value = 33.5;
+    document.getElementById('ch-lvds').value = 25.0;
+    document.getElementById('ch-lad').value = 17.5;
+    document.getElementById('ch-sinus').value = 18.0;
+    document.getElementById('ch-ao-ann').value = 11.5;
+    document.getElementById('pbr-lad').value = '明瞭';
+    document.getElementById('sel-mr').value = 'mod';
+    updateValveGauge('mr', 'mod');
+  }
+  recalcAll();
+}
+
+// 初期化
+window.addEventListener('DOMContentLoaded', () => {
+  recalcAll();
+});
+</script>
+</body>
+</html>
