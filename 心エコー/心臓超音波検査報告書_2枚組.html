@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心臓超音波検査報告書（デジタル統合テンプレート・2枚組）</title>
+<style>
+  :root {
+    --primary: #1d4ed8;
+    --primary-hover: #1e40af;
+    --primary-bg: #eff6ff;
+    --text-main: #0f172a;
+    --text-sub: #475569;
+    --border-color: #cbd5e1;
+    --border-dark: #94a3b8;
+    --bg-gray: #f8fafc;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Yu Gothic", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: var(--text-main);
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* ==========================================================================
+     Web アプリ画面用 スタイル (@media screen)
+     ========================================================================== */
+  .app-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3b82f6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .app-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .app-title {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #f8fafc;
+  }
+  .app-badge {
+    background: #2563eb;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .quick-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 5px 14px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    font-size: 11.5px;
+  }
+  .quick-item {
+    display: flex;
+    gap: 5px;
+  }
+  .quick-label { color: #94a3b8; }
+  .quick-val { font-weight: 700; color: #38bdf8; }
+
+  .header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .btn {
+    border: none;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+  .btn-print {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+  }
+  .btn-print:hover { background: #1d4ed8; transform: translateY(-1px); }
+  .btn-reset {
+    background: #334155;
+    color: #e2e8f0;
+  }
+  .btn-reset:hover { background: #475569; }
+
+  /* 画面上部 エグゼクティブ・サマリー（5秒把握ダッシュボード） */
+  .dashboard-banner {
+    max-width: 214mm;
+    margin: 15px auto 10px auto;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 10px 16px;
+    display: grid;
+    grid-template-columns: 1.2fr 1.3fr 1.3fr 1fr;
+    gap: 12px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  .dash-card {
+    background: #0f172a;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border-left: 4px solid #3b82f6;
+  }
+  .dash-title {
+    font-size: 9.5px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .dash-main {
+    font-size: 14px;
+    font-weight: 800;
+    color: #f8fafc;
+  }
+  .dash-sub {
+    font-size: 9.5px;
+    color: #cbd5e1;
+    margin-top: 2px;
+  }
+
+  /* ==========================================================================
+     印刷用紙フレーム (A4縦・2枚組)
+     ========================================================================== */
+  .report-wrapper {
+    max-width: 214mm;
+    margin: 0 auto 40px auto;
+  }
+
+  .print-page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    padding: 8mm 11mm;
+    margin: 0 auto 20px auto;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* テーブル & 入力パーツ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2px;
+  }
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 1.2px 3.5px;
+    font-size: 9px;
+    vertical-align: middle;
+  }
+  th {
+    background-color: var(--bg-gray);
+    font-weight: 600;
+    color: #334155;
+    text-align: left;
+  }
+  .sec-title {
+    background: #1e3a8a;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 9.5px;
+    padding: 2px 5px;
+    letter-spacing: 0.3px;
+  }
+  .sec-title-sub {
+    background: #e2e8f0;
+    color: #1e3a8a;
+    font-weight: bold;
+    font-size: 9px;
+    padding: 1.5px 4px;
+  }
+  .ref-val {
+    color: #64748b;
+    font-size: 8px;
+  }
+
+  input[type="text"], input[type="number"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 1px 2.5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 2px;
+    font-size: 9px;
+    color: #0f172a;
+    background-color: #f8fafc;
+    font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+  }
+  .input-num {
+    text-align: right;
+    font-family: "Consolas", monospace !important;
+    font-weight: 600;
+  }
+  .input-auto {
+    background-color: #eff6ff !important;
+    color: #1e3a8a !important;
+    font-weight: bold;
+  }
+  .eval-select {
+    height: 17px;
+    padding: 0 1px;
+    font-size: 8.5px;
+  }
+
+  /* 3列・2列レイアウト */
+  .grid-3col {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 5px;
+    margin-bottom: 3.5px;
+  }
+  .grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 3.5px;
+  }
+
+  /* 弁膜症ビジュアル重症度バー */
+  .valve-gauge-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 2px;
+  }
+  .valve-gauge-bar {
+    display: flex;
+    height: 11px;
+    border-radius: 3px;
+    overflow: hidden;
+    font-size: 7.5px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 11px;
+  }
+  .gauge-none { flex: 1; background: #dcfce7; color: #166534; }
+  .gauge-mild { flex: 1; background: #fef9c3; color: #854d0e; }
+  .gauge-mod  { flex: 1; background: #fed7aa; color: #9a3412; }
+  .gauge-sev  { flex: 1; background: #fee2e2; color: #991b1b; }
+  .gauge-active {
+    box-shadow: inset 0 0 0 1.5px #0f172a;
+    font-weight: 900;
+    text-decoration: underline;
+  }
+
+  /* インタラクティブ Bull's-eye SVG */
+  .bullseye-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fafafa;
+    border: 1px solid var(--border-color);
+    padding: 2px 4px;
+    margin-bottom: 2px;
+  }
+  .bullseye-svg {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+  }
+  .bullseye-seg {
+    transition: fill 0.2s, stroke 0.2s;
+    stroke: #ffffff;
+    stroke-width: 1.2;
+  }
+  .bullseye-seg:hover {
+    filter: brightness(0.9);
+    stroke: #0f172a;
+    stroke-width: 2;
+  }
+  .seg-text {
+    font-size: 8px;
+    font-weight: bold;
+    fill: #0f172a;
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+
+  /* フッター */
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #94a3b8;
+    padding-top: 3px;
+    font-size: 9px;
+    color: var(--text-sub);
+    margin-top: auto;
+  }
+  .hospital-name {
+    font-size: 11px;
+    font-weight: bold;
+    color: #0f172a;
+  }
+
+  /* ==========================================================================
+     完璧な Print CSS (@media print)
+     ========================================================================== */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  @media print {
+    body {
+      background: none !important;
+      padding: 0 !important;
+    }
+    .no-print, .app-header, .dashboard-banner {
+      display: none !important;
+    }
+    .report-wrapper {
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+    .print-page {
+      box-shadow: none !important;
+      margin: 0 !important;
+      width: 100% !important;
+      height: 280mm !important;
+      max-height: 280mm !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    #page-1 {
+      page-break-after: always !important;
+      break-after: page !important;
+    }
+    #page-2 {
+      page-break-before: always !important;
+      break-before: page !important;
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+    }
+    input, select, textarea {
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      -webkit-appearance: none;
+      appearance: none;
+      padding: 0 !important;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+</style>
+<script>
+// ==========================================================================
+// リアルタイム自動計算 & 臨床アルゴリズムエンジン
+// ==========================================================================
+
+const segScores = Array(18).fill(1);
+const scoreColors = {
+  1: "#bbf7d0", // Green (Normal)
+  2: "#fef08a", // Yellow (Mild Hypo)
+  3: "#fed7aa", // Orange (Hypo)
+  4: "#fca5a5", // Red (Aki)
+  5: "#e9d5ff"  // Purple (Dys)
+};
+
+function toggleSegment(segId) {
+  let cur = segScores[segId];
+  cur = (cur % 5) + 1;
+  segScores[segId] = cur;
+  updateBullseyeUI();
+}
+
+function setSegmentDirect(segId, val) {
+  segScores[segId] = parseInt(val) || 1;
+  updateBullseyeUI();
+}
+
+function updateBullseyeUI() {
+  let sum = 0;
+  for (let i = 1; i <= 17; i++) {
+    const sc = segScores[i];
+    sum += sc;
+    const path = document.getElementById(`seg-path-${i}`);
+    if (path) path.setAttribute("fill", scoreColors[sc]);
+    const inp = document.getElementById(`seg-inp-${i}`);
+    if (inp) inp.value = sc;
+  }
+  const wmsi = (sum / 17.0).toFixed(2);
+  const wmsiEl = document.getElementById("wmsi-val");
+  if (wmsiEl) wmsiEl.innerText = wmsi;
+  const dashWmsi = document.getElementById("dash-wmsi");
+  if (dashWmsi) dashWmsi.innerText = wmsi === "1.00" ? "1.00 (全周性正常)" : `${wmsi} (壁運動異常)`;
+}
+
+// BSA & 係数計算
+function calcBSA() {
+  const h = parseFloat(document.getElementById('pat_height').value);
+  const w = parseFloat(document.getElementById('pat_weight').value);
+  if (h > 0 && w > 0) {
+    const bsa = (0.007184 * Math.pow(h, 0.725) * Math.pow(w, 0.425)).toFixed(2);
+    document.getElementById('pat_bsa').value = bsa;
+    document.getElementById('quick-bsa').innerText = `${bsa} ㎡`;
+    calcIndexed(parseFloat(bsa));
+  } else {
+    document.getElementById('pat_bsa').value = "";
+    document.getElementById('quick-bsa').innerText = "- ㎡";
+  }
+}
+
+function calcLV() {
+  const d = parseFloat(document.getElementById('meas_lvdd').value);
+  const s = parseFloat(document.getElementById('meas_lvds').value);
+  const ivs = parseFloat(document.getElementById('meas_ivs').value);
+  const pw = parseFloat(document.getElementById('meas_pw').value);
+
+  if (d > 0 && s > 0 && d > s) {
+    const fs = (((d - s) / d) * 100).toFixed(1);
+    document.getElementById('meas_fs').value = fs;
+    const vd = (7.0 / (2.4 + d/10)) * Math.pow(d/10, 3);
+    const vs = (7.0 / (2.4 + s/10)) * Math.pow(s/10, 3);
+    const ef = Math.round(((vd - vs) / vd) * 100);
+    document.getElementById('meas_ef').value = ef;
+    document.getElementById('dash-ef').innerText = `${ef} %`;
+  }
+  if (d > 0 && pw > 0) {
+    document.getElementById('meas_rwt').value = ((2 * pw) / d).toFixed(2);
+  }
+  const bsa = parseFloat(document.getElementById('pat_bsa').value);
+  if (bsa > 0 && d > 0 && ivs > 0 && pw > 0) {
+    const mass = 0.8 * 1.04 * (Math.pow((d + ivs + pw)/10, 3) - Math.pow(d/10, 3)) + 0.6;
+    document.getElementById('meas_lvmi').value = (mass / bsa).toFixed(1);
+  }
+  if (bsa > 0) calcIndexed(bsa);
+}
+
+function calcIndexed(bsa) {
+  if (!bsa || bsa <= 0) return;
+  const d = parseFloat(document.getElementById('meas_lvdd').value);
+  const s = parseFloat(document.getElementById('meas_lvds').value);
+  const lad = parseFloat(document.getElementById('meas_lad').value);
+  const aod = parseFloat(document.getElementById('meas_aod').value);
+  if (d > 0) document.getElementById('idx_lvdd').value = (d / bsa).toFixed(1);
+  if (s > 0) document.getElementById('idx_lvds').value = (s / bsa).toFixed(1);
+  if (lad > 0) document.getElementById('idx_lad').value = (lad / bsa).toFixed(1);
+  if (aod > 0) document.getElementById('idx_aod').value = (aod / bsa).toFixed(1);
+  calcLAVI();
+}
+
+function calcLAVI() {
+  const bsa = parseFloat(document.getElementById('pat_bsa').value);
+  const lav = parseFloat(document.getElementById('p1_lav').value);
+  if (bsa > 0 && lav > 0) {
+    const lavi = (lav / bsa).toFixed(1);
+    document.getElementById('p1_lavi').value = lavi;
+  }
+  evaluateDiastolicFunction();
+}
+
+function calcDiastology() {
+  const e = parseFloat(document.getElementById('p1_e').value);
+  const a = parseFloat(document.getElementById('p1_a').value);
+  const sep_e = parseFloat(document.getElementById('p1_sep_e').value);
+  const lat_e = parseFloat(document.getElementById('p1_lat_e').value);
+
+  if (e > 0 && a > 0) {
+    document.getElementById('p1_ea').value = (e / a).toFixed(2);
+  }
+  let avg_e = 0;
+  if (sep_e > 0 && lat_e > 0) avg_e = (sep_e + lat_e) / 2.0;
+  else if (sep_e > 0) avg_e = sep_e;
+  else if (lat_e > 0) avg_e = lat_e;
+
+  if (e > 0 && avg_e > 0) {
+    document.getElementById('p1_ee').value = (e / avg_e).toFixed(1);
+  }
+  evaluateDiastolicFunction();
+}
+
+function evaluateDiastolicFunction() {
+  const ea = parseFloat(document.getElementById('p1_ea').value);
+  const e = parseFloat(document.getElementById('p1_e').value);
+  const ee = parseFloat(document.getElementById('p1_ee').value);
+  const lavi = parseFloat(document.getElementById('p1_lavi').value);
+  const tr_vmax = parseFloat(document.getElementById('p1_tr_vmax').value);
+  const lars = parseFloat(document.getElementById('p1_lars').value);
+
+  let posCount = 0, totalCrit = 0;
+  if (!isNaN(ee) && ee > 0) { totalCrit++; if (ee > 14) posCount++; }
+  if (!isNaN(tr_vmax) && tr_vmax > 0) { totalCrit++; if (tr_vmax > 2.8) posCount++; }
+  if (!isNaN(lavi) && lavi > 0) { totalCrit++; if (lavi > 34) posCount++; }
+
+  let larsNote = "";
+  if (!isNaN(lars) && lars > 0) {
+    if (lars < 18) larsNote = " / LARS低値(<18%) LAP上昇示唆";
+    else if (lars < 24) larsNote = " / LARS境界域(18-24%)";
+    else larsNote = " / LARS保持(≥24%)";
+  }
+
+  const sel = document.getElementById('diastolic_grade_select');
+  const note = document.getElementById('diastolic_guideline_note');
+  const dash = document.getElementById('dash-diastole');
+
+  if (isNaN(ea) || ea <= 0) {
+    note.innerText = "E/A比と計測値を入力すると自動判定されます" + larsNote;
+    return;
+  }
+
+  let result = "";
+  if (ea <= 0.8 && (!isNaN(e) && e <= 50)) {
+    result = "Grade 1: 弛緩低下型 (LAP正常)";
+    note.innerText = "【判定根拠】E/A ≤ 0.8 かつ E ≤ 50 cm/s ➔ LAP正常" + larsNote;
+  } else if (ea >= 2.0) {
+    result = "Grade 3: 拘束型 (LAP著明上昇)";
+    note.innerText = "【判定根拠】E/A ≥ 2.0 ➔ 左房圧著明上昇 (Grade 3)" + larsNote;
+  } else if (totalCrit >= 2) {
+    if (posCount >= 2) {
+      result = "Grade 2: 偽正常型 (LAP上昇)";
+      note.innerText = `【判定根拠】充満圧指標陽性: ${posCount}/${totalCrit}項目 (E/e'>14, TR>2.8, LAVI>34) ➔ LAP上昇` + larsNote;
+    } else if (posCount <= 1 && totalCrit === 3) {
+      result = "正常 (Normal) または Grade 1";
+      note.innerText = `【判定根拠】充満圧指標陽性: ${posCount}/${totalCrit}項目 ➔ LAP正常範囲` + larsNote;
+    } else {
+      result = "判定不能 / 不確定 (Indeterminate)";
+      note.innerText = `【判定根拠】充満圧指標陽性: ${posCount}/${totalCrit}項目 ➔ 追跡精査推奨` + larsNote;
+    }
+  } else {
+    result = "判定中...";
+    note.innerText = `充満圧指標入力中 (陽性: ${posCount}項目)` + larsNote;
+  }
+
+  sel.value = result;
+  if (dash) dash.innerText = (result.split(" ")[0] || result) + (lars < 18 && lars > 0 ? "⚠️" : "");
+}
+
+function calcTRPASP() {
+  const tr_pg = parseFloat(document.getElementById('p1_tr_pg').value);
+  const rap = parseFloat(document.getElementById('p1_rap').value);
+  if (!isNaN(tr_pg) && !isNaN(rap)) {
+    const epasp = (tr_pg + rap).toFixed(0);
+    document.getElementById('p1_epasp').value = epasp;
+    const dashPH = document.getElementById('dash-ph');
+    if (dashPH) {
+      dashPH.innerText = epasp > 40 ? `PH疑い (${epasp} mmHg)` : (epasp > 0 ? `${epasp} mmHg (正常)` : "-");
+    }
+  }
+  calcPVR();
+}
+
+function syncTRVmax() {
+  const v = parseFloat(document.getElementById('p1_tr_vmax').value);
+  if (v > 0) {
+    const pg = (4 * v * v).toFixed(0);
+    document.getElementById('p1_tr_pg').value = pg;
+    calcTRPASP();
+  }
+  evaluateDiastolicFunction();
+  calcPVR();
+}
+
+function calcPRHemodynamics() {
+  const pr_edv = parseFloat(document.getElementById('p1_pr_edv').value);
+  const rap = parseFloat(document.getElementById('p1_rap').value);
+  if (!isNaN(pr_edv) && pr_edv > 0) {
+    const predp = 4 * pr_edv * pr_edv;
+    document.getElementById('p1_pr_edpg').value = predp.toFixed(0);
+    if (!isNaN(rap)) {
+      document.getElementById('p1_padp').value = (predp + rap).toFixed(0);
+    }
+  } else {
+    document.getElementById('p1_pr_edpg').value = "";
+    document.getElementById('p1_padp').value = "";
+  }
+  calcPVR();
+}
+
+function calcPVR() {
+  const tr_vmax = parseFloat(document.getElementById('p1_tr_vmax').value);
+  const rvot_vti = parseFloat(document.getElementById('p1_rvot_vti').value);
+  const pvr_el = document.getElementById('p1_pvr');
+  if (!pvr_el) return;
+  if (!isNaN(tr_vmax) && tr_vmax > 0 && !isNaN(rvot_vti) && rvot_vti > 0) {
+    // Abbas formula: PVR (Wood units) = 10 * (TR Vmax / RVOT VTI) + 0.16
+    const pvr = (10 * (tr_vmax / rvot_vti) + 0.16).toFixed(2);
+    pvr_el.value = pvr;
+  } else {
+    pvr_el.value = "";
+  }
+}
+
+function calcIVCCollapse() {
+  const exp = parseFloat(document.getElementById('meas_ivc_exp').value);
+  const ins = parseFloat(document.getElementById('meas_ivc_ins').value);
+  if (exp > 0 && ins >= 0 && exp >= ins) {
+    const col = ((exp - ins) / exp) * 100;
+    document.getElementById('meas_ivc_col').value = col.toFixed(1);
+    if (exp <= 21 && col >= 50) document.getElementById('p1_rap').value = "3";
+    else if (exp > 21 && col < 50) document.getElementById('p1_rap').value = "15";
+    else document.getElementById('p1_rap').value = "8";
+    calcTRPASP();
+  }
+}
+
+function updateValveGauge(valveId, grade) {
+  ['none', 'mild', 'mod', 'sev'].forEach(g => {
+    const el = document.getElementById(`gauge-${valveId}-${g}`);
+    if (el) el.classList.remove('gauge-active');
+  });
+  const target = document.getElementById(`gauge-${valveId}-${grade}`);
+  if (target) target.classList.add('gauge-active');
+}
+
+function resetAll() {
+  if (confirm("入力データをすべてクリアして新規ブランクレポートにしますか？")) {
+    document.querySelectorAll("input, textarea").forEach(el => el.value = "");
+    document.querySelectorAll("select").forEach(el => el.selectedIndex = 0);
+    for (let i = 1; i <= 17; i++) segScores[i] = 1;
+    updateBullseyeUI();
+    document.getElementById('quick-id').innerText = "-";
+    document.getElementById('quick-name').innerText = "-";
+    document.getElementById('quick-age').innerText = "-";
+    document.getElementById('quick-bsa').innerText = "- ㎡";
+    document.getElementById('dash-ef').innerText = "- %";
+    document.getElementById('dash-diastole').innerText = "未入力";
+    document.getElementById('dash-ph').innerText = "-";
+  }
+}
+
+function updateQuickBar() {
+  const id = document.getElementById('pat_id').value;
+  const name = document.getElementById('pat_name').value;
+  const age = document.getElementById('pat_age').value;
+  document.getElementById('quick-id').innerText = id || "-";
+  document.getElementById('quick-name').innerText = name ? `${name} 様` : "-";
+  document.getElementById('quick-age').innerText = age ? `${age} 歳` : "-";
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  updateBullseyeUI();
+});
+</script>
+</head>
+<body>
+
+<!-- アプリヘッダー (画面専用・印刷時非表示) -->
+<header class="app-header no-print">
+  <div class="app-brand">
+    <div class="app-title">心臓超音波検査 デジタル統合レポート</div>
+    <div class="app-badge">国東市民病院 生理検査室</div>
+  </div>
+
+  <div class="quick-bar">
+    <div class="quick-item"><span class="quick-label">患者ID:</span><span class="quick-val" id="quick-id">-</span></div>
+    <div class="quick-item"><span class="quick-label">氏名:</span><span class="quick-val" id="quick-name">-</span></div>
+    <div class="quick-item"><span class="quick-label">年齢:</span><span class="quick-val" id="quick-age">-</span></div>
+    <div class="quick-item"><span class="quick-label">BSA:</span><span class="quick-val" id="quick-bsa">- ㎡</span></div>
+  </div>
+
+  <div class="header-actions">
+    <button class="btn btn-reset" onclick="resetAll()">🧹 全クリア</button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ A4×2枚 印刷 / PDF保存</button>
+  </div>
+</header>
+
+<!-- 5秒把握 エグゼクティブ・サマリーダッシュボード (画面専用) -->
+<div class="dashboard-banner no-print">
+  <div class="dash-card">
+    <div class="dash-title">左室収縮能 (LVEF)</div>
+    <div class="dash-main" id="dash-ef">- %</div>
+    <div class="dash-sub">Teichholz法 / Simpson法</div>
+  </div>
+  <div class="dash-card" style="border-left-color: #f59e0b;">
+    <div class="dash-title">左室拡張能 (Diastology)</div>
+    <div class="dash-main" id="dash-diastole">未入力</div>
+    <div class="dash-sub">ASE/EACVI ＋ LARS連動</div>
+  </div>
+  <div class="dash-card" style="border-left-color: #0284c7;">
+    <div class="dash-title">右心機能・肺動脈圧 (ePASP)</div>
+    <div class="dash-main" id="dash-ph">-</div>
+    <div class="dash-sub">TAPSE / RV s' / TR-PG + RAP</div>
+  </div>
+  <div class="dash-card" style="border-left-color: #10b981;">
+    <div class="dash-title">壁運動指数 (WMSI)</div>
+    <div class="dash-main" id="dash-wmsi">1.00 (全周性正常)</div>
+    <div class="dash-sub">17セグメント</div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     印刷・画面兼用 レポートコンテナ (A4 2枚組)
+     ========================================================================== -->
+<div class="report-wrapper">
+
+  <!-- ================================================= PAGE 1 ================================================= -->
+  <section class="print-page" id="page-1">
+    <div>
+      <!-- ページヘッダー -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom: 2px solid #1e3a8a; padding-bottom: 3px; margin-bottom: 4px;">
+        <div>
+          <div style="font-size: 17px; font-weight: 800; color: #0f172a; letter-spacing: 1px;">心臓超音波検査報告書</div>
+          <div style="font-size: 9px; color: #64748b;">國東市民病院 生理機能検査室（公式レポート）</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 9.5px; font-weight: bold;">実施日: </span>
+          <input type="date" style="width: 110px; display: inline-block;">
+        </div>
+      </div>
+
+      <!-- 患者情報テーブル（ブランク） -->
+      <table>
+        <tr>
+          <th style="width: 8.5%;">患者 ID</th>
+          <td style="width: 15%;"><input type="text" id="pat_id" class="input-num" style="text-align: left;" oninput="updateQuickBar()"></td>
+          <th style="width: 8.5%;">氏名</th>
+          <td style="width: 25%;"><input type="text" id="pat_name" style="font-weight: bold; font-size:10.5px;" oninput="updateQuickBar()"></td>
+          <th style="width: 8%;">病名</th>
+          <td><input type="text" placeholder="臨床診断名"></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><input type="text"></td>
+          <th>生年月日/年齢</th>
+          <td>
+            <input type="text" id="pat_age" placeholder="年 月 日 ( 歳)" style="width: 58%; display: inline-block;" oninput="updateQuickBar()">
+            <select style="width: 38%; display: inline-block;" class="eval-select">
+              <option>男性</option><option>女性</option>
+            </select>
+          </td>
+          <th>検査目的</th>
+          <td><input type="text" placeholder="検査目的・主訴"></td>
+        </tr>
+        <tr>
+          <th>身長 / 体重</th>
+          <td>
+            <input type="number" id="pat_height" placeholder="cm" style="width: 45%; display: inline-block;" oninput="calcBSA()"> /
+            <input type="number" id="pat_weight" placeholder="kg" style="width: 45%; display: inline-block;" oninput="calcBSA()">
+          </td>
+          <th>BSA (体表面積)</th>
+          <td>
+            <input type="text" id="pat_bsa" class="input-num input-auto" readonly placeholder="自動計算" style="width: 70px; display: inline-block;"> ㎡
+            <span class="ref-val">(DuBois)</span>
+          </td>
+          <th>依頼科/医師</th>
+          <td>
+            <input type="text" placeholder="科" style="width: 46%; display: inline-block;"> /
+            <input type="text" placeholder="医師" style="width: 48%; display: inline-block;">
+          </td>
+        </tr>
+        <tr>
+          <th>入外区分</th>
+          <td>
+            <select class="eval-select">
+              <option>外来</option><option>入院</option><option>救急</option>
+            </select>
+          </td>
+          <th>描出能 (Window)</th>
+          <td>
+            <select class="eval-select">
+              <option>良好 (Good)</option><option>普通 (Fair)</option><option>不良 (Poor)</option>
+            </select>
+          </td>
+          <th>病棟 / 検査技師</th>
+          <td>
+            <input type="text" placeholder="病棟" style="width: 46%; display: inline-block;"> /
+            <input type="text" style="width: 48%; display: inline-block;">
+          </td>
+        </tr>
+      </table>
+
+      <!-- 3列計測ブロック（整理版：左心系・拡張能・右心系肺循環） -->
+      <div class="grid-3col">
+        <!-- 1列目: 左室内径・壁厚・左室形態/機能指標 -->
+        <div>
+          <table>
+            <tr>
+              <th colspan="2" class="sec-title-sub">【 Dimension & LV Function 】</th>
+              <th style="width: 32%;" class="sec-title-sub">基準値</th>
+            </tr>
+            <tr><td>RVD (右室基部径)</td><td><input type="number" step="0.1" class="input-num"> mm</td><td class="ref-val">&lt; 35</td></tr>
+            <tr><td>AOD (大動脈径)</td><td><input type="number" step="0.1" class="input-num" id="meas_aod" oninput="calcBSA()"> mm</td><td class="ref-val">(18～35)</td></tr>
+            <tr><td>LAD (左房前後径)</td><td><input type="number" step="0.1" class="input-num" id="meas_lad" oninput="calcBSA()"> mm</td><td class="ref-val">(20～38)</td></tr>
+            <tr><td>IVSd (心室中隔)</td><td><input type="number" step="0.1" class="input-num" id="meas_ivs" oninput="calcLV()"> mm</td><td class="ref-val">(7～11)</td></tr>
+            <tr><td>LVPWd (後壁厚)</td><td><input type="number" step="0.1" class="input-num" id="meas_pw" oninput="calcLV()"> mm</td><td class="ref-val">(7～11)</td></tr>
+            <tr><td>LVDd (左室拡張)</td><td><input type="number" step="0.1" class="input-num" id="meas_lvdd" oninput="calcLV()"> mm</td><td class="ref-val">(35～55)</td></tr>
+            <tr><td>LVDs (左室収縮)</td><td><input type="number" step="0.1" class="input-num" id="meas_lvds" oninput="calcLV()"> mm</td><td class="ref-val">(22～44)</td></tr>
+            <tr style="background: #eff6ff;">
+              <td><strong>EF (Teichholz)</strong></td>
+              <td><input type="number" class="input-num input-auto" id="meas_ef" readonly> %</td>
+              <td class="ref-val"><strong>(55～83)</strong></td>
+            </tr>
+            <tr><td>FS (短縮率)</td><td><input type="number" step="0.1" class="input-num input-auto" id="meas_fs" readonly> %</td><td class="ref-val">(&gt; 30)</td></tr>
+            <tr style="background: #eff6ff;">
+              <td><strong>Simpson LVEF</strong></td>
+              <td><input type="number" class="input-num" style="font-weight:bold;"> %</td>
+              <td class="ref-val">(&gt; 52男 / &gt; 54女)</td>
+            </tr>
+            <tr><td>相対的壁厚 (RWT)</td><td><input type="text" id="meas_rwt" class="input-num input-auto" readonly></td><td class="ref-val">(0.32～0.42)</td></tr>
+            <tr><td>心筋重量係数(LVMI)</td><td><input type="text" id="meas_lvmi" class="input-num input-auto" readonly> g/㎡</td><td class="ref-val">(&lt;115男/&lt;95女)</td></tr>
+            <tr><td>LVDd 係数</td><td><input type="text" id="idx_lvdd" class="input-num input-auto" readonly> mm/㎡</td><td class="ref-val">(20～28)</td></tr>
+            <tr><td>LVDs 係数</td><td><input type="text" id="idx_lvds" class="input-num input-auto" readonly> mm/㎡</td><td class="ref-val">(13～21)</td></tr>
+            <tr><td>LAD 係数</td><td><input type="text" id="idx_lad" class="input-num input-auto" readonly> mm/㎡</td><td class="ref-val">(16～24)</td></tr>
+            <tr><td>AOD 係数</td><td><input type="text" id="idx_aod" class="input-num input-auto" readonly> mm/㎡</td><td class="ref-val">(&lt; 21)</td></tr>
+          </table>
+        </div>
+
+        <!-- 2列目: ★ASE/EACVI ＋ LARS (左房リザーバーストレイン) 拡張能評価 -->
+        <div>
+          <table>
+            <tr>
+              <th colspan="3" class="sec-title" style="background: #1e40af;">
+                【 左室拡張能 & 充満圧評価 (ASE/EACVI + LARS) 】
+              </th>
+            </tr>
+            <tr>
+              <th style="width: 44%;">評価項目</th>
+              <th style="width: 28%;">計測値</th>
+              <th style="width: 28%;">判定基準</th>
+            </tr>
+            <tr>
+              <td>E波 / A波 流速</td>
+              <td>
+                <input type="number" id="p1_e" class="input-num" style="width: 45%; display:inline-block;" placeholder="E" oninput="calcDiastology()"> /
+                <input type="number" id="p1_a" class="input-num" style="width: 45%; display:inline-block;" placeholder="A" oninput="calcDiastology()">
+              </td>
+              <td class="ref-val">E:54-92 / A:52-88</td>
+            </tr>
+            <tr style="background: #eff6ff;">
+              <td><strong>E / A 比</strong></td>
+              <td><input type="text" id="p1_ea" class="input-num input-auto" readonly style="font-weight:bold;"></td>
+              <td class="ref-val">0.8～2.0</td>
+            </tr>
+            <tr>
+              <td>減速時間 (DcT)</td>
+              <td><input type="number" class="input-num"> ms</td>
+              <td class="ref-val">(150～240)</td>
+            </tr>
+            <tr>
+              <td>中隔 e' / 側壁 e'</td>
+              <td>
+                <input type="number" step="0.1" id="p1_sep_e" class="input-num" style="width: 45%; display:inline-block;" placeholder="中隔" oninput="calcDiastology()"> /
+                <input type="number" step="0.1" id="p1_lat_e" class="input-num" style="width: 45%; display:inline-block;" placeholder="側壁" oninput="calcDiastology()">
+              </td>
+              <td class="ref-val">中隔&gt;7 / 側壁&gt;10</td>
+            </tr>
+            <tr style="background: #eff6ff;">
+              <td><strong>平均 E / e' 比</strong></td>
+              <td><input type="text" id="p1_ee" class="input-num input-auto" readonly style="font-weight:bold; color:#1e3a8a;"></td>
+              <td class="ref-val"><strong>≤ 14 (&gt;14充満圧↑)</strong></td>
+            </tr>
+            <tr>
+              <td>左房容積 / 係数(LAVI)</td>
+              <td>
+                <input type="number" id="p1_lav" class="input-num" style="width:45%; display:inline-block;" placeholder="ml" oninput="calcLAVI()"> /
+                <input type="text" id="p1_lavi" class="input-num input-auto" readonly style="width:45%; display:inline-block; font-weight:bold;">
+              </td>
+              <td class="ref-val"><strong>LAVI &gt; 34 拡大</strong></td>
+            </tr>
+            <tr>
+              <td>TR Vmax (逆流流速)</td>
+              <td><input type="number" step="0.1" id="p1_tr_vmax" class="input-num" placeholder="m/s" oninput="syncTRVmax()"> m/s</td>
+              <td class="ref-val"><strong>&gt; 2.8 で陽性</strong></td>
+            </tr>
+            <tr style="background: #f0fdf4;">
+              <td><strong>左房ストレイン (LARS)</strong></td>
+              <td><input type="number" step="0.1" id="p1_lars" class="input-num" placeholder="%" oninput="evaluateDiastolicFunction()"> %</td>
+              <td class="ref-val"><strong>&lt; 18 低下(LAP↑)</strong></td>
+            </tr>
+            <tr>
+              <td>肺静脈波 (Ar - A) / Valsalva</td>
+              <td colspan="2">
+                <input type="number" class="input-num" style="width:38px; display:inline-block;" placeholder="Ar-A"> ms (≥30) &nbsp;
+                ΔE/A: <input type="text" class="input-num" style="width:45px; display:inline-block;" placeholder="ΔE/A"> (≥0.5)
+              </td>
+            </tr>
+            <tr style="background: #fef3c7;">
+              <td colspan="3" style="padding: 2.5px 4px;">
+                <div style="font-weight: bold; color: #92400e; margin-bottom: 1px; font-size:8.5px;">★ 拡張能総合判定 (自動連動):</div>
+                <select id="diastolic_grade_select" class="eval-select" style="font-weight: bold; color: #b45309; background: #fff; width:100%;">
+                  <option value="">未判定</option>
+                  <option>正常 (Normal Diastolic Function)</option>
+                  <option>Grade 1: 弛緩低下型 (LAP正常)</option>
+                  <option>Grade 2: 偽正常型 (LAP上昇)</option>
+                  <option>Grade 3: 拘束型 (LAP著明上昇)</option>
+                  <option>正常 (Normal) または Grade 1</option>
+                  <option>判定不能 / 不確定 (Indeterminate)</option>
+                </select>
+                <div id="diastolic_guideline_note" style="font-size: 7.5px; color: #78350f; margin-top: 1px;">
+                  【根拠】ASE/EACVI ＋ LARS 連動
+                </div>
+              </td>
+            </tr>
+            <!-- ★肺動脈弁逆流 (PR) & 肺循環血行動態・PVR 評価枠（省スペース化） -->
+            <tr>
+              <th colspan="3" class="sec-title-sub" style="background:#e0f2fe; color:#0369a1; font-size:8.5px; padding:1.5px 4px;">
+                【 PR血行動態 & 肺動脈圧・PVR評価 】
+              </th>
+            </tr>
+            <tr>
+              <td>PR 流速 (Peak / EDV)</td>
+              <td>
+                <input type="number" step="0.1" id="p1_pr_peak" class="input-num" style="width:45%; display:inline-block;" placeholder="Peak"> /
+                <input type="number" step="0.1" id="p1_pr_edv" class="input-num" style="width:45%; display:inline-block;" placeholder="EDV" oninput="calcPRHemodynamics()">
+              </td>
+              <td class="ref-val">EDV &lt; 1.5 m/s</td>
+            </tr>
+            <tr style="background:#f0fdf4;">
+              <td><strong>PRedp (4×EDV²)</strong></td>
+              <td><input type="text" id="p1_pr_edpg" class="input-num input-auto" readonly style="font-weight:bold;"> mmHg</td>
+              <td class="ref-val">≤ 5 mmHg</td>
+            </tr>
+            <tr style="background:#fef2f2;">
+              <td><strong>推定肺動脈拡張期圧(ePADP)</strong></td>
+              <td><input type="text" id="p1_padp" class="input-num input-auto" readonly style="font-weight:bold; color:#b91c1c;"> mmHg</td>
+              <td class="ref-val"><strong>PRedp + RAP (&lt;15)</strong></td>
+            </tr>
+            <tr>
+              <td>RVOT VTI</td>
+              <td><input type="number" step="0.1" id="p1_rvot_vti" class="input-num" placeholder="cm" oninput="calcPVR()"> cm</td>
+              <td class="ref-val">15～22 cm</td>
+            </tr>
+            <tr style="background:#fdf4ff;">
+              <td><strong>肺血管抵抗 (PVR)</strong></td>
+              <td><input type="text" id="p1_pvr" class="input-num input-auto" readonly style="font-weight:bold; color:#7e22ce;"> Wood</td>
+              <td class="ref-val"><strong>&lt; 2.0 (正常)</strong></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- 3列目: ★案A採用！【右心機能 & 肺循環・右心不全評価 (Right Heart & Pulmonary)】 -->
+        <div>
+          <table>
+            <tr>
+              <th colspan="3" class="sec-title" style="background: #0284c7;">
+                【 右心機能 & 肺循環評価 (Right Heart & PH) 】
+              </th>
+            </tr>
+            <tr>
+              <th style="width: 44%;">評価項目</th>
+              <th style="width: 28%;">計測値</th>
+              <th style="width: 28%;">基準値</th>
+            </tr>
+            <tr>
+              <td>三尖弁輪移動量 (TAPSE)</td>
+              <td><input type="number" step="0.1" class="input-num"> mm</td>
+              <td class="ref-val">≥ 17 mm</td>
+            </tr>
+            <tr>
+              <td>三尖弁輪速度 (RV s')</td>
+              <td><input type="number" step="0.1" class="input-num"> cm/s</td>
+              <td class="ref-val">≥ 9.5 cm/s</td>
+            </tr>
+            <tr>
+              <td>右室面積変化率 (RV-FAC)</td>
+              <td><input type="number" step="0.1" class="input-num"> %</td>
+              <td class="ref-val">≥ 35 %</td>
+            </tr>
+            <tr>
+              <td>右房面積 (RA Area)</td>
+              <td><input type="number" step="0.1" class="input-num"> c㎡</td>
+              <td class="ref-val">&lt; 18 c㎡</td>
+            </tr>
+            <tr>
+              <td>肺動脈弁加速度時間(Act)</td>
+              <td><input type="number" class="input-num"> ms</td>
+              <td class="ref-val">&gt; 105 ms</td>
+            </tr>
+            <tr>
+              <td>中収縮期ノッチ (Notch)</td>
+              <td colspan="2"><select class="eval-select"><option>なし (None)</option><option>あり (肺血管抵抗↑)</option></select></td>
+            </tr>
+            <tr>
+              <td>心室中隔平坦化(D-shape)</td>
+              <td colspan="2"><select class="eval-select"><option>なし</option><option>収縮期(圧負荷)</option><option>全時相(容量負荷)</option></select></td>
+            </tr>
+            <tr>
+              <td>IVC 呼気 / 吸気径</td>
+              <td colspan="2">
+                <input type="number" step="0.1" id="meas_ivc_exp" class="input-num" style="width:45%; display:inline-block;" placeholder="呼気" oninput="calcIVCCollapse()"> /
+                <input type="number" step="0.1" id="meas_ivc_ins" class="input-num" style="width:45%; display:inline-block;" placeholder="吸気" oninput="calcIVCCollapse()"> mm
+              </td>
+            </tr>
+            <tr>
+              <td>IVC 呼吸性虚脱率</td>
+              <td colspan="2">
+                <input type="number" step="0.1" id="meas_ivc_col" class="input-num input-auto" readonly style="width:65px; display:inline-block;"> %
+                <span class="ref-val">(&gt; 50% で虚脱良好)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>推定右房圧 (RAP)</td>
+              <td colspan="2">
+                <select id="p1_rap" class="eval-select" onchange="calcTRPASP()">
+                  <option value="3">3 mmHg (≤21mm & &gt;50%虚脱)</option>
+                  <option value="8" selected>8 mmHg (中間型)</option>
+                  <option value="15">15 mmHg (&gt;21mm & &lt;50%虚脱)</option>
+                </select>
+              </td>
+            </tr>
+            <tr style="background: #eff6ff;">
+              <td><strong>TR圧較差 (TR-PG)</strong></td>
+              <td>
+                <input type="number" id="p1_tr_pg" class="input-num" oninput="calcTRPASP()">
+              </td>
+              <td class="ref-val">≤ 31 mmHg</td>
+            </tr>
+            <tr style="background: #fef2f2;">
+              <td><strong>推定肺動脈圧(ePASP)</strong></td>
+              <td>
+                <input type="text" id="p1_epasp" class="input-num input-auto" readonly style="font-weight:bold; color:#b91c1c;"> mmHg
+              </td>
+              <td class="ref-val"><strong>≤ 35 mmHg</strong></td>
+            </tr>
+            <!-- ★右列下部にコンパクトに収めた弁膜症サマリー -->
+            <tr>
+              <th colspan="3" class="sec-title-sub" style="background:#e0e7ff; color:#312e81; font-size:8.5px; padding:1.5px 4px;">
+                【 弁膜症サマリー (狭窄 & 逆流) 】
+              </th>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding: 2px;">
+                <table style="width:100%; margin:0; border:none; font-size:8px;">
+                  <tr style="background:#f1f5f9; text-align:center;">
+                    <th style="padding:1px; width:22%;">弁</th>
+                    <th style="padding:1px; width:39%;">狭窄 (Stenosis)</th>
+                    <th style="padding:1px; width:39%;">逆流 (Regurg.)</th>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold; text-align:center; padding:1px;">【AV】大動脈</td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>AS:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('as', this.value.toLowerCase())">
+                          <option value="none">なし</option><option value="mild">軽度</option><option value="mod">中等度</option><option value="sev">重度</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-as-none">None</div>
+                        <div class="gauge-mild" id="gauge-as-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-as-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-as-sev">Sev</div>
+                      </div>
+                    </td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>AR:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('ar', this.value.toLowerCase())">
+                          <option value="none">None</option><option value="mild">Mild</option><option value="mod">Mod</option><option value="sev">Sev</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-ar-none">None</div>
+                        <div class="gauge-mild" id="gauge-ar-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-ar-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-ar-sev">Sev</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold; text-align:center; padding:1px;">【MV】僧帽弁</td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>MS:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('ms', this.value.toLowerCase())">
+                          <option value="none">なし</option><option value="mild">軽度</option><option value="mod">中等度</option><option value="sev">重度</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-ms-none">None</div>
+                        <div class="gauge-mild" id="gauge-ms-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-ms-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-ms-sev">Sev</div>
+                      </div>
+                    </td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>MR:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('mr', this.value.toLowerCase())">
+                          <option value="none">None</option><option value="mild">Mild</option><option value="mod">Mod</option><option value="sev">Sev</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-mr-none">None</div>
+                        <div class="gauge-mild" id="gauge-mr-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-mr-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-mr-sev">Sev</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold; text-align:center; padding:1px;">【TV】三尖弁</td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>TS:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('ts', this.value.toLowerCase())">
+                          <option value="none">なし</option><option value="mild">軽度</option><option value="mod">中等度</option><option value="sev">重度</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-ts-none">None</div>
+                        <div class="gauge-mild" id="gauge-ts-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-ts-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-ts-sev">Sev</div>
+                      </div>
+                    </td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>TR:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('tr', this.value.toLowerCase())">
+                          <option value="none">None</option><option value="mild">Mild</option><option value="mod">Mod</option><option value="sev">Sev</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-tr-none">None</div>
+                        <div class="gauge-mild" id="gauge-tr-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-tr-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-tr-sev">Sev</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold; text-align:center; padding:1px;">【PV】肺動脈</td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>PS:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('ps', this.value.toLowerCase())">
+                          <option value="none">なし</option><option value="mild">軽度</option><option value="mod">中等度</option><option value="sev">重度</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-ps-none">None</div>
+                        <div class="gauge-mild" id="gauge-ps-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-ps-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-ps-sev">Sev</div>
+                      </div>
+                    </td>
+                    <td style="padding:1px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>PR:</span>
+                        <select class="eval-select" style="width:58px; height:17px; font-size:8px;" onchange="updateValveGauge('pr', this.value.toLowerCase())">
+                          <option value="none">None</option><option value="mild">Trace</option><option value="mod">Mild</option><option value="sev">Sev</option>
+                        </select>
+                      </div>
+                      <div class="valve-gauge-bar" style="height:8px; line-height:8px; font-size:6.5px; margin-top:1px;">
+                        <div class="gauge-none gauge-active" id="gauge-pr-none">None</div>
+                        <div class="gauge-mild" id="gauge-pr-mild">Mild</div>
+                        <div class="gauge-mod" id="gauge-pr-mod">Mod</div>
+                        <div class="gauge-sev" id="gauge-pr-sev">Sev</div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- インタラクティブ 17セグメント Bull's-eye (クリックで即座に色・スコア変更) -->
+      <div class="bullseye-container">
+        <svg class="bullseye-svg" viewBox="0 0 200 200" id="bullseye-svg">
+          <!-- 中心: Seg 17 (Apex) -->
+          <circle id="seg-path-17" class="bullseye-seg" cx="100" cy="100" r="18" fill="#bbf7d0" onclick="toggleSegment(17)"/>
+          <text x="100" y="100" class="seg-text">17</text>
+
+          <!-- Apical輪: r=18〜42 (Seg 13, 14, 15, 16) -->
+          <path id="seg-path-13" class="bullseye-seg" d="M 87.3,87.3 A 18,18 0 0,1 112.7,87.3 L 129.7,70.3 A 42,42 0 0,0 70.3,70.3 Z" fill="#bbf7d0" onclick="toggleSegment(13)"/>
+          <text x="100" y="73" class="seg-text">13</text>
+
+          <path id="seg-path-16" class="bullseye-seg" d="M 112.7,87.3 A 18,18 0 0,1 112.7,112.7 L 129.7,129.7 A 42,42 0 0,0 129.7,70.3 Z" fill="#bbf7d0" onclick="toggleSegment(16)"/>
+          <text x="123" y="100" class="seg-text">16</text>
+
+          <path id="seg-path-15" class="bullseye-seg" d="M 112.7,112.7 A 18,18 0 0,1 87.3,112.7 L 70.3,129.7 A 42,42 0 0,0 129.7,129.7 Z" fill="#bbf7d0" onclick="toggleSegment(15)"/>
+          <text x="100" y="127" class="seg-text">15</text>
+
+          <path id="seg-path-14" class="bullseye-seg" d="M 87.3,112.7 A 18,18 0 0,1 87.3,87.3 L 70.3,70.3 A 42,42 0 0,0 70.3,129.7 Z" fill="#bbf7d0" onclick="toggleSegment(14)"/>
+          <text x="77" y="100" class="seg-text">14</text>
+
+          <!-- Mid輪: r=42〜68 (Seg 7〜12 各60度) -->
+          <path id="seg-path-7" class="bullseye-seg" d="M 79,63.6 A 42,42 0 0,1 121,63.6 L 134,41.1 A 68,68 0 0,0 66,41.1 Z" fill="#bbf7d0" onclick="toggleSegment(7)"/>
+          <text x="100" y="50" class="seg-text">7</text>
+
+          <path id="seg-path-12" class="bullseye-seg" d="M 121,63.6 A 42,42 0 0,1 142,100 L 168,100 A 68,68 0 0,0 134,41.1 Z" fill="#bbf7d0" onclick="toggleSegment(12)"/>
+          <text x="144" y="73" class="seg-text">12</text>
+
+          <path id="seg-path-11" class="bullseye-seg" d="M 142,100 A 42,42 0 0,1 121,136.4 L 134,158.9 A 68,68 0 0,0 168,100 Z" fill="#bbf7d0" onclick="toggleSegment(11)"/>
+          <text x="144" y="127" class="seg-text">11</text>
+
+          <path id="seg-path-10" class="bullseye-seg" d="M 121,136.4 A 42,42 0 0,1 79,136.4 L 66,158.9 A 68,68 0 0,0 134,158.9 Z" fill="#bbf7d0" onclick="toggleSegment(10)"/>
+          <text x="100" y="150" class="seg-text">10</text>
+
+          <path id="seg-path-9" class="bullseye-seg" d="M 79,136.4 A 42,42 0 0,1 58,100 L 32,100 A 68,68 0 0,0 66,158.9 Z" fill="#bbf7d0" onclick="toggleSegment(9)"/>
+          <text x="56" y="127" class="seg-text">9</text>
+
+          <path id="seg-path-8" class="bullseye-seg" d="M 58,100 A 42,42 0 0,1 79,63.6 L 66,41.1 A 68,68 0 0,0 32,100 Z" fill="#bbf7d0" onclick="toggleSegment(8)"/>
+          <text x="56" y="73" class="seg-text">8</text>
+
+          <!-- Basal輪: r=68〜94 (Seg 1〜6 各60度) -->
+          <path id="seg-path-1" class="bullseye-seg" d="M 66,41.1 A 68,68 0 0,1 134,41.1 L 147,18.6 A 94,94 0 0,0 53,18.6 Z" fill="#bbf7d0" onclick="toggleSegment(1)"/>
+          <text x="100" y="27" class="seg-text">1</text>
+
+          <path id="seg-path-6" class="bullseye-seg" d="M 134,41.1 A 68,68 0 0,1 168,100 L 194,100 A 94,94 0 0,0 147,18.6 Z" fill="#bbf7d0" onclick="toggleSegment(6)"/>
+          <text x="165" y="55" class="seg-text">6</text>
+
+          <path id="seg-path-5" class="bullseye-seg" d="M 168,100 A 68,68 0 0,1 134,158.9 L 147,181.4 A 94,94 0 0,0 194,100 Z" fill="#bbf7d0" onclick="toggleSegment(5)"/>
+          <text x="165" y="145" class="seg-text">5</text>
+
+          <path id="seg-path-4" class="bullseye-seg" d="M 134,158.9 A 68,68 0 0,1 66,158.9 L 53,181.4 A 94,94 0 0,0 147,181.4 Z" fill="#bbf7d0" onclick="toggleSegment(4)"/>
+          <text x="100" y="173" class="seg-text">4</text>
+
+          <path id="seg-path-3" class="bullseye-seg" d="M 66,158.9 A 68,68 0 0,1 32,100 L 6,100 A 94,94 0 0,0 53,181.4 Z" fill="#bbf7d0" onclick="toggleSegment(3)"/>
+          <text x="35" y="145" class="seg-text">3</text>
+
+          <path id="seg-path-2" class="bullseye-seg" d="M 32,100 A 68,68 0 0,1 66,41.1 L 53,18.6 A 94,94 0 0,0 6,100 Z" fill="#bbf7d0" onclick="toggleSegment(2)"/>
+          <text x="35" y="55" class="seg-text">2</text>
+        </svg>
+
+        <!-- セグメント入力マトリクス & WMSI -->
+        <div style="flex: 1; margin-left: 12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
+            <span style="font-weight: bold; color: #1e3a8a; font-size: 10px;">
+              左室局所壁運動 (Bull's Eyeクリックで即座に変更)
+            </span>
+            <span style="font-size: 9.5px; font-weight: bold; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; color: #0369a1;">
+              WMSI: <strong id="wmsi-val" style="font-size: 12px; color:#0c4a6e;">1.00</strong>
+            </span>
+          </div>
+
+          <table style="margin: 0; font-size: 8.5px;">
+            <tr>
+              <td style="font-weight: bold; width: 45px; background:#f1f5f9;">Basal</td>
+              <td>
+                1.前[<input type="text" id="seg-inp-1" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(1, this.value)">]
+                2.前中[<input type="text" id="seg-inp-2" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(2, this.value)">]
+                3.下中[<input type="text" id="seg-inp-3" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(3, this.value)">]
+                4.下[<input type="text" id="seg-inp-4" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(4, this.value)">]
+                5.後側[<input type="text" id="seg-inp-5" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(5, this.value)">]
+                6.前側[<input type="text" id="seg-inp-6" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(6, this.value)">]
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; background:#f1f5f9;">Mid</td>
+              <td>
+                7.前[<input type="text" id="seg-inp-7" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(7, this.value)">]
+                8.前中[<input type="text" id="seg-inp-8" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(8, this.value)">]
+                9.下中[<input type="text" id="seg-inp-9" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(9, this.value)">]
+                10.下[<input type="text" id="seg-inp-10" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(10, this.value)">]
+                11.後側[<input type="text" id="seg-inp-11" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(11, this.value)">]
+                12.前側[<input type="text" id="seg-inp-12" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(12, this.value)">]
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; background:#f1f5f9;">Apical</td>
+              <td>
+                13.前[<input type="text" id="seg-inp-13" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(13, this.value)">]
+                14.中[<input type="text" id="seg-inp-14" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(14, this.value)">]
+                15.下[<input type="text" id="seg-inp-15" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(15, this.value)">]
+                16.側[<input type="text" id="seg-inp-16" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(16, this.value)">]
+                &nbsp;17.Apex[<input type="text" id="seg-inp-17" value="1" style="width:16px; text-align:center;" onchange="setSegmentDirect(17, this.value)">]
+              </td>
+            </tr>
+          </table>
+
+          <div style="font-size: 8px; color: #475569; margin-top: 3px; display:flex; gap:6px;">
+            <span><span style="display:inline-block;width:9px;height:9px;background:#bbf7d0;border-radius:2px;"></span> 1:Normal</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#fef08a;border-radius:2px;"></span> 2:Mild</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#fed7aa;border-radius:2px;"></span> 3:Hypo</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#fca5a5;border-radius:2px;"></span> 4:Aki</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#e9d5ff;border-radius:2px;"></span> 5:Dys</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ★最大限に拡大した「所見 & フリーコメント欄」 -->
+      <div style="border: 1px solid var(--border-color); padding: 4px 6px; background: #fff; margin-bottom: 2px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
+          <span style="font-weight:bold; color:#1e3a8a; font-size:10px;">【 所見 & 総合判定フリーコメント 】</span>
+          <span style="font-size: 8px; color: #64748b;">[検査所見並びに測定値の妥当性については判読医の承認が必要です]</span>
+        </div>
+        <table style="border:none; margin:0 0 3px 0;">
+          <tr style="border:none;">
+            <td style="width: 105px; border:none; font-weight:bold; padding:1px;">Chamber size:</td>
+            <td style="border:none; padding:1px;"><input type="text" placeholder="例: LVDd拡大(62mm), LAVI拡大(45ml/㎡)"></td>
+            <td style="width: 100px; border:none; font-weight:bold; padding:1px; text-align:right;">LV contractility:</td>
+            <td style="border:none; padding:1px;"><input type="text" placeholder="例: LVEF保持(60%), びまん性壁運動良好"></td>
+          </tr>
+          <tr style="border:none;">
+            <td style="border:none; font-weight:bold; padding:1px;">LV diastolic func.:</td>
+            <td style="border:none; padding:1px;"><input type="text" placeholder="例: Grade 1 弛緩低下型 (LAP正常)"></td>
+            <td style="border:none; font-weight:bold; padding:1px; text-align:right;">Asynergy:</td>
+            <td style="border:none; padding:1px;"><input type="text" placeholder="例: 明らかなAsynergyは認めず"></td>
+          </tr>
+        </table>
+        <div>
+          <div style="font-size:8.5px; font-weight:bold; color:#334155; margin-bottom:2px;">■ 総合判定・臨床コメント・特記事項（自由記入欄）:</div>
+          <textarea rows="8" style="width: 100%; font-size: 10px; line-height:1.45; padding:4px;" placeholder="所見、病態メカニズム、心不全兆候、前回検査との比較、推奨追加精査などを広くご自由にご記入ください。"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- フッター -->
+    <div class="footer-row">
+      <div class="hospital-name">国東市民病院</div>
+      <div>検査者: <input type="text" style="width:75px; display:inline-block;"> &nbsp;&nbsp; 診断医: <input type="text" style="width:85px; display:inline-block;" placeholder="承認医師サイン"></div>
+      <div>Page 1 / 2 (基本サマリー)</div>
+    </div>
+  </section>
+
+
+  <!-- ================================================= PAGE 2 ================================================= -->
+  <section class="print-page" id="page-2">
+    <div>
+      <!-- ページヘッダー -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom: 2px solid #1e3a8a; padding-bottom: 3px; margin-bottom: 4px;">
+        <div>
+          <div style="font-size: 16px; font-weight: 800; color: #0f172a; letter-spacing: 0.8px;">心臓超音波検査報告書（詳細評価・血行動態・精査）</div>
+          <div style="font-size: 9px; color: #64748b;">國東市民病院 生理機能検査室（2枚目：狭窄・逆流 分離定量的評価・特殊所見）</div>
+        </div>
+        <div style="text-align: right; font-size: 9.5px;">
+          患者ID: <input type="text" class="input-num" style="width:65px; display:inline-block;"> &nbsp;
+          氏名: <input type="text" style="width:75px; display:inline-block; font-weight:bold;">
+        </div>
+      </div>
+
+      <!-- 1. 弁狭窄症 精査 (Stenosis Workup) -->
+      <div class="sec-title" style="background:#0369a1;">1. 弁狭窄症 詳細定量的評価 (Valvular Stenosis Workup)</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 14%;">対象弁</th>
+            <th style="width: 32%;">主要定量パラメータ</th>
+            <th style="width: 16%;">計測値</th>
+            <th style="width: 20%;">重症度基準 (ガイドライン)</th>
+            <th style="width: 18%;">形態・血行動態所見</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>大動脈弁狭窄<br>(AS 精査)</strong></td>
+            <td>
+              最大流速 (Vmax) / 最大圧較差 (peak PG)<br>
+              平均圧較差 (mean PG)<br>
+              弁口面積 AVA (連続の式) / AVA Index<br>
+              無次元速度指数 DVI (LVOT VTI / AV VTI)<br>
+              低流量低圧較差 (LF-LG) / SVI
+            </td>
+            <td>
+              <input type="text" placeholder="m/s / mmHg"><br>
+              <input type="text" placeholder="mmHg"><br>
+              <input type="text" placeholder="c㎡ / c㎡/㎡"><br>
+              <input type="text" placeholder="DVI: "><br>
+              <input type="text" placeholder="SVI: ml/㎡">
+            </td>
+            <td class="ref-val">
+              <strong>Vmax ≥ 4.0 m/s (重症)</strong><br>
+              <strong>mean PG ≥ 40 mmHg</strong><br>
+              <strong>AVA &lt; 1.0 c㎡ (&lt;0.6/㎡)</strong><br>
+              DVI &lt; 0.25 (重症)<br>
+              SVI &lt; 35 ml/㎡ (Low flow)
+            </td>
+            <td>
+              二尖弁: <select class="eval-select"><option>なし</option><option>Type 0</option><option>Type 1</option></select><br>
+              石灰化: [ 軽 / 中 / 重 ]<br>
+              LVOT径: <input type="number" style="width:35px; display:inline-block;"> mm
+            </td>
+          </tr>
+          <tr>
+            <td><strong>僧帽弁狭窄<br>(MS 精査)</strong></td>
+            <td>
+              拡張期最大流速 (peak Vel) / 最大圧較差<br>
+              拡張期平均圧較差 (mean PG)<br>
+              弁口面積 MVA (PHT法: 220/PHT)<br>
+              弁口面積 MVA (プライニメトリ法)<br>
+              圧半減時間 (PHT)
+            </td>
+            <td>
+              <input type="text" placeholder="m/s / mmHg"><br>
+              <input type="text" placeholder="mmHg"><br>
+              <input type="text" placeholder="c㎡"><br>
+              <input type="text" placeholder="c㎡"><br>
+              <input type="text" placeholder="ms">
+            </td>
+            <td class="ref-val">
+              <strong>MVA ≤ 1.5 c㎡ (有意)</strong><br>
+              <strong>MVA ≤ 1.0 c㎡ (重症)</strong><br>
+              mean PG ≥ 5 mmHg (中等度)<br>
+              mean PG ≥ 10 mmHg (重症)<br>
+              PHT ≥ 150 ms (重症≥220)
+            </td>
+            <td>
+              Wilkinsスコア: &nbsp;&nbsp;&nbsp;&nbsp; /16<br>
+              交連部癒合: [ - / + ]<br>
+              腱索肥厚: [ - / + ]
+            </td>
+          </tr>
+          <tr>
+            <td><strong>三尖弁・肺動脈弁<br>狭窄 (TS / PS)</strong></td>
+            <td>
+              TS: 拡張期平均圧較差 (mean PG)<br>
+              TS: 三尖弁口面積 TVA (PHT 190/PHT)<br>
+              PS: 最大血流速度 (Vmax) / 最大圧較差
+            </td>
+            <td>
+              <input type="text" placeholder="mmHg"><br>
+              <input type="text" placeholder="c㎡"><br>
+              <input type="text" placeholder="m/s / mmHg">
+            </td>
+            <td class="ref-val">
+              TS mean PG ≥ 5 mmHg (重症)<br>
+              TVA ≤ 1.0 c㎡ (重症)<br>
+              PS peak PG &gt; 64 mmHg (重症)
+            </td>
+            <td>
+              PS 狭窄部位:<br>
+              [ 弁性 / 弁下部 / 弁上部 ]<br>
+              ドーム形成: [ - / + ]
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 2. 弁逆流症 精査 (Regurgitation Workup) -->
+      <div class="sec-title" style="background:#1d4ed8; margin-top: 3px;">2. 弁逆流症 詳細定量的評価 (Valvular Regurgitation Workup)</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 14%;">対象弁</th>
+            <th style="width: 32%;">主要定量パラメータ</th>
+            <th style="width: 16%;">計測値</th>
+            <th style="width: 20%;">重症度基準 (ガイドライン)</th>
+            <th style="width: 18%;">形態・性状所見</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>大動脈弁逆流<br>(AR 精査)</strong></td>
+            <td>
+              Vena Contracta (VC: 逆流幅)<br>
+              圧半減時間 (PHT: Continuous Doppler)<br>
+              PISA法: 有効逆流弁口面積 (EROA)<br>
+              PISA法: 逆流容量 (Regurgitant Volume)<br>
+              拡張末期下降大動脈逆流速度 (EDV)
+            </td>
+            <td>
+              <input type="text" placeholder="mm"><br>
+              <input type="text" placeholder="ms"><br>
+              <input type="text" placeholder="c㎡"><br>
+              <input type="text" placeholder="ml"><br>
+              <input type="text" placeholder="cm/s">
+            </td>
+            <td class="ref-val">
+              <strong>VC &gt; 6.0 mm (重症)</strong><br>
+              <strong>PHT &lt; 200 ms (重症)</strong><br>
+              <strong>EROA ≥ 0.30 c㎡ (重症)</strong><br>
+              <strong>RegVol ≥ 60 ml (重症)</strong><br>
+              EDV &gt; 20 cm/s (大動脈弓Holodiastolic)
+            </td>
+            <td>
+              ジェット性状:<br>
+              <select class="eval-select"><option>中心性</option><option>偏位(Eccentric)</option></select><br>
+              弁尖逸脱: [ - / + ]<br>
+              大動脈弁輪径: &nbsp;&nbsp;&nbsp; mm
+            </td>
+          </tr>
+          <tr>
+            <td><strong>僧帽弁逆流<br>(MR 精査)</strong></td>
+            <td>
+              Vena Contracta (VC: 収縮期逆流幅)<br>
+              PISA法: 有効逆流弁口面積 (EROA)<br>
+              PISA法: 逆流容量 (Regurgitant Volume)<br>
+              逆流分画 (Regurgitant Fraction: RF)<br>
+              肺静脈血流波 (PV S/D ratio / S波逆転)
+            </td>
+            <td>
+              <input type="text" placeholder="mm"><br>
+              <input type="text" placeholder="c㎡"><br>
+              <input type="text" placeholder="ml"><br>
+              <input type="text" placeholder="%"><br>
+              <input type="text" placeholder="S波逆転: [ - / + ]">
+            </td>
+            <td class="ref-val">
+              <strong>VC ≥ 7.0 mm (重症)</strong><br>
+              <strong>EROA ≥ 0.40 c㎡ (器質性重症)</strong><br>
+              EROA ≥ 0.20 c㎡ (二次性重症)<br>
+              <strong>RegVol ≥ 60 ml (重症)</strong><br>
+              RF ≥ 50 % (重症)
+            </td>
+            <td>
+              機序: [ 一次性(器質) / 二次性(機能) ]<br>
+              逸脱部位: [ A1 A2 A3 / P1 P2 P3 ]<br>
+              腱索断裂: [ - / + ]<br>
+              テザリング高: &nbsp;&nbsp;&nbsp; mm
+            </td>
+          </tr>
+          <tr>
+            <td><strong>三尖弁・肺動脈弁<br>逆流 (TR / PR)</strong></td>
+            <td>
+              TR: Vena Contracta (VC: 逆流幅) / EROA<br>
+              TR: 収縮期肝静脈血流 (Hepatic vein S逆転)<br>
+              PR: 初期最高流速 (Peak Vmax) / 拡張末期流速 (EDV)<br>
+              PR: PRedp (4×EDV²) / 推定PADP (PRedp+RAP)<br>
+              PR: 肺血管抵抗 PVR (Abbas式: 10×TR Vmax/RVOT VTI + 0.16)
+            </td>
+            <td>
+              <input type="text" placeholder="VC: mm / EROA: c㎡"><br>
+              <input type="text" placeholder="収縮期逆流: [ - / + ]"><br>
+              <input type="text" placeholder="Peak: m/s / EDV: m/s"><br>
+              <input type="text" placeholder="PRedp: mmHg / PADP: mmHg"><br>
+              <input type="text" placeholder="Wood units">
+            </td>
+            <td class="ref-val">
+              <strong>TR VC ≥ 7.0 mm (Severe)</strong><br>
+              <strong>TR VC ≥ 14 mm (Torrential)</strong><br>
+              <strong>PRedp &gt; 5 mmHg (PADP↑)</strong><br>
+              <strong>PADP &gt; 15 mmHg (PH疑い)</strong><br>
+              <strong>PVR &gt; 3.0 Wood (毛細管前PH)</strong>
+            </td>
+            <td>
+              三尖弁輪径 (RVDd拡張期):<br>
+              <input type="number" style="width:35px; display:inline-block;"> mm (&gt;40mmで拡大)<br>
+              PMリード干渉: [ - / + ]<br>
+              PR逆流ジェット幅 / 弁輪比: &nbsp;&nbsp;&nbsp; %
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 3. 人工弁・右心・肺循環・ストレイン -->
+      <div class="grid-2col" style="margin-top: 3px;">
+        <!-- 人工弁 & 感染性心内膜炎 -->
+        <div>
+          <div class="sec-title" style="background:#475569;">3. 人工弁機能 & 感染性心内膜炎 (IE)</div>
+          <table>
+            <tr><th style="width: 32%;">評価項目</th><th>所見・計測値</th></tr>
+            <tr>
+              <td>人工弁 (Prosthesis)</td>
+              <td>
+                弁位: [ AV / MV ] &nbsp; 弁種: [ 生体弁 / 機械弁 ] &nbsp; サイズ: <input type="number" style="width:30px; display:inline-block;"> mm<br>
+                peak / mean PG: <input type="text" style="width:80px; display:inline-block;" placeholder="  /  mmHg"> &nbsp; DVI: <input type="text" style="width:40px; display:inline-block;"><br>
+                弁周囲逆流 (PVL): [ なし / 軽度 / 中等度 / 重度 ] &nbsp; PPM疑い: [ - / + ]
+              </td>
+            </tr>
+            <tr>
+              <td>感染性心内膜炎 (IE)</td>
+              <td>
+                疣贅 (Vegetation): [ なし / あり ] (部位: &nbsp;&nbsp;&nbsp;&nbsp; サイズ: &nbsp;&nbsp; × &nbsp;&nbsp; mm)<br>
+                可動性: [ 高度 / 軽度 ] &nbsp; 弁破壊・穿孔・膿瘍: [ なし / あり ]
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- 心筋ストレイン & 心室同期性 -->
+        <div>
+          <div class="sec-title" style="background:#0284c7;">4. 心筋ストレイン (GLS) & 特殊心筋所見</div>
+          <table>
+            <tr><th style="width: 38%;">評価項目</th><th style="width: 25%;">計測値</th><th style="width: 37%;">基準値</th></tr>
+            <tr><td>左室長軸ストレイン (GLS)</td><td><input type="number" step="0.1" class="input-num"> %</td><td class="ref-val">&lt; -18 % (絶対値≥18)</td></tr>
+            <tr><td>心尖部温存 (Apical sparing)</td><td colspan="2"><select class="eval-select"><option selected>なし</option><option>あり (アミロイドーシス疑い)</option></select></td></tr>
+            <tr><td>心室間機械的遅延 (IVMD)</td><td><input type="number" class="input-num"> ms</td><td class="ref-val">&gt; 40 ms で同期不全</td></tr>
+            <tr><td>中隔バウンシング</td><td colspan="2"><select class="eval-select"><option selected>なし</option><option>あり (LBBB / 収縮性心膜炎)</option></select></td></tr>
+            <tr><td>心膜肥厚 / 石灰化</td><td colspan="2"><select class="eval-select"><option selected>なし</option><option>あり</option></select></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. 総合考察・治療判定への提言 -->
+      <div class="sec-title" style="background:#1e3a8a; margin-top: 3px;">5. 総合所見・治療方針への提言 (Clinical Summary & Recommendation)</div>
+      <div style="border: 1px solid var(--border-color); padding: 5px; background: #fff;">
+        <div style="font-weight: bold; color: #1e3a8a; margin-bottom: 2px;">【詳細考察・病態評価・前回比較】</div>
+        <textarea rows="3" style="width: 100%; font-size: 9.5px;"></textarea>
+
+        <div style="margin-top: 3px; border-top: 1px dashed #cbd5e1; padding-top: 3px;">
+          <table style="border:none; margin:0;">
+            <tr style="border:none;">
+              <td style="width: 140px; border:none; font-weight:bold;">前回検査との比較:</td>
+              <td style="border:none;"><input type="text"></td>
+            </tr>
+            <tr style="border:none;">
+              <td style="border:none; font-weight:bold;">推奨追跡 / 追加精査:</td>
+              <td style="border:none;">
+                <select class="eval-select" style="width: 110px; display:inline-block;">
+                  <option>3ヶ月後フォロー</option>
+                  <option>6ヶ月後フォロー</option>
+                  <option>1年後フォロー</option>
+                  <option>治療後早期再検</option>
+                </select>
+                &nbsp;
+                <input type="text" style="width: 60%; display:inline-block;" placeholder="追加推奨検査 (例: 経食道エコー TEE, 心臓MRI, 冠動脈CT)">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- フッター -->
+    <div class="footer-row">
+      <div class="hospital-name">国東市民病院</div>
+      <div>検査者: <input type="text" style="width:75px; display:inline-block;"> &nbsp;&nbsp; 診断医: <input type="text" style="width:85px; display:inline-block;" placeholder="承認医師サイン"></div>
+      <div>Page 2 / 2 (詳細評価)</div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
